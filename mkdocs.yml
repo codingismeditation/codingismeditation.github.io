@@ -3,6 +3,7 @@ site_description: Deep, practical docs on backend, systems, and engineering mind
 site_url: https://codingismeditation.github.io/template
 nav:
   - Home: index.md
+  - Networking: kintsugi-stack-networking/index.md
   # - Backend:
   #     - Roadmap: backend/roadmap.md
   #     - Databases: backend/databases.md
@@ -84,6 +85,9 @@ plugins:
 
   - git-revision-date-localized:
       enable_creation_date: true
+      fallback_to_build_date: true
+      enable_parallel_processing: false
+
   # - git-committers:
   #     repository: codingismeditation/codingismeditation.github.io
   #     branch: main
