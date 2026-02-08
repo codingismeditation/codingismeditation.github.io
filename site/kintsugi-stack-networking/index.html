@@ -1,0 +1,1978 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Deep, practical docs on backend, systems, and engineering mindset">
+      
+      
+      
+        <link rel="canonical" href="https://codingismeditation.github.io/template/kintsugi-stack-networking/index.html">
+      
+      
+        <link rel="prev" href="../index.html">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Networking - Coding Is Meditation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Networking - Coding Is Meditation" />
+<meta property="og:description" content="Deep, practical docs on backend, systems, and engineering mindset" />
+<meta property="og:image" content="https://codingismeditation.github.io/template/assets/images/social/kintsugi-stack-networking/index.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://codingismeditation.github.io/template/kintsugi-stack-networking/index.html" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Networking - Coding Is Meditation" />
+<meta property="twitter:description" content="Deep, practical docs on backend, systems, and engineering mindset" />
+<meta property="twitter:image" content="https://codingismeditation.github.io/template/assets/images/social/kintsugi-stack-networking/index.png" />
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="yellow">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#networking" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="Coding Is Meditation" class="md-header__button md-logo" aria-label="Coding Is Meditation" data-md-component="logo">
+      
+  <img src="../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Coding Is Meditation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Networking
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="yellow"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="yellow"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kintsugi-programmer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kintsugi-programmer
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Networking
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Coding Is Meditation" class="md-nav__button md-logo" aria-label="Coding Is Meditation" data-md-component="logo">
+      
+  <img src="../assets/images/logo.png" alt="logo">
+
+    </a>
+    Coding Is Meditation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kintsugi-programmer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kintsugi-programmer
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Networking
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-networking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic Networking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Networking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is a Network?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importance-of-computer-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importance of Computer Networks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-classifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Classifications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Classifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distance-and-region-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distance and Region Breakdown
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of Networks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vpn-virtual-private-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VPN (Virtual Private Network)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VPN (Virtual Private Network)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advantages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of VPN
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Fundamentals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nodes-and-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nodes and Links
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Topology
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Topology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-topologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of Topologies
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip-addressing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IP Addressing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IP Addressing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ipv4-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IPv4 Address
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipv4-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IPv4 Classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#private-and-special-ip-addresses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Private and Special IP Addresses
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subnet
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference Models
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#osi-reference-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OSI Reference Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OSI Reference Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Principles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-7-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The 7 Layers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcpip-reference-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP/IP Reference Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP/IP Reference Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-4-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The 4 Layers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#osi-vs-tcpip-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OSI vs TCP/IP Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocols
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http-and-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP and HTTPS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smtp-simple-mail-transfer-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SMTP (Simple Mail Transfer Protocol)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns-domain-name-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNS (Domain Name System)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-transmission-control-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP (Transmission Control Protocol)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#udp-user-datagram-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UDP (User Datagram Protocol)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-vs-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP vs UDP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icmp-internet-control-message-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ICMP (Internet Control Message Protocol)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp-dynamic-host-configuration-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP (Dynamic Host Configuration Protocol)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arp-address-resolution-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ARP (Address Resolution Protocol)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ftp-file-transfer-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FTP (File Transfer Protocol)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-and-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware and Devices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware and Devices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#router-vs-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Router vs Gateway
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hub-vs-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hub vs Switch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac-address-vs-nic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MAC Address vs NIC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac-address-vs-ip-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MAC Address vs IP Address
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Firewall
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands-and-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commands and Operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands and Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ipconfig-vs-ifconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ipconfig vs ifconfig
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#casting-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Casting Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#browser-process-entering-googlecom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Browser Process (Entering google.com)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-connectivity-fact" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Connectivity Fact
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-networking-roadmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Networking Roadmap
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="networking">Networking</h1>
+<p><img alt="alt text" src="images/image.webp" /></p>
+<div style="position:relative;width:100%;padding-bottom:56.25%;height:0;">
+  <iframe
+    src="https://www.youtube.com/embed/2lN_zjaOCy0?si=1BNWdKFdSOTnoamJ"
+    title="YouTube video player"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<h2 id="basic-networking">Basic Networking</h2>
+<h3 id="what-is-a-network">What is a Network?</h3>
+<p><strong>Definition</strong>: According to Merriam Webster, a <strong>Network</strong> is usually an informally interconnected group or association of different entities (e.g., a person, computers, radio stations).</p>
+<p><strong>Computer Network</strong>: A system of peripherals or computers interconnected with each other.
+- Has a standard communication channel established between them.
+- Used to exchange different types of information and data.
+- <strong>Example</strong>: Dominos has a network of 1232 branches across India.</p>
+<h3 id="importance-of-computer-networks">Importance of Computer Networks</h3>
+<ul>
+<li>connects all different network-enabled devices.</li>
+<li>Enables data and information sharing between devices.</li>
+<li>Considered a core part of technical interviews and daily life.</li>
+</ul>
+<h3 id="network-classifications">Network Classifications</h3>
+<p>Network types are classified based on the area of distribution.</p>
+<h4 id="distance-and-region-breakdown">Distance and Region Breakdown</h4>
+<ul>
+<li><strong>1m (Square meter)</strong>: Personal Area Network</li>
+<li><strong>10m (Room) - 1km (Campus)</strong>: Local Area Network</li>
+<li><strong>10km (City)</strong>: Metropolitan Area Network</li>
+<li><strong>100km (Country) - 1000km (Continent)</strong>: Wide Area Network</li>
+<li><strong>10,000km (Planet)</strong>: The Internet (Global Area Network)</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    A["1m&lt;br/&gt;PAN"] --&gt; B["10m-1km&lt;br/&gt;LAN"]
+    B --&gt; C["10km&lt;br/&gt;MAN"]
+    C --&gt; D["100-1000km&lt;br/&gt;WAN"]
+    D --&gt; E["10000km&lt;br/&gt;GAN"]
+    style A fill:#1a7fab,color:#fff
+    style B fill:#2a94c5,color:#fff
+    style C fill:#3da8d5,color:#fff
+    style D fill:#4eb6e0,color:#fff
+    style E fill:#5bc4e6,color:#fff</code></pre>
+<h4 id="types-of-networks">Types of Networks</h4>
+<ol>
+<li><strong>PAN (Personal Area Network)</strong><ul>
+<li>Lets devices connect and communicate over the range of a person.</li>
+<li><strong>Example</strong>: Connecting Bluetooth devices.</li>
+</ul>
+</li>
+<li><strong>LAN (Local Area Network)</strong><ul>
+<li>A privately owned network operating within and nearby a single building (home, office, factory).</li>
+<li><img alt="alt text" src="images/image-5.webp" /></li>
+<li>Widely used to connect computers/laptops and consumer electronics.</li>
+<li>Enables sharing of resources (printers, fax machines) and information exchange.</li>
+<li><strong>Enterprise Networks</strong>: LANs used by companies or organizations.</li>
+<li><strong>Types</strong>:<ul>
+<li><strong>Wireless LAN</strong>: No wires involved; achieved using Wi-Fi. Popular where installing wire is difficult.</li>
+<li><strong>Wired LAN</strong>: Achieved using LAN cable.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>MAN (Metropolitan Area Network)</strong><ul>
+<li>Connects and covers the whole city.</li>
+<li><strong>Example</strong>: TV Cable connection over the city.</li>
+</ul>
+</li>
+<li><strong>WAN (Wide Area Network)</strong><ul>
+<li>Spans a large geographical area, often a country or continent.</li>
+<li><strong>Example</strong>: The Internet is the largest WAN.</li>
+</ul>
+</li>
+<li><strong>GAN (Global Area Network)</strong><ul>
+<li>Also known as the Internet.</li>
+<li>Connects the globe using satellites.</li>
+<li>Called the Network of WANs.</li>
+</ul>
+</li>
+</ol>
+<p><img alt="alt text" src="images/image-3.webp" /></p>
+<hr />
+<h2 id="vpn-virtual-private-network">VPN (Virtual Private Network)</h2>
+<h3 id="definition">Definition</h3>
+<p>A <strong>VPN</strong> is a private WAN built on the internet.
+- Allows creation of a <strong>secured tunnel</strong> (protected network) between different networks using the internet (public network).
+- Enables clients to connect to an organization’s network remotely.
+- <img alt="alt text" src="images/image-6.webp" /></p>
+<h3 id="advantages">Advantages</h3>
+<ul>
+<li>Connects offices in different geographical locations remotely.</li>
+<li><strong>Cheaper</strong> compared to WAN connections.</li>
+<li>Used for <strong>secure transactions</strong> and confidential data transfer between multiple offices.</li>
+<li>Keeps organization information <strong>secured</strong> against threats or intrusions via virtualization.</li>
+<li><strong>Encrypts</strong> internet traffic and disguises online identity.</li>
+</ul>
+<h3 id="types-of-vpn">Types of VPN</h3>
+<ol>
+<li><strong>Access VPN</strong><ul>
+<li>Provides connectivity to remote mobile users and telecommuters.</li>
+<li>Alternative to dial-up or ISDN connections.</li>
+<li>Low-cost solution with a wide range of connectivity.</li>
+</ul>
+</li>
+<li><strong>Site-to-Site VPN (Router-to-Router)</strong><ul>
+<li>Connects the network of one office to another in different locations.</li>
+<li>Common in large companies with multiple branches.</li>
+<li><strong>Sub-categories</strong>:<ul>
+<li><strong>Intranet VPN</strong>: Connects remote offices using shared infrastructure (internet connectivity and servers) with the same accessibility policies as a private WAN.</li>
+<li><strong>Extranet VPN</strong>: Uses shared infrastructure over an intranet to connect suppliers, customers, partners, and other entities using dedicated connections.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<pre class="mermaid"><code>flowchart TD
+    VPN["Virtual Private Network&lt;br/&gt;VPN"]
+    VPN --&gt; ACCESS["Access VPN&lt;br/&gt;Remote Users"]
+    VPN --&gt; SITE["Site-to-Site VPN&lt;br/&gt;Office to Office"]
+    SITE --&gt; INTRANET["Intranet VPN&lt;br/&gt;Internal Offices"]
+    SITE --&gt; EXTRANET["Extranet VPN&lt;br/&gt;Partners &amp; Suppliers"]
+    style VPN fill:#b8860b,color:#fff
+    style ACCESS fill:#daa520,color:#fff
+    style SITE fill:#daa520,color:#fff
+    style INTRANET fill:#ffa500,color:#000
+    style EXTRANET fill:#ffa500,color:#000</code></pre>
+<hr />
+<h2 id="network-fundamentals">Network Fundamentals</h2>
+<h3 id="nodes-and-links">Nodes and Links</h3>
+<p><img alt="alt text" src="images/image-8.webp" />
+*   <strong>Node</strong>: Any communicating device in a network.
+    *   Point of intersection in a network.
+    *   Can send/receive data.
+    *   <strong>Examples</strong>: Computers, laptops, printers, servers, modems.
+*   <strong>Link</strong>: The connectivity (edge) between two nodes in the network.
+    *   Includes the type of connectivity (wired/wireless).
+    *   Includes protocols used for communication.</p>
+<h3 id="network-topology">Network Topology</h3>
+<p><strong>Definition</strong>: The physical layout of the network connecting different nodes using links. It depicts connectivity between computers, devices, and cables.</p>
+<h4 id="types-of-topologies">Types of Topologies</h4>
+<ol>
+<li><strong>Bus Topology</strong><ul>
+<li>All nodes connected using a central link known as the <strong>bus</strong>.</li>
+<li><strong>Pros</strong>: Useful for a smaller number of devices.</li>
+<li><strong>Cons</strong>: If the main cable gets damaged, the whole network is damaged.</li>
+</ul>
+</li>
+<li><strong>Star Topology</strong><ul>
+<li>All nodes connected to one single <strong>central node</strong>.</li>
+<li><strong>Pros</strong>: More robust; easy to troubleshoot. Mainly used in home/office networks.</li>
+<li><strong>Cons</strong>: If the central node fails, the complete network is damaged.</li>
+</ul>
+</li>
+<li><strong>Ring Topology</strong><ul>
+<li>Each node connected to exactly two nodes, forming a ring structure.</li>
+<li><strong>Cons</strong>: Rare usage; expensive; hard to install and manage. If one node is damaged, the whole network is damaged.</li>
+</ul>
+</li>
+<li><strong>Mesh Topology</strong><ul>
+<li>Each node connected to one or many nodes.</li>
+<li><strong>Pros</strong>: Robust (failure in one link only disconnects that node).</li>
+<li><strong>Cons</strong>: Rare usage; installation and management are difficult.</li>
+</ul>
+</li>
+<li><strong>Tree Topology</strong><ul>
+<li>Combination of star and bus topology (Extended Bus Topology).</li>
+<li>All smaller star networks are connected to a single bus.</li>
+<li><strong>Cons</strong>: If the main bus fails, the whole network is damaged.</li>
+</ul>
+</li>
+<li><strong>Hybrid Topology</strong><ul>
+<li>Combination of different topologies to form a new one.</li>
+<li><strong>Pros</strong>: Ignores drawbacks of specific topologies and picks strengths from others.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="ip-addressing">IP Addressing</h2>
+<h3 id="ipv4-address">IPv4 Address</h3>
+<ul>
+<li><strong>Definition</strong>: A 32-bit dynamic address of a node in the network.</li>
+<li><strong>Structure</strong>: 4 octets of 8-bits each (values up to 255).</li>
+</ul>
+<h3 id="ipv4-classes">IPv4 Classes</h3>
+<p>Classes are based on the first octet and the number of hosts supported.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Class</th>
+<th style="text-align: left;">IPv4 Start Address</th>
+<th style="text-align: left;">IPv4 End Address</th>
+<th style="text-align: left;">Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>A</strong></td>
+<td style="text-align: left;">0.0.0.0</td>
+<td style="text-align: left;">127.255.255.255</td>
+<td style="text-align: left;">Large Network</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>B</strong></td>
+<td style="text-align: left;">128.0.0.0</td>
+<td style="text-align: left;">191.255.255.255</td>
+<td style="text-align: left;">Medium Size Network</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>C</strong></td>
+<td style="text-align: left;">192.0.0.0</td>
+<td style="text-align: left;">223.255.255.255</td>
+<td style="text-align: left;">Local Area Network</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>D</strong></td>
+<td style="text-align: left;">224.0.0.0</td>
+<td style="text-align: left;">239.255.255.255</td>
+<td style="text-align: left;">Reserved for Multicasting</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>E</strong></td>
+<td style="text-align: left;">240.0.0.0</td>
+<td style="text-align: left;">255.255.255.254</td>
+<td style="text-align: left;">Study and R&amp;D</td>
+</tr>
+</tbody>
+</table>
+<h3 id="private-and-special-ip-addresses">Private and Special IP Addresses</h3>
+<p><strong>Private Address</strong>: Specific IPs reserved for private use only. Non-routable on the Internet.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Class</th>
+<th style="text-align: left;">Private IPv4 Start Address</th>
+<th style="text-align: left;">Private IPv4 End Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>A</strong></td>
+<td style="text-align: left;">10.0.0.0</td>
+<td style="text-align: left;">10.255.255.255</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>B</strong></td>
+<td style="text-align: left;">172.16.0.0</td>
+<td style="text-align: left;">172.31.255.255</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>C</strong></td>
+<td style="text-align: left;">192.168.0.0</td>
+<td style="text-align: left;">192.168.255.255</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Special Address</strong>: Range <code>127.0.0.1</code> to <code>127.255.255.255</code>.
+- Known as <strong>loopback addresses</strong>.
+- Used for network testing.</p>
+<h3 id="subnet">Subnet</h3>
+<ul>
+<li><strong>Definition</strong>: A network inside a network achieved by <strong>subnetting</strong>.</li>
+<li><img alt="alt text" src="images/image-7.webp" /></li>
+<li><strong>Purpose</strong>:<ul>
+<li>Divides a network into subnets.</li>
+<li>Higher routing efficiency.</li>
+<li>Enhances network security.</li>
+<li>Reduces time to extract host address from routing table.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="reference-models">Reference Models</h2>
+<h3 id="osi-reference-model">OSI Reference Model</h3>
+<p><strong>Open System Interconnections (OSI)</strong> is a network architecture model based on ISO standards.
+- Deals with connecting systems open for communication.
+- Has <strong>seven layers</strong>.</p>
+<h4 id="principles">Principles</h4>
+<ul>
+<li>Create a new layer if a different abstraction is needed.</li>
+<li>Each layer has a well-defined function.</li>
+<li>Functions chosen based on internationally standardized protocols.</li>
+</ul>
+<h4 id="the-7-layers">The 7 Layers</h4>
+<ol>
+<li><strong>Physical</strong> (Hardware Layer)<ul>
+<li><strong>Unit</strong>: Bit.</li>
+<li><strong>Description</strong>: Transmits raw bits over communication channel. Selects transmission mode (Simplex, Half Duplex, Full Duplex).</li>
+</ul>
+</li>
+<li><strong>Data Link</strong> (Hardware Layer)</li>
+<li><strong>Network</strong> (Hardware Layer)</li>
+<li><strong>Transport</strong> (Heart of OSI)</li>
+<li><strong>Session</strong> (Software Layer)</li>
+<li><strong>Presentation</strong> (Software Layer)</li>
+<li><strong>Application</strong> (Software Layer).</li>
+</ol>
+<pre class="mermaid"><code>flowchart TB
+    L7["7. Application&lt;br/&gt;HTTP, SMTP, DNS, FTP"]
+    L6["6. Presentation&lt;br/&gt;Encryption, Compression"]
+    L5["5. Session&lt;br/&gt;Connections"]
+    L4["4. Transport&lt;br/&gt;TCP, UDP"]
+    L3["3. Network&lt;br/&gt;IP, Routers"]
+    L2["2. Data Link&lt;br/&gt;Frames, MAC"]
+    L1["1. Physical&lt;br/&gt;Bits, Cables"]
+    L7 --&gt; L6 --&gt; L5 --&gt; L4 --&gt; L3 --&gt; L2 --&gt; L1
+    style L7 fill:#ba68c8,color:#fff
+    style L6 fill:#ba68c8,color:#fff
+    style L5 fill:#ba68c8,color:#fff
+    style L4 fill:#9c27b0,color:#fff
+    style L3 fill:#7b1fa2,color:#fff
+    style L2 fill:#6a4c93,color:#fff
+    style L1 fill:#5d4e78,color:#fff</code></pre>
+<h3 id="tcpip-reference-model">TCP/IP Reference Model</h3>
+<p>Compressed version of the OSI model with <strong>4 layers</strong>.
+- Developed by US DoD in the 1960s.
+- <img alt="alt text" src="images/image-10.webp" />
+- Named after <strong>TCP</strong> (Transmission Control Protocol) and <strong>IP</strong> (Internet Protocol).</p>
+<h4 id="the-4-layers">The 4 Layers</h4>
+<ol>
+<li><strong>Link Layer</strong>: Decides which links (serial lines, Ethernet) to use to meet connectionless internet layer needs.</li>
+<li><strong>Internet Layer</strong>: Most important layer holding architecture together. Delivers IP packets to destinations.</li>
+<li><strong>Transport Layer</strong>: Enables peer entities to carry on a conversation (similar to OSI Transport).</li>
+<li><strong>Application Layer</strong>: Contains all higher-level protocols.</li>
+</ol>
+<pre class="mermaid"><code>flowchart TB
+    L4["4. Application&lt;br/&gt;HTTP, SMTP, DNS, FTP"]
+    L3["3. Transport&lt;br/&gt;TCP, UDP"]
+    L2["2. Internet&lt;br/&gt;IP, ICMP, ARP"]
+    L1["1. Link&lt;br/&gt;Ethernet, Wi-Fi"]
+    L4 --&gt; L3 --&gt; L2 --&gt; L1
+    style L4 fill:#ba68c8,color:#fff
+    style L3 fill:#9c27b0,color:#fff
+    style L2 fill:#7b1fa2,color:#fff
+    style L1 fill:#6a4c93,color:#fff</code></pre>
+<h3 id="osi-vs-tcpip-comparison">OSI vs TCP/IP Comparison</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">OSI Reference Model</th>
+<th style="text-align: left;">TCP/IP Reference Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">7 layered architecture</td>
+<td style="text-align: left;">4 layered architecture</td>
+</tr>
+<tr>
+<td style="text-align: left;">Fixed boundaries and functionality for each layer</td>
+<td style="text-align: left;">Flexible architecture with no strict boundaries</td>
+</tr>
+<tr>
+<td style="text-align: left;">Low Reliability</td>
+<td style="text-align: left;">High Reliability</td>
+</tr>
+<tr>
+<td style="text-align: left;">Vertical Layer Approach</td>
+<td style="text-align: left;">Horizontal Layer Approach</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: The Presentation and Session layers from OSI are not present in the TCP/IP model.</p>
+<p><img alt="alt text" src="images/image-1.webp" /></p>
+<hr />
+<h2 id="protocols">Protocols</h2>
+<h3 id="http-and-https">HTTP and HTTPS</h3>
+<ul>
+<li><strong>HTTP (HyperText Transfer Protocol)</strong><ul>
+<li>Defines rules for transmitting info on the WWW.</li>
+<li>Helps communication between web browsers and servers.</li>
+<li><strong>Stateless protocol</strong> (each command is independent).</li>
+<li>Application layer protocol built on TCP.</li>
+<li>Default Port: <strong>80</strong>.</li>
+</ul>
+</li>
+<li><strong>HTTPS (HyperText Transfer Protocol Secure)</strong><ul>
+<li>Advanced, secured version of HTTP.</li>
+<li>Uses <strong>SSL/TLS</strong> protocol on top of HTTP.</li>
+<li>Encrypts communication and identifies network servers securely.</li>
+<li>Default Port: <strong>443</strong>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="smtp-simple-mail-transfer-protocol">SMTP (Simple Mail Transfer Protocol)</h3>
+<ul>
+<li>Sets rules for communication between servers to transmit emails.</li>
+<li>Supports End-to-End and Store-and-Forward methods.</li>
+<li>Always-listening mode.</li>
+<li>Default Port: <strong>25</strong>.</li>
+</ul>
+<h3 id="dns-domain-name-system">DNS (Domain Name System)</h3>
+<ul>
+<li>Decentralized, hierarchical naming system (Devices/Services directory of the Internet).</li>
+<li>Translates domain names (e.g., <code>codingismeditation.github.io</code>) to IPs (e.g., <code>172.217.166.36</code>).</li>
+<li>Default Port: <strong>53</strong>.</li>
+</ul>
+<h3 id="tcp-transmission-control-protocol">TCP (Transmission Control Protocol)</h3>
+<ul>
+<li>Set of rules for connecting to the Internet and transmitting data.</li>
+<li>Creates a virtual network when multiple computers connect.</li>
+<li>Uses <strong>three-way handshake</strong> model.</li>
+<li><strong>Reliable</strong> connection.</li>
+</ul>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Client
+    participant Server
+    Client-&gt;&gt;Server: SYN
+    Server-&gt;&gt;Client: SYN-ACK
+    Client-&gt;&gt;Server: ACK
+    Note over Client,Server: Connection Established</code></pre>
+<h3 id="udp-user-datagram-protocol">UDP (User Datagram Protocol)</h3>
+<ul>
+<li>Based on Datagrams.</li>
+<li>Used for <strong>multicasting</strong> and <strong>broadcasting</strong>.</li>
+<li><strong>Simple transmission</strong> without hand-shaking.</li>
+<li><strong>Less reliable</strong> than TCP.</li>
+</ul>
+<h3 id="tcp-vs-udp">TCP vs UDP</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TCP / TCP/IP</th>
+<th style="text-align: left;">UDP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Connection-Oriented Protocol</td>
+<td style="text-align: left;">Connectionless Protocol</td>
+</tr>
+<tr>
+<td style="text-align: left;">More Reliable</td>
+<td style="text-align: left;">Less Reliable</td>
+</tr>
+<tr>
+<td style="text-align: left;">Slower Transmission</td>
+<td style="text-align: left;">Faster Transmission</td>
+</tr>
+<tr>
+<td style="text-align: left;">Packet order preserved/rearranged</td>
+<td style="text-align: left;">Packet order not fixed; independent packets</td>
+</tr>
+<tr>
+<td style="text-align: left;">Uses three-way handshake</td>
+<td style="text-align: left;">No handshake</td>
+</tr>
+<tr>
+<td style="text-align: left;">Heavy-weight packets</td>
+<td style="text-align: left;">Light-weight packets</td>
+</tr>
+<tr>
+<td style="text-align: left;">Error checking mechanism</td>
+<td style="text-align: left;">No error checking mechanism</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Protocols</strong>: HTTP, FTP, Telnet, SMTP, HTTPS</td>
+<td style="text-align: left;"><strong>Protocols</strong>: DNS, RIP, SNMP, RTP, BOOTP, TFTP, NIP</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="alt text" src="images/image-2.webp" /></p>
+<h3 id="icmp-internet-control-message-protocol">ICMP (Internet Control Message Protocol)</h3>
+<ul>
+<li>Network layer protocol for <strong>error handling</strong>.</li>
+<li>Used by network devices (routers) to diagnose issues.</li>
+<li>Reports errors and tests if data reaches destination.</li>
+<li>Default Port: <strong>7</strong>.</li>
+</ul>
+<h3 id="dhcp-dynamic-host-configuration-protocol">DHCP (Dynamic Host Configuration Protocol)</h3>
+<ul>
+<li>Application layer protocol to <strong>auto-configure devices</strong> on IP networks.</li>
+<li>Auto-assigns IPs, subnet masks, and DNS settings.</li>
+<li>Enables use of TCP/UDP-based protocols.</li>
+<li>Default Port: <strong>67</strong>.</li>
+</ul>
+<h3 id="arp-address-resolution-protocol">ARP (Address Resolution Protocol)</h3>
+<ul>
+<li>Network-level protocol.</li>
+<li><img alt="alt text" src="images/image-4.webp" /></li>
+<li>Converts <strong>Logical Address (IP)</strong> to <strong>Physical Address (MAC)</strong>.</li>
+<li>Used to get MAC address of devices for local network communication.</li>
+</ul>
+<h3 id="ftp-file-transfer-protocol">FTP (File Transfer Protocol)</h3>
+<ul>
+<li>Application layer protocol.</li>
+<li>Used to transfer files/data reliably between hosts.</li>
+<li>Used to download files from remote servers.</li>
+<li>Default Port: <strong>27</strong>.</li>
+</ul>
+<hr />
+<h2 id="hardware-and-devices">Hardware and Devices</h2>
+<h3 id="router-vs-gateway">Router vs Gateway</h3>
+<ul>
+<li><strong>Router</strong>:<ul>
+<li>Connects two or more network segments.</li>
+<li>Directs traffic; transfers data (packets) from source to destination.</li>
+<li>Operates at <strong>Network Layer</strong>.</li>
+<li>Sends data to <strong>similar</strong> networks.</li>
+</ul>
+</li>
+<li><strong>Gateway</strong>:<ul>
+<li>Routes and regulates traffic.</li>
+<li>Can send data between two <strong>dissimilar</strong> networks.</li>
+</ul>
+</li>
+</ul>
+<h3 id="hub-vs-switch">Hub vs Switch</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Hub</th>
+<th style="text-align: left;">Switch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Operates at <strong>Physical Layer</strong></td>
+<td style="text-align: left;">Operates at <strong>Data Link Layer</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Half-Duplex</strong> transmission mode</td>
+<td style="text-align: left;"><strong>Full-Duplex</strong> transmission mode</td>
+</tr>
+<tr>
+<td style="text-align: left;">Connects Ethernet devices</td>
+<td style="text-align: left;">Connects LAN devices</td>
+</tr>
+<tr>
+<td style="text-align: left;">Less complex, less intelligent, cheaper</td>
+<td style="text-align: left;">Intelligent and effective</td>
+</tr>
+<tr>
+<td style="text-align: left;">No software support for administration</td>
+<td style="text-align: left;">Administration software support present</td>
+</tr>
+<tr>
+<td style="text-align: left;">Less speed (up to 100 MBPS)</td>
+<td style="text-align: left;">High speed (GBPS)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Less efficient (collisions possible)</td>
+<td style="text-align: left;">More efficient (avoids/reduces collisions)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mac-address-vs-nic">MAC Address vs NIC</h3>
+<ul>
+<li><strong>MAC (Media Access Control) Address</strong>:<ul>
+<li>48-bit or 64-bit unique identifier.</li>
+<li>Physical address embedded with the NIC.</li>
+<li>Used at <strong>Data Link Layer</strong>.</li>
+</ul>
+</li>
+<li><strong>NIC (Network Interface Card)</strong>:<ul>
+<li>Hardware component enabling device connection to the network.</li>
+</ul>
+</li>
+</ul>
+<h3 id="mac-address-vs-ip-address">MAC Address vs IP Address</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">MAC Address</th>
+<th style="text-align: left;">IP Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Media Access Control Address</td>
+<td style="text-align: left;">Internet Protocol Address</td>
+</tr>
+<tr>
+<td style="text-align: left;">6 or 8-byte hexadecimal number</td>
+<td style="text-align: left;">4 (IPv4) or 16 (IPv6) Byte address</td>
+</tr>
+<tr>
+<td style="text-align: left;">Embedded with NIC</td>
+<td style="text-align: left;">Obtained from the network</td>
+</tr>
+<tr>
+<td style="text-align: left;">Physical Address</td>
+<td style="text-align: left;">Logical Address</td>
+</tr>
+<tr>
+<td style="text-align: left;">Operates at Data Link Layer</td>
+<td style="text-align: left;">Operates at Network Layer</td>
+</tr>
+<tr>
+<td style="text-align: left;">Identifies the device</td>
+<td style="text-align: left;">Identifies device connectivity on the network</td>
+</tr>
+</tbody>
+</table>
+<h3 id="firewall">Firewall</h3>
+<ul>
+<li>Network security system monitoring incoming/outgoing traffic.</li>
+<li><img alt="alt text" src="images/image-9.webp" /></li>
+<li>Blocks traffic based on security policies.</li>
+<li>Acts as a <strong>wall</strong> between internet (public) and networking devices (private).</li>
+<li>Can be hardware, software, or both.</li>
+</ul>
+<hr />
+<h2 id="commands-and-operations">Commands and Operations</h2>
+<h3 id="ipconfig-vs-ifconfig">ipconfig vs ifconfig</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ipconfig</th>
+<th style="text-align: left;">ifconfig</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Internet Protocol Configuration</td>
+<td style="text-align: left;">Interface Configuration</td>
+</tr>
+<tr>
+<td style="text-align: left;">Used in <strong>Microsoft</strong> OS</td>
+<td style="text-align: left;">Used in <strong>MAC, Linux, UNIX</strong> OS</td>
+</tr>
+<tr>
+<td style="text-align: left;">View/configure network interfaces</td>
+<td style="text-align: left;">View/configure network interfaces</td>
+</tr>
+<tr>
+<td style="text-align: left;">TCP/IP summary, change DHCP/DNS settings</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="casting-types">Casting Types</h3>
+<ul>
+<li><strong>Unicasting</strong>: Message sent to a <strong>single node</strong> from source.<ul>
+<li>Use: Establishing new connection.</li>
+</ul>
+</li>
+<li><strong>Anycasting</strong>: Message sent to <strong>any</strong> node from source.<ul>
+<li>Use: Content Delivery Systems (getting content from any server).</li>
+</ul>
+</li>
+<li><strong>Multicasting</strong>: Message sent to a <strong>subset of nodes</strong>.<ul>
+<li>Use: Sending same data to multiple receivers.</li>
+</ul>
+</li>
+<li><strong>Broadcasting</strong>: Message sent to <strong>all nodes</strong> in a network.<ul>
+<li>Use: DHCP and ARP in local network.</li>
+</ul>
+</li>
+</ul>
+<h3 id="browser-process-entering-googlecom">Browser Process (Entering google.com)</h3>
+<p>Steps followed when entering a URL:
+1.  <strong>Check Cache</strong>: Browser checks its cache for fresh content.
+2.  <strong>DNS Lookup</strong>:
+    *   If IP not in cache (browser/OS), request OS to do DNS lookup.
+    *   Uses <strong>UDP</strong> to get IP from DNS server.
+3.  <strong>TCP Connection</strong>:
+    *   Establish new connection between browser and server.
+    *   Uses <strong>three-way handshaking</strong>.
+4.  <strong>HTTP Request</strong>: Sent to server using TCP connection.
+5.  <strong>HTTP Response</strong>: Web server handles request and sends response.
+6.  <strong>Process Response</strong>:
+    *   Browser processes response.
+    *   Closes TCP connection or reuses it.
+7.  <strong>Cache &amp; Render</strong>:
+    *   Browser caches data if cacheable.
+    *   Browser decodes and renders content.</p>
+<pre class="mermaid"><code>flowchart TD
+    A["Enter URL&lt;br/&gt;google.com"]
+    B{"Content in&lt;br/&gt;Cache?"}
+    C{"IP in Cache?"}
+    D["Display&lt;br/&gt;Cached Content"]
+    E["DNS Lookup&lt;br/&gt;Get IP Address"]
+    F["Establish&lt;br/&gt;TCP Connection"]
+    G["Send&lt;br/&gt;HTTP Request"]
+    H["Receive&lt;br/&gt;HTTP Response"]
+    I{"Cache&lt;br/&gt;Data?"}
+    J["Cache&lt;br/&gt;Response"]
+    K["Render &amp;&lt;br/&gt;Display Page"]
+    A --&gt; B
+    B --&gt;|Yes| D
+    B --&gt;|No| C
+    C --&gt;|No| E
+    C --&gt;|Yes| F
+    E --&gt; F
+    F --&gt; G
+    G --&gt; H
+    H --&gt; I
+    I --&gt;|Yes| J
+    I --&gt;|No| K
+    J --&gt; K
+    D --&gt; K
+    style A fill:#1976d2,color:#fff
+    style K fill:#43a047,color:#fff</code></pre>
+<hr />
+<h2 id="global-connectivity-fact">Global Connectivity Fact</h2>
+<ul>
+<li><strong>Submarine Cables</strong>: As of 2021, there are <strong>1.3 million kilometers</strong> of submarine optical fiber cables globally.</li>
+<li><strong>Scale</strong>: Enough to revolve around the earth more than <strong>100 times</strong>.</li>
+</ul>
+<hr />
+<h2 id="complete-networking-roadmap">Complete Networking Roadmap</h2>
+<pre class="mermaid"><code>flowchart TD
+    START["🌐 NETWORKING&lt;br/&gt;Foundation"]
+
+    START --&gt; BASICS["Network Basics&lt;br/&gt;PAN|LAN|MAN|WAN|GAN"]
+    BASICS --&gt; CONN["Connection Methods&lt;br/&gt;VPN|Topologies"]
+    CONN --&gt; ADDRESSING["IP Addressing&lt;br/&gt;IPv4|Private|Loopback"]
+
+    ADDRESSING --&gt; MODELS["Reference Models&lt;br/&gt;OSI 7-Layer|TCP/IP 4-Layer"]
+    MODELS --&gt; PROTO["Protocols Layer"]
+
+    PROTO --&gt; APP["Application&lt;br/&gt;HTTP|SMTP|DNS|FTP"]
+    PROTO --&gt; TRANS["Transport&lt;br/&gt;TCP|UDP"]
+    PROTO --&gt; NET["Network&lt;br/&gt;ICMP|ARP|DHCP"]
+
+    APP --&gt; HW["Hardware &amp; Devices&lt;br/&gt;Router|Gateway|Hub|Switch"]
+    TRANS --&gt; HW
+    NET --&gt; HW
+
+    HW --&gt; OPS["Operations&lt;br/&gt;Commands|Casting"]
+    OPS --&gt; BROWSER["Browser Process&lt;br/&gt;Cache→DNS→TCP→HTTP→Render"]
+    BROWSER --&gt; END["✅ Complete&lt;br/&gt;Network Understanding"]
+
+    style START fill:#f39c12,color:#fff,stroke:#2c3e50,stroke-width:2px
+    style BASICS fill:#34495e,color:#f39c12
+    style CONN fill:#f39c12,color:#2c3e50
+    style ADDRESSING fill:#34495e,color:#f39c12
+    style MODELS fill:#f39c12,color:#2c3e50
+    style PROTO fill:#34495e,color:#f39c12
+    style APP fill:#2c3e50,color:#f39c12
+    style TRANS fill:#2c3e50,color:#f39c12
+    style NET fill:#2c3e50,color:#f39c12
+    style HW fill:#f39c12,color:#2c3e50
+    style OPS fill:#34495e,color:#f39c12
+    style BROWSER fill:#f39c12,color:#2c3e50
+    style END fill:#f39c12,color:#fff,stroke:#2c3e50,stroke-width:2px</code></pre>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 8, 2026 18:09:44 UTC">February 8, 2026</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 8, 2026 18:09:44 UTC">February 8, 2026</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../index.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy;2026 Siddhant Bali. All rights reserved.
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://codingismeditation.github.io/" target="_blank" rel="noopener" title="Home" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M277.8 8.6c-12.3-11.4-31.3-11.4-43.5 0l-224 208c-9.6 9-12.8 22.9-8 35.1S18.8 272 32 272h16v176c0 35.3 28.7 64 64 64h288c35.3 0 64-28.7 64-64V272h16c13.2 0 25-8.1 29.8-20.3s1.6-26.2-8-35.1zM240 320h32c26.5 0 48 21.5 48 48v96H192v-96c0-26.5 21.5-48 48-48"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.youtube.com/@CodingIsMeditation" target="_blank" rel="noopener" title="CodingIsMeditation YouTube Channel" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://x.com/siddhantbuilds" target="_blank" rel="noopener" title="Author&#39;s Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://kintsugi-programmer.github.io/" target="_blank" rel="noopener" title="Author&#39;s GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/siddhantbuilds/" target="_blank" rel="noopener" title="Author&#39;s LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:siddhant.bali.work@gmail.com" target="_blank" rel="noopener" title="Author&#39;s Email" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.instant.preview", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.prune", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "search.share", "header.autohide", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
