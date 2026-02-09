@@ -11,7 +11,7 @@ layers:
     typography:
       content: "{{ title }}"
       align: start
-      overflow: wrap
+      overflow: shrink
       color: "#000000"
       line:
         amount: 4
