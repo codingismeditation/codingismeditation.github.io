@@ -1,22 +1,26 @@
 size: { width: 1200, height: 630 }
+
 layers:
-  - size: { width: 832, height: 310 }
-    offset: { x: 62, y: 60 }
-    typography:
-      content: "{{ page.title }}" 
-      align: start
-      overflow: shrink
-      color: black
-      line:
-        amount: 3
-        height: 1.25
-      font:
-        family: Roboto
-        style: Bold
+  # Background FIRST (important)
   - background:
       image: layouts/background.png
-definitions:
 
+  # Title text
+  - size: { width: 900, height: 300 }
+    offset: { x: 60, y: 80 }
+    typography:
+      content: "{{ title }}"
+      align: start
+      overflow: wrap
+      color: "#000000"
+      line:
+        amount: 4
+        height: 1.2
+      font:
+        style: Bold
+
+
+definitions:
   - &page_title_with_site_name >-
     {%- if not page.is_homepage -%}
       {{ page.meta.get("title", page.title) }} - {{ config.site_name }}
@@ -27,8 +31,8 @@ definitions:
   - &page_description >-
     {{ page.meta.get("description", config.site_description) or "" }}
 
-tags:
 
+tags:
   og:type: website
   og:title: *page_title_with_site_name
   og:description: *page_description
