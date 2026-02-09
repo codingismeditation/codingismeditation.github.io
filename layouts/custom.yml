@@ -1,25 +1,23 @@
 size: { width: 1200, height: 630 }
 
 layers:
-  # Background FIRST (important)
+  # Background MUST be first
   - background:
       image: layouts/background.png
 
-  # Title text
-  - size: { width: 900, height: 300 }
-    offset: { x: 60, y: 80 }
+  # Title layer
+  - size: { width: 900, height: 260 }
+    offset: { x: 60, y: 90 }
     typography:
-      content: "{{ title }}"
+      content: "{{ page.title }}"
       align: start
       overflow: shrink
-      color: "#000000"
+      color: "#3E2723"
       line:
-        amount: 4
-        height: 1.2
+        amount: 3
+        height: 1.25
       font:
         style: Bold
-
-
 definitions:
   - &page_title_with_site_name >-
     {%- if not page.is_homepage -%}
