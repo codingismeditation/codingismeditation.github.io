@@ -7,6 +7,5 @@
 > This repository contains the source; the **complete developer documentation is meant to be experienced on the website**.  
 > 👉 https://codingismeditation.github.io/
 
-
 > Made with 💚 [Kintsugi-Programmer](https://github.com/kintsugi-programmer)
 
