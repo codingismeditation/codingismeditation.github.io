@@ -1,11 +1,12 @@
 site_name: Coding Is Meditation
 site_description: Deep, practical docs on backend, systems, and engineering mindset
-site_url: https://codingismeditation.github.io/template
+site_url: https://codingismeditation.github.io/
 nav:
   - Home: index.md
   - Interview:
     - Index: interview/index.md
     - Networking: interview/networking/index.md
+  - About: about.md
   - Contributing: contributing.md
   # - Backend:
   #     - Roadmap: backend/roadmap.md
@@ -13,6 +14,7 @@ nav:
   # - DevOps:
   #     - Docker: devops/docker.md 
 theme:
+  custom_dir: overrides
   name: material
   logo: assets/images/logo.png
   favicon: assets/images/favicon.ico

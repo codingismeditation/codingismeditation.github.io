@@ -1,26 +1,31 @@
 ---
-title: Backend Engineering Roadmap
-description: Learn backend engineering from first principles with real-world system design.
+title: Coding Is Meditation
+description: Coding Is Meditation is an open research artifact documenting continuous inquiry into computer science and software engineering. From foundational algorithms to modern full-stack systems, it reflects a pursuit of clarity, depth, and mastery.
 keywords:
-  - backend engineering
-  - system design
-  - databases
+  - coding is meditation
+  - computer science research
+  - software engineering fundamentals
+  - deep learning computer science
+  - programming as art
+  - software craftsmanship
+  - algorithms and systems
+  - full stack engineering
+  - open source learning
+  - technical research notes
 ---
 
-# Welcome to MkDocs
+# codingismeditation.github.io
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+> The [codingismeditation.github.io](https://codingismeditation.github.io/), authored by [Kintsugi-Programmer](https://github.com/kintsugi-programmer), is less a comprehensive resource and more an Artifact of Continuous Research and Deep Inquiry into Computer Science and Software Engineering. It serves as a transparent ledger of the author's relentless pursuit of mastery, from the foundational algorithms to modern full-stack implementation.
 
-## Commands
+## Modules
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+- [Interview](interview/index.md)
 
-## Project layout
+## Others
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+- [About](about.md)
+- [Contributing](contributing.md)
+
+
+> Made with 💚 [Kintsugi-Programmer](https://github.com/kintsugi-programmer)

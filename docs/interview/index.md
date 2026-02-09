@@ -1,5 +1,5 @@
 ---
-title: Interview Preparation Roadmap (FAANG & Startups)
+title: Interview Preparation
 description: A structured interview preparation roadmap focused on FAANG and startup roles, covering core CS fundamentals, scalable system design, and real-world backend engineering trade-offs.
 keywords:
   - FAANG interview preparation
