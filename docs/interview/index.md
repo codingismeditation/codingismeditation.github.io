@@ -17,3 +17,4 @@ This section provides structured interview preparation material, covering core C
 
 * [Networking](networking/index.md)
 * [DBMS](dbms/index.md)
+* [SQL for Data Science](sql-ds/index.md)

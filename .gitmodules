@@ -4,3 +4,6 @@
 [submodule "docs/interview/dbms"]
 	path = docs/interview/dbms
 	url = https://github.com/kintsugi-programmer/kintsugi-stack-dbms
+[submodule "docs/interview/sql-ds"]
+	path = docs/interview/sql-ds
+	url = https://github.com/kintsugi-programmer/kintsugi-stack-interview-sql-ds

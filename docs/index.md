@@ -23,6 +23,7 @@ keywords:
 * [Interview](interview/index.md)
     * [Networking](interview/networking/index.md)
     * [DBMS](interview/dbms/index.md)
+    * [SQL for Data Science](interview/sql-ds/index.md)
 
 ## Others
 
