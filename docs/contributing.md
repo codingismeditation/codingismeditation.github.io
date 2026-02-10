@@ -35,20 +35,16 @@ Make sure you have the following installed:
 Clone the repository and move into it:
 
 ```bash
-git clone <repo-url>
-cd <repo-name>
+git clone --recurse-submodules https://github.com/codingismeditation/codingismeditation.github.io
+cd codingismeditation.github.io
+git submodule status
 ```
 
-Create and activate a virtual environment:
+Create and activate a virtual environment & Install dependencies:
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-```
-
-Install dependencies:
-
-```bash
 pip install -r requirements.txt
 ```
 
