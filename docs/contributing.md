@@ -35,14 +35,11 @@ Make sure you have the following installed:
 Clone the repository and move into it:
 
 ```bash
+# Clone the repository and move into it:
 git clone --recurse-submodules https://github.com/codingismeditation/codingismeditation.github.io
 cd codingismeditation.github.io
 git submodule status
-```
-
-Create and activate a virtual environment & Install dependencies:
-
-```bash
+# Create and activate a virtual environment & Install dependencies:
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -114,16 +111,6 @@ git push
 
 Some documentation sections are maintained as **Git submodules**.
 
-### Reset / Debug a Broken Submodule 
-
-`eg:kintsugi-stack-networking`
-
-```bash
-git submodule deinit -f docs/kintsugi-stack-networking
-rm -rf .git/modules/docs/kintsugi-stack-networking
-rm -rf docs/kintsugi-stack-networking
-```
-
 ### Add a New Submodule 
 
 `eg:kintsugi-stack-networking`
@@ -133,6 +120,23 @@ git submodule add https://github.com/kintsugi-programmer/kintsugi-stack-networki
 ```
 
 Update `.gitmodules` automatically (Git does this).
+
+### Git Pull
+
+```bash
+# do it inside any submodule folder
+git pull
+```
+
+### Reset / Debug a Broken Submodule 
+
+`eg:kintsugi-stack-networking`
+
+```bash
+git submodule deinit -f docs/kintsugi-stack-networking
+rm -rf .git/modules/docs/kintsugi-stack-networking
+rm -rf docs/kintsugi-stack-networking
+```
 
 ---
 

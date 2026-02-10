@@ -15,4 +15,5 @@ keywords:
 
 This section provides structured interview preparation material, covering core CS fundamentals, real-world engineering concepts, and interview-oriented explanations.
 
-- [Networking](networking/index.md)
+* [Networking](networking/index.md)
+* [DBMS](dbms/index.md)

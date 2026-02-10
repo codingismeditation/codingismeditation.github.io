@@ -1,0 +1,1894 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A structured guide covering fundamental to advanced DBMS concepts including relational databases, ACID properties, normalization, entity-relationship modeling, transaction management, and database architecture patterns.">
+      
+      
+      
+        <link rel="canonical" href="https://codingismeditation.github.io/interview/dbms/index.html">
+      
+      
+        <link rel="prev" href="../networking/index.html">
+      
+      
+        <link rel="next" href="../../about.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>DBMS Database Management Systems - Coding Is Meditation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="DBMS Database Management Systems - Coding Is Meditation" />
+<meta property="og:description" content="A structured guide covering fundamental to advanced DBMS concepts including relational databases, ACID properties, normalization, entity-relationship modeling, transaction management, and database architecture patterns." />
+<meta property="og:image" content="https://codingismeditation.github.io/assets/images/social/interview/dbms/index.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://codingismeditation.github.io/interview/dbms/index.html" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="DBMS Database Management Systems - Coding Is Meditation" />
+<meta property="twitter:description" content="A structured guide covering fundamental to advanced DBMS concepts including relational databases, ACID properties, normalization, entity-relationship modeling, transaction management, and database architecture patterns." />
+<meta property="twitter:image" content="https://codingismeditation.github.io/assets/images/social/interview/dbms/index.png" />
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="yellow">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dbms" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="Coding Is Meditation" class="md-header__button md-logo" aria-label="Coding Is Meditation" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Coding Is Meditation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              DBMS Database Management Systems
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="yellow"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="yellow"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kintsugi-programmer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kintsugi-programmer
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../index.html" class="md-tabs__link">
+          
+  
+  
+  Interview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contributing.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Contributing
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="Coding Is Meditation" class="md-nav__button md-logo" aria-label="Coding Is Meditation" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.png" alt="logo">
+
+    </a>
+    Coding Is Meditation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kintsugi-programmer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kintsugi-programmer
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Interview
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../networking/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DBMS
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DBMS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-dbms-interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic DBMS Interview Questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic DBMS Interview Questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-what-is-meant-by-dbms-and-what-is-its-utility-explain-rdbms-with-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. What is meant by DBMS and what is its utility? Explain RDBMS with examples.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-what-is-meant-by-a-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. What is meant by a database?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-mention-the-issues-with-traditional-file-based-systems-that-make-dbms-a-better-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Mention the issues with traditional file-based systems that make DBMS a better choice?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-explain-a-few-advantages-of-a-dbms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Explain a few advantages of a DBMS.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-explain-different-languages-present-in-dbms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Explain different languages present in DBMS.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-what-is-meant-by-acid-properties-in-dbms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. What is meant by ACID properties in DBMS?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-are-null-values-in-a-database-the-same-as-that-of-blank-space-or-zero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Are NULL values in a database the same as that of blank space or zero?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intermediate-dbms-interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intermediate DBMS Interview Questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Intermediate DBMS Interview Questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#8-what-is-meant-by-data-warehousing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. What is meant by Data Warehousing?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-explain-different-levels-of-data-abstraction-in-a-dbms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Explain different levels of data abstraction in a DBMS.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-what-is-meant-by-an-entity-relationship-e-r-model-explain-the-terms-entity-entity-type-and-entity-set-in-dbms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. What is meant by an entity-relationship (E-R) model? Explain the terms Entity, Entity Type, and Entity Set in DBMS.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-explain-different-types-of-relationships-amongst-tables-in-a-dbms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Explain different types of relationships amongst tables in a DBMS.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-explain-the-difference-between-intension-and-extension-in-a-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Explain the difference between intension and extension in a database.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-explain-the-difference-between-the-delete-and-truncate-command-in-a-dbms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Explain the difference between the DELETE and TRUNCATE command in a DBMS.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-what-is-a-lock-explain-the-major-difference-between-a-shared-lock-and-an-exclusive-lock-during-a-transaction-in-a-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. What is a lock? Explain the major difference between a shared lock and an exclusive lock during a transaction in a database.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-what-is-meant-by-normalization-and-denormalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. What is meant by normalization and denormalization?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-dbms-interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced DBMS Interview Questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced DBMS Interview Questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#16-explain-different-types-of-normalization-forms-in-a-dbms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Explain different types of Normalization forms in a DBMS.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-explain-different-types-of-keys-in-a-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Explain different types of keys in a database.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-explain-the-difference-between-a-2-tier-and-3-tier-architecture-in-a-dbms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Explain the difference between a 2-tier and 3-tier architecture in a DBMS.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-dbms-roadmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete DBMS Roadmap
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../index.html" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Interview
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="dbms">DBMS</h1>
+<p><img alt="alt text" src="images/image.webp" /></p>
+<div style="position:relative;width:100%;padding-bottom:56.25%;height:0;">
+  <iframe
+    src="https://www.youtube.com/embed/2lN_zjaOCy0?si=1BNWdKFdSOTnoamJ"
+    title="YouTube video player"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<h2 id="basic-dbms-interview-questions">Basic DBMS Interview Questions</h2>
+<h3 id="1-what-is-meant-by-dbms-and-what-is-its-utility-explain-rdbms-with-examples">1. What is meant by DBMS and what is its utility? Explain RDBMS with examples.</h3>
+<p><strong>DBMS (Database Management System)</strong>
+*   <strong>Definition:</strong> A set of applications or programs that enable users to create and maintain a database.
+*   <strong>Utility:</strong>
+    *   Provides a tool or interface for performing various operations such as inserting, deleting, updating, etc., into a database.
+    *   Enables the storage of data more compactly and securely compared to a file-based system.
+    *   Helps users overcome problems like <strong>data inconsistency</strong> and <strong>data redundancy</strong> in a database.
+    *   Makes using a database more convenient and organized.
+*   <strong>Examples:</strong> File systems, XML, Windows Registry, etc.</p>
+<p><strong>RDBMS (Relational Database Management System)</strong>
+*   <strong>Definition:</strong> Introduced in the 1970s to access and store data more efficiently than DBMS.
+*   <strong>Structure:</strong> Stores data in the form of <strong>tables</strong> (rows and columns) compared to DBMS which stores data as files.
+*   <strong>Utility:</strong> Storing data as rows and columns makes it easier to locate specific values in the database and makes it more efficient compared to DBMS.
+*   <strong>Examples:</strong> MySQL, Oracle DB, etc.</p>
+<p><img alt="alt text" src="images/image-1.webp" /></p>
+<h3 id="2-what-is-meant-by-a-database">2. What is meant by a database?</h3>
+<ul>
+<li><strong>Definition:</strong> An organized, consistent, and logical collection of data that can easily be updated, accessed, and managed.</li>
+<li><strong>Content:</strong> Mostly contains sets of tables or objects.<ul>
+<li><strong>Object:</strong> Anything created using the <code>create</code> command is a database object.</li>
+<li><strong>Records and Fields:</strong> Tables consist of these.</li>
+</ul>
+</li>
+<li><strong>Tuple/Row:</strong> Represents a single entry in a table.</li>
+<li><strong>Attribute/Column:</strong> Represents the basic units of data storage, containing information about a particular aspect of the table.</li>
+<li><strong>Extraction:</strong> DBMS extracts data from a database in the form of queries given by the user.</li>
+</ul>
+<h3 id="3-mention-the-issues-with-traditional-file-based-systems-that-make-dbms-a-better-choice">3. Mention the issues with traditional file-based systems that make DBMS a better choice?</h3>
+<ul>
+<li><strong>Absence of Indexing:</strong> Leaves the only option of scanning the full page, making access to content tedious and super slow.</li>
+<li><strong>Redundancy and Inconsistency:</strong> Files have many duplicate and redundant data; changing one makes all of them inconsistent.</li>
+<li><strong>Data Access:</strong> Accessing data is harder because data is unorganized.</li>
+<li><strong>Lack of Concurrency Control:</strong> Leads to one operation locking the entire page, whereas DBMS allows multiple operations on a single file simultaneously.</li>
+<li><strong>Other Issues:</strong><ul>
+<li>Integrity check issues</li>
+<li>Data isolation issues</li>
+<li>Atomicity issues</li>
+<li>Security issues</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-explain-a-few-advantages-of-a-dbms">4. Explain a few advantages of a DBMS.</h3>
+<ul>
+<li><strong>Data Sharing:</strong> Data from a single database can be simultaneously shared by multiple users. This enables end-users to react to changes quickly in the database environment.</li>
+<li><strong>Integrity Constraints:</strong> The existence of these constraints allows storing data in an organized and refined manner.</li>
+<li><strong>Controlling Redundancy:</strong> Eliminates redundancy by providing a mechanism that integrates all data in a single database.</li>
+<li><strong>Data Independence:</strong> Allows changing the data structure without altering the composition of any executing application programs.</li>
+<li><strong>Backup and Recovery:</strong> Can be configured to automatically create a backup of data and restore it whenever required.</li>
+<li><strong>Data Security:</strong> Provides necessary tools to make storage and transfer reliable and secure.<ul>
+<li><strong>Authentication:</strong> The process of giving restricted access to a user.</li>
+<li><strong>Encryption:</strong> Encrypting sensitive data such as OTP, credit card information, etc.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="alt text" src="images/image-2.webp" /></p>
+<h3 id="5-explain-different-languages-present-in-dbms">5. Explain different languages present in DBMS.</h3>
+<p><strong>DDL (Data Definition Language)</strong>
+*   Contains commands required to define the database.
+*   <strong>Examples:</strong>
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">CREATE</span><span class="p">,</span><span class="w"> </span><span class="k">ALTER</span><span class="p">,</span><span class="w"> </span><span class="k">DROP</span><span class="p">,</span><span class="w"> </span><span class="k">TRUNCATE</span><span class="p">,</span><span class="w"> </span><span class="k">RENAME</span>
+</span></code></pre></div></p>
+<p><strong>DML (Data Manipulation Language)</strong>
+*   Contains commands required to manipulate the data present in the database.
+*   <strong>Examples:</strong>
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">UPDATE</span><span class="p">,</span><span class="w"> </span><span class="k">INSERT</span><span class="p">,</span><span class="w"> </span><span class="k">DELETE</span>
+</span></code></pre></div></p>
+<p><strong>DCL (Data Control Language)</strong>
+*   Contains commands required to deal with user permissions and controls of the database system.
+*   <strong>Examples:</strong>
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">GRANT</span><span class="p">,</span><span class="w"> </span><span class="k">REVOKE</span>
+</span></code></pre></div></p>
+<p><strong>TCL (Transaction Control Language)</strong>
+*   Contains commands required to deal with the transaction of the database.
+*   <strong>Examples:</strong>
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">COMMIT</span><span class="p">,</span><span class="w"> </span><span class="k">ROLLBACK</span><span class="p">,</span><span class="w"> </span><span class="n">SAVEPOINT</span>
+</span></code></pre></div></p>
+<h3 id="6-what-is-meant-by-acid-properties-in-dbms">6. What is meant by ACID properties in DBMS?</h3>
+<p>ACID properties ensure a safe and secure way of sharing data among multiple users.</p>
+<ul>
+<li><strong>A - Atomicity:</strong><ul>
+<li>Reflects the concept of either executing the <strong>whole query</strong> or executing <strong>nothing at all</strong>.</li>
+<li>If an update occurs, it should either be reflected in the whole database or not reflected at all.</li>
+<li>In this Example<ul>
+<li><img alt="alt text" src="images/image-3.webp" /><ul>
+<li>Partial Execution</li>
+<li>No Atomicity</li>
+<li>Execution Termination</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>In this Example<ul>
+<li><img alt="alt text" src="images/image-4.webp" /><ul>
+<li>Complete Execution</li>
+<li>Atomicity</li>
+<li>Execution Successfull</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>C - Consistency:</strong><ul>
+<li>Ensures that data remains consistent before and after a transaction.</li>
+<li>In this Example<ul>
+<li><img alt="alt text" src="images/image-5.webp" /><ul>
+<li>Data is Consistent</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>I - Isolation:</strong><ul>
+<li>Ensures each transaction occurs independently of others.</li>
+<li>The state of an ongoing transaction does not affect the state of another ongoing transaction.</li>
+<li>In this Example<ul>
+<li><img alt="alt text" src="images/image-6.webp" /><ul>
+<li>Isolation, Independent Execution T1 and T2 by A</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>D - Durability:</strong><ul>
+<li>Ensures data is not lost in cases of system failure or restart.</li>
+<li>Data is present in the same state as it was before the failure/restart.</li>
+</ul>
+</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    Start([Transaction Start]) --&gt; A{Atomicity Check}
+    A --&gt;|All Operations| C{Consistency Check}
+    A --&gt;|Partial Failure| Rollback[Rollback All]
+    C --&gt;|Valid State| I[Isolation Applied]
+    C --&gt;|Invalid State| Rollback
+    I --&gt; Execute[Execute Transaction]
+    Execute --&gt; D[Durability Ensured]
+    D --&gt; Commit([Commit Success])
+    Rollback --&gt; Abort([Transaction Aborted])
+    style Start fill:#2d3748,stroke:#4a90e2,color:#fff
+    style Commit fill:#276749,stroke:#48bb78,color:#fff
+    style Abort fill:#742a2a,stroke:#f56565,color:#fff
+    style A fill:#1e3a5f,stroke:#4a90e2,color:#fff
+    style C fill:#1e3a5f,stroke:#4a90e2,color:#fff
+    style I fill:#2c5282,stroke:#4a90e2,color:#fff
+    style Execute fill:#2c5282,stroke:#4a90e2,color:#fff
+    style D fill:#2c5282,stroke:#4a90e2,color:#fff
+    style Rollback fill:#742a2a,stroke:#f56565,color:#fff</code></pre>
+<h3 id="7-are-null-values-in-a-database-the-same-as-that-of-blank-space-or-zero">7. Are NULL values in a database the same as that of blank space or zero?</h3>
+<ul>
+<li><strong>No</strong>, a <strong>NULL</strong> value is very different from zero and blank space.</li>
+<li><strong>NULL:</strong> Represents a value that is assigned, unknown, unavailable, or not applicable.</li>
+<li><strong>Blank Space:</strong> Represents a character.</li>
+<li><strong>Zero:</strong> Represents a number.</li>
+<li><strong>Example:</strong> A NULL value in "number_of_courses" means the value is unknown, whereas 0 means the student has not taken any courses.</li>
+</ul>
+<hr />
+<h2 id="intermediate-dbms-interview-questions">Intermediate DBMS Interview Questions</h2>
+<h3 id="8-what-is-meant-by-data-warehousing">8. What is meant by Data Warehousing?</h3>
+<ul>
+<li><strong>Definition:</strong> The process of collecting, extracting, transforming, and loading data from multiple sources and storing them into one database.</li>
+<li><strong>Function:</strong><ul>
+<li>Acts as a central repository where data flows from transactional systems and other relational databases.</li>
+<li>Used for data analytics.</li>
+<li>Comprises a wide variety of an organization’s historical data.</li>
+<li>Supports the decision-making process in an organization.
+<pre class="mermaid"><code>flowchart LR
+    S1[(Transactional DB)] --&gt; Extract[Extract]
+    S2[(Relational DB)] --&gt; Extract
+    S3[(External Sources)] --&gt; Extract
+    Extract --&gt; Transform[Transform]
+    Transform --&gt; Load[Load]
+    Load --&gt; DW[(Data Warehouse)]
+    DW --&gt; Analytics[Data Analytics]
+    Analytics --&gt; Decision[Decision Making]
+    style S1 fill:#1a365d,stroke:#4a90e2,color:#fff
+    style S2 fill:#1a365d,stroke:#4a90e2,color:#fff
+    style S3 fill:#1a365d,stroke:#4a90e2,color:#fff
+    style Extract fill:#2c5282,stroke:#4a90e2,color:#fff
+    style Transform fill:#2c5282,stroke:#4a90e2,color:#fff
+    style Load fill:#2c5282,stroke:#4a90e2,color:#fff
+    style DW fill:#1e3a5f,stroke:#4a90e2,color:#fff
+    style Analytics fill:#2d3748,stroke:#4a90e2,color:#fff
+    style Decision fill:#276749,stroke:#48bb78,color:#fff</code></pre></li>
+</ul>
+</li>
+</ul>
+<p><img alt="alt text" src="images/image-7.webp" /></p>
+<h3 id="9-explain-different-levels-of-data-abstraction-in-a-dbms">9. Explain different levels of data abstraction in a DBMS.</h3>
+<p>Data abstraction is the process of hiding irrelevant details from users. It is divided into 3 levels:</p>
+<ol>
+<li><strong>Physical Level:</strong><ul>
+<li>The lowest level, managed by DBMS.</li>
+<li>Consists of data storage descriptions.</li>
+<li>Details are typically hidden from system admins, developers, and users.</li>
+</ul>
+</li>
+<li><strong>Conceptual or Logical Level:</strong><ul>
+<li>Level on which developers and system admins work.</li>
+<li>Determines <strong>what</strong> data is stored and the <strong>relationships</strong> between data points.</li>
+</ul>
+</li>
+<li><strong>External or View Level:</strong><ul>
+<li>Describes only part of the database.</li>
+<li>Hides details of table schema and physical storage from users.</li>
+<li><strong>Example:</strong> The result of a query is View level data abstraction. A <strong>view</strong> is a virtual table created by selecting fields from one or more tables.</li>
+</ul>
+</li>
+</ol>
+<pre class="mermaid"><code>flowchart TB
+    subgraph External["External/View Level"]
+        V1[View 1]
+        V2[View 2]
+        V3[View N]
+    end
+    subgraph Conceptual["Conceptual/Logical Level"]
+        L1[Tables &amp; Relationships]
+        L2[Schema Definitions]
+    end
+    subgraph Physical["Physical Level"]
+        P1[Data Storage]
+        P2[File Structures]
+        P3[Indexing]
+    end
+    V1 --&gt; L1
+    V2 --&gt; L1
+    V3 --&gt; L2
+    L1 --&gt; P1
+    L2 --&gt; P2
+    L2 --&gt; P3
+    style External fill:#1e3a5f,stroke:#4a90e2,color:#fff
+    style Conceptual fill:#2c5282,stroke:#4a90e2,color:#fff
+    style Physical fill:#1a365d,stroke:#4a90e2,color:#fff</code></pre>
+<h3 id="10-what-is-meant-by-an-entity-relationship-e-r-model-explain-the-terms-entity-entity-type-and-entity-set-in-dbms">10. What is meant by an entity-relationship (E-R) model? Explain the terms Entity, Entity Type, and Entity Set in DBMS.</h3>
+<ul>
+<li><strong>E-R Model:</strong> A diagrammatic approach to database design where real-world objects are represented as entities and relationships between them are mentioned.</li>
+</ul>
+<p><strong>Terms:</strong>
+*   <strong>Entity:</strong> A real-world object having attributes that represent characteristics of that particular object.
+    *   <em>Example:</em> A student, an employee, or a teacher.
+*   <strong>Entity Type:</strong> A collection of entities that have the same attributes.
+    *   One or more related tables in a database represent an entity type.
+    *   Attributes uniquely identify the entity.
+    *   <em>Example:</em> A student entity type has attributes like <code>student_id</code>, <code>student_name</code>, etc.
+*   <strong>Entity Set:</strong> A set of <strong>all</strong> the entities present in a specific entity type in a database.
+    *   <em>Example:</em> A set of all students, employees, teachers, etc.</p>
+<p>Example: Student Management System Sample
+<img alt="alt text" src="images/image-9.webp" /></p>
+<p>Example: Hospital Management System Sample
+<img alt="alt text" src="images/image-8.webp" /></p>
+<h3 id="11-explain-different-types-of-relationships-amongst-tables-in-a-dbms">11. Explain different types of relationships amongst tables in a DBMS.</h3>
+<ul>
+<li><strong>One to One Relationship:</strong> Applied when a particular row in table X is linked to a <strong>singular</strong> row in table Y.<ul>
+<li><img alt="alt text" src="images/image-10.webp" /></li>
+</ul>
+</li>
+<li><strong>One to Many Relationship:</strong> Applied when a <strong>single</strong> row in table X is related to <strong>many</strong> rows in table Y.<ul>
+<li><img alt="alt text" src="images/image-11.webp" /></li>
+</ul>
+</li>
+<li><strong>Many to Many Relationship:</strong> Applied when <strong>multiple</strong> rows in table X can be linked to <strong>multiple</strong> rows in table Y.<ul>
+<li><img alt="alt text" src="images/image-12.webp" /></li>
+</ul>
+</li>
+<li><strong>Self Referencing Relationship:</strong> Applied when a particular row in table X is associated with the <strong>same</strong> table.<ul>
+<li><img alt="alt text" src="images/image-13.webp" /></li>
+</ul>
+</li>
+</ul>
+<pre class="mermaid"><code>erDiagram
+    USER ||--|| PROFILE : "One-to-One"
+    USER {
+        int userId PK
+        string name
+    }
+    PROFILE {
+        int profileId PK
+        int userId FK
+        string bio
+    }
+
+    CUSTOMER ||--o{ ORDER : "One-to-Many"
+    CUSTOMER {
+        int customerId PK
+        string customerName
+    }
+    ORDER {
+        int orderId PK
+        int customerId FK
+        date orderDate
+    }
+
+    STUDENT }o--o{ COURSE : "Many-to-Many"
+    STUDENT {
+        int studentId PK
+        string studentName
+    }
+    COURSE {
+        int courseId PK
+        string courseName
+    }
+
+    EMPLOYEE ||--o{ EMPLOYEE : "Self-Referencing"
+    EMPLOYEE {
+        int employeeId PK
+        string employeeName
+        int managerId FK
+    }</code></pre>
+<h3 id="12-explain-the-difference-between-intension-and-extension-in-a-database">12. Explain the difference between intension and extension in a database.</h3>
+<ul>
+<li><strong>Intension (Database Schema):</strong><ul>
+<li>Used to define the description of the database.</li>
+<li>Specified during the design of the database.</li>
+<li>Mostly remains unchanged.</li>
+</ul>
+</li>
+<li><strong>Extension (Snapshot):</strong><ul>
+<li>The measure of the number of tuples present in the database at any given point in time.</li>
+<li>Value keeps changing as tuples are created, updated, or destroyed.</li>
+</ul>
+</li>
+</ul>
+<h3 id="13-explain-the-difference-between-the-delete-and-truncate-command-in-a-dbms">13. Explain the difference between the DELETE and TRUNCATE command in a DBMS.</h3>
+<p><strong>DELETE Command</strong>
+*   Needed to delete rows from a table based on the condition provided by the <code>WHERE</code> clause.
+*   Deletes only rows specified by the <code>WHERE</code> clause.
+*   Can be rolled back if required.
+*   Maintains a log to lock the row of the table before deleting it; hence, it is <strong>slow</strong>.</p>
+<p><strong>TRUNCATE Command</strong>
+*   Needed to remove complete data from a table.
+*   Like a DELETE command with <strong>no</strong> <code>WHERE</code> clause.
+*   Removes complete data from a table.
+*   Can be rolled back even if required.
+*   Does <strong>not</strong> maintain a log and deletes the whole table at once; hence, it is <strong>fast</strong>.</p>
+<h3 id="14-what-is-a-lock-explain-the-major-difference-between-a-shared-lock-and-an-exclusive-lock-during-a-transaction-in-a-database">14. What is a lock? Explain the major difference between a shared lock and an exclusive lock during a transaction in a database.</h3>
+<ul>
+<li><strong>Lock:</strong> A mechanism to protect a shared piece of data from getting updated by two or more database users at the same time. When a single user/session acquires a lock, no other user/session can modify that data until the lock is released.</li>
+</ul>
+<p><strong>Shared Lock</strong>
+*   Required for <strong>reading</strong> a data item.
+*   Many transactions may hold a lock on the same data item.
+*   Multiple transactions are <strong>allowed</strong> to read data items.</p>
+<p><strong>Exclusive Lock</strong>
+*   Required for any transaction about to perform a <strong>write</strong> operation.
+*   Does <strong>not</strong> allow more than one transaction.
+*   Prevents inconsistency in the database.</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; Unlocked
+    Unlocked --&gt; SharedLock : Read Request
+    Unlocked --&gt; ExclusiveLock : Write Request
+    SharedLock --&gt; SharedLock : More Read Requests
+    SharedLock --&gt; Unlocked : All Reads Complete
+    SharedLock --&gt; Waiting : Write Request
+    ExclusiveLock --&gt; Unlocked : Write Complete
+    Waiting --&gt; ExclusiveLock : Shared Lock Released
+    ExclusiveLock --&gt; [*]
+
+    note right of SharedLock
+        Multiple transactions
+        can read simultaneously
+    end note
+
+    note right of ExclusiveLock
+        Only one transaction
+        can write at a time
+    end note</code></pre>
+<h3 id="15-what-is-meant-by-normalization-and-denormalization">15. What is meant by normalization and denormalization?</h3>
+<ul>
+<li><strong>Normalization:</strong><ul>
+<li>A process of reducing redundancy by organizing data into multiple tables.</li>
+<li>Leads to better usage of disk spaces.</li>
+<li>Makes it easier to maintain database integrity.</li>
+</ul>
+</li>
+<li><strong>Denormalization:</strong><ul>
+<li>The reverse process of normalization.</li>
+<li>Combines tables which have been normalized into a single table.</li>
+<li>Makes data retrieval <strong>faster</strong>.</li>
+<li><strong>JOIN</strong> operation allows creating a denormalized form by reversing normalization.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="advanced-dbms-interview-questions">Advanced DBMS Interview Questions</h2>
+<h3 id="16-explain-different-types-of-normalization-forms-in-a-dbms">16. Explain different types of Normalization forms in a DBMS.</h3>
+<p><img alt="alt text" src="images/image-14.webp" /></p>
+<p>Reference Example Sample:
+<img alt="alt text" src="images/image-15.webp" /></p>
+<p><strong>1. First Normal Form (1NF)</strong>
+*   Simplest type. Conditions:
+    *   Every column must have a <strong>single value</strong> and should be <strong>atomic</strong>.
+    *   <strong>Duplicate columns</strong> from the same table should be removed.
+    *   Separate tables should be created for each group of related data.
+    *   Each row should be identified with a <strong>unique column</strong>.</p>
+<p>Sample's 1NF form:
+<img alt="alt text" src="images/image-16.webp" /></p>
+<p><strong>2. Second Normal Form (2NF)</strong>
+*   Conditions:
+    *   Table must be in <strong>1NF</strong>.
+    *   Every <strong>non-prime attribute</strong> should be <strong>fully functionally dependent</strong> on the primary key.
+    *   <em>Explanation:</em> Every non-key attribute must depend on the primary key such that if any key element is deleted, the non-key element will be saved.</p>
+<p>Sample's 2NF form:
+<img alt="alt text" src="images/image-17.webp" />
+<img alt="alt text" src="images/image-18.webp" /></p>
+<p><strong>3. Third Normal Form (3NF)</strong>
+*   Conditions:
+    *   Table must be in <strong>2NF</strong>.
+    *   There is <strong>no transitive functional dependency</strong> of one attribute on any attribute in the same table.</p>
+<p>Sample's 3NF form:
+<img alt="alt text" src="images/image-20.webp" />
+<img alt="alt text" src="images/image-21.webp" />
+<img alt="alt text" src="images/image-19.webp" /></p>
+<p><strong>4. Boyce-Codd Normal Form (BCNF) / 3.5NF</strong>
+*   Advanced form of 3NF. Conditions:
+    *   Table must be in <strong>3NF</strong>.
+    *   For every functional dependency <code>A -&gt; B</code>, <strong>A</strong> should be the <strong>super key</strong> of the table.
+    *   <em>Implication:</em> A can't be a non-prime attribute if B is a prime attribute.</p>
+<pre class="mermaid"><code>flowchart LR
+    Unnormalized[Unnormalized Data] --&gt; 1NF
+    1NF["1NF&lt;br/&gt;Atomic Values&lt;br/&gt;Unique Rows"] --&gt; 2NF
+    2NF["2NF&lt;br/&gt;1NF +&lt;br/&gt;Full Functional Dependency"] --&gt; 3NF
+    3NF["3NF&lt;br/&gt;2NF +&lt;br/&gt;No Transitive Dependency"] --&gt; BCNF
+    BCNF["BCNF&lt;br/&gt;3NF +&lt;br/&gt;Determinant is Super Key"]
+    style Unnormalized fill:#742a2a,stroke:#f56565,color:#fff
+    style 1NF fill:#2c5282,stroke:#4a90e2,color:#fff
+    style 2NF fill:#2c5282,stroke:#4a90e2,color:#fff
+    style 3NF fill:#2c5282,stroke:#4a90e2,color:#fff
+    style BCNF fill:#276749,stroke:#48bb78,color:#fff</code></pre>
+<h3 id="17-explain-different-types-of-keys-in-a-database">17. Explain different types of keys in a database.</h3>
+<p><strong>1. Candidate Key</strong>
+*   A set of properties that can uniquely identify a table.
+*   Each table may have multiple candidate keys.
+*   One key amongst them is chosen as the primary key.
+*   <em>Example:</em> <code>studentId</code> and <code>firstName</code> can both be Candidate Keys if they uniquely identify every tuple.</p>
+<p><strong>2. Super Key</strong>
+*   A set of attributes that can uniquely identify a tuple.
+*   Candidate key and primary key are <strong>subsets</strong> of the super key (the super key is their superset).</p>
+<p><strong>3. Primary Key</strong>
+*   A set of attributes used to uniquely identify every tuple.
+*   Chosen from the candidate keys.
+*   Does <strong>not</strong> allow NULL values.
+*   <em>Example:</em> <code>studentId</code> chosen over <code>firstName</code> for the student table.</p>
+<p><strong>4. Unique Key</strong>
+*   Similar to primary key but <strong>allows NULL values</strong> in the column.
+*   Essentially primary keys with NULL values.</p>
+<p><strong>5. Alternate Key</strong>
+*   All candidate keys <strong>not</strong> chosen as primary keys.
+*   <em>Example:</em> If <code>studentId</code> is Primary, <code>firstName</code> and <code>lastname</code> are alternate keys.</p>
+<p><strong>6. Foreign Key</strong>
+*   An attribute that can only take values present in one table common to the attribute present in another table.
+*   <em>Example:</em> <code>courseId</code> in the Student table is a foreign key to the Course table.</p>
+<p><strong>7. Composite Key</strong>
+*   A combination of <strong>two or more columns</strong> that can uniquely identify each tuple in a table.
+*   <em>Example:</em> Grouping <code>studentId</code> and <code>firstname</code>.</p>
+<pre class="mermaid"><code>flowchart TB
+    SK[Super Key&lt;br/&gt;All Possible Combinations] --&gt; CK
+    CK[Candidate Key&lt;br/&gt;Minimal Super Key] --&gt; PK
+    CK --&gt; AK
+    PK[Primary Key&lt;br/&gt;Selected Candidate&lt;br/&gt;No NULL] --&gt; UK
+    AK[Alternate Key&lt;br/&gt;Non-selected Candidates]
+    UK[Unique Key&lt;br/&gt;Like Primary&lt;br/&gt;Allows NULL]
+    FK[Foreign Key&lt;br/&gt;References Primary Key&lt;br/&gt;in Another Table]
+    COMP[Composite Key&lt;br/&gt;Multiple Columns Combined]
+    style SK fill:#1a365d,stroke:#4a90e2,color:#fff
+    style CK fill:#2c5282,stroke:#4a90e2,color:#fff
+    style PK fill:#276749,stroke:#48bb78,color:#fff
+    style AK fill:#2c5282,stroke:#4a90e2,color:#fff
+    style UK fill:#2c5282,stroke:#4a90e2,color:#fff
+    style FK fill:#744210,stroke:#ed8936,color:#fff
+    style COMP fill:#2d3748,stroke:#4a90e2,color:#fff</code></pre>
+<p><img alt="alt text" src="images/image-22.webp" /></p>
+<p><img alt="alt text" src="images/image-23.webp" /></p>
+<h3 id="18-explain-the-difference-between-a-2-tier-and-3-tier-architecture-in-a-dbms">18. Explain the difference between a 2-tier and 3-tier architecture in a DBMS.</h3>
+<p><strong>2-Tier Architecture</strong>
+*   <strong>Client-Server architecture.</strong>
+*   Applications at the client end <strong>directly communicate</strong> with the database at the server end.
+*   <strong>No middleware</strong> involved.
+*   <strong>Examples:</strong> Contact Management System created using MS-Access, Railway Reservation System.</p>
+<p><img alt="alt text" src="images/image-24.webp" /></p>
+<p><strong>3-Tier Architecture</strong>
+*   Contains another layer (<strong>Middleware</strong>) between the client and the server.
+*   Provides <strong>GUI</strong> to users.
+*   Makes the system much more secure and accessible.
+*   <strong>Flow:</strong> Client Application &lt;-&gt; Server Application &lt;-&gt; Database System.
+*   <strong>Examples:</strong> Designing registration forms (text box, label, button), large websites on the Internet.</p>
+<p><img alt="alt text" src="images/image-25.webp" /></p>
+<pre class="mermaid"><code>flowchart TB
+    subgraph TwoTier["2-Tier Architecture"]
+        C1[Client Application&lt;br/&gt;Presentation + Business Logic]
+        D1[(Database Server&lt;br/&gt;Data Layer)]
+        C1 &lt;--&gt; D1
+    end
+
+    subgraph ThreeTier["3-Tier Architecture"]
+        C2[Client Application&lt;br/&gt;Presentation Layer]
+        M[Middleware/Application Server&lt;br/&gt;Business Logic Layer]
+        D2[(Database Server&lt;br/&gt;Data Layer)]
+        C2 &lt;--&gt; M
+        M &lt;--&gt; D2
+    end
+
+    style C1 fill:#2c5282,stroke:#4a90e2,color:#fff
+    style D1 fill:#1a365d,stroke:#4a90e2,color:#fff
+    style C2 fill:#2c5282,stroke:#4a90e2,color:#fff
+    style M fill:#744210,stroke:#ed8936,color:#fff
+    style D2 fill:#1a365d,stroke:#4a90e2,color:#fff
+    style TwoTier fill:#1e293b,stroke:#4a90e2,color:#fff
+    style ThreeTier fill:#1e293b,stroke:#4a90e2,color:#fff</code></pre>
+<h2 id="complete-dbms-roadmap">Complete DBMS Roadmap</h2>
+<pre class="mermaid"><code>flowchart TD
+    Start([DBMS Subject]) --&gt; Fundamentals
+
+    Fundamentals[DBMS Fundamentals] --&gt; F1[Introduction to DBMS]
+    Fundamentals --&gt; F2[DBMS vs RDBMS]
+    Fundamentals --&gt; F3[Database Definition]
+    Fundamentals --&gt; F4[File Systems vs DBMS]
+    Fundamentals --&gt; F5[DBMS Advantages]
+
+    F1 --&gt; Core
+    F2 --&gt; Core
+    F3 --&gt; Core
+    F4 --&gt; Core
+    F5 --&gt; Core
+
+    Core[Core Database Concepts] --&gt; C1[Database Structure]
+    Core --&gt; C2[Tables, Rows, Columns]
+    Core --&gt; C3[NULL Values vs Zero vs Blank]
+    Core --&gt; C4[Data Abstraction Levels]
+    Core --&gt; C5[Intension vs Extension]
+
+    C1 --&gt; Languages
+    C2 --&gt; Languages
+    C3 --&gt; Languages
+    C4 --&gt; Languages
+    C5 --&gt; Languages
+
+    Languages[Database Languages] --&gt; L1[DDL - Data Definition Language]
+    Languages --&gt; L2[DML - Data Manipulation Language]
+    Languages --&gt; L3[DCL - Data Control Language]
+    Languages --&gt; L4[TCL - Transaction Control Language]
+
+    L1 --&gt; Transactions
+    L2 --&gt; Transactions
+    L3 --&gt; Transactions
+    L4 --&gt; Transactions
+
+    Transactions[Transaction Management] --&gt; T1[ACID Properties]
+    Transactions --&gt; T2[Atomicity]
+    Transactions --&gt; T3[Consistency]
+    Transactions --&gt; T4[Isolation]
+    Transactions --&gt; T5[Durability]
+    Transactions --&gt; T6[Locks - Shared vs Exclusive]
+
+    T1 --&gt; Modeling
+    T2 --&gt; Modeling
+    T3 --&gt; Modeling
+    T4 --&gt; Modeling
+    T5 --&gt; Modeling
+    T6 --&gt; Modeling
+
+    Modeling[Data Modeling] --&gt; M1[Entity-Relationship Model]
+    Modeling --&gt; M2[Entity, Entity Type, Entity Set]
+    Modeling --&gt; M3[Relationship Types]
+    Modeling --&gt; M4[One-to-One]
+    Modeling --&gt; M5[One-to-Many]
+    Modeling --&gt; M6[Many-to-Many]
+    Modeling --&gt; M7[Self-Referencing]
+
+    M1 --&gt; Keys
+    M2 --&gt; Keys
+    M3 --&gt; Keys
+    M4 --&gt; Keys
+    M5 --&gt; Keys
+    M6 --&gt; Keys
+    M7 --&gt; Keys
+
+    Keys[Database Keys] --&gt; K1[Super Key]
+    Keys --&gt; K2[Candidate Key]
+    Keys --&gt; K3[Primary Key]
+    Keys --&gt; K4[Foreign Key]
+    Keys --&gt; K5[Unique Key]
+    Keys --&gt; K6[Alternate Key]
+    Keys --&gt; K7[Composite Key]
+
+    K1 --&gt; Normalization
+    K2 --&gt; Normalization
+    K3 --&gt; Normalization
+    K4 --&gt; Normalization
+    K5 --&gt; Normalization
+    K6 --&gt; Normalization
+    K7 --&gt; Normalization
+
+    Normalization[Normalization] --&gt; N1[Normalization vs Denormalization]
+    Normalization --&gt; N2[First Normal Form - 1NF]
+    Normalization --&gt; N3[Second Normal Form - 2NF]
+    Normalization --&gt; N4[Third Normal Form - 3NF]
+    Normalization --&gt; N5[Boyce-Codd Normal Form - BCNF]
+
+    N1 --&gt; Operations
+    N2 --&gt; Operations
+    N3 --&gt; Operations
+    N4 --&gt; Operations
+    N5 --&gt; Operations
+
+    Operations[Database Operations] --&gt; O1[DELETE Command]
+    Operations --&gt; O2[TRUNCATE Command]
+    Operations --&gt; O3[Data Manipulation]
+
+    O1 --&gt; Architecture
+    O2 --&gt; Architecture
+    O3 --&gt; Architecture
+
+    Architecture[Database Architecture] --&gt; A1[2-Tier Architecture]
+    Architecture --&gt; A2[3-Tier Architecture]
+    Architecture --&gt; A3[Client-Server Model]
+
+    A1 --&gt; Advanced
+    A2 --&gt; Advanced
+    A3 --&gt; Advanced
+
+    Advanced[Advanced Topics] --&gt; AD1[Data Warehousing]
+    Advanced --&gt; AD2[ETL Process]
+    Advanced --&gt; AD3[Data Analytics]
+
+    AD1 --&gt; End([Mastery])
+    AD2 --&gt; End
+    AD3 --&gt; End
+
+    style Start fill:#6a4c93,stroke:#ffffff,color:#ffffff,stroke-width:3px
+    style Fundamentals fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
+    style Core fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
+    style Languages fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
+    style Transactions fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
+    style Modeling fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
+    style Keys fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
+    style Normalization fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
+    style Operations fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
+    style Architecture fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
+    style Advanced fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
+    style End fill:#6a4c93,stroke:#ffffff,color:#ffffff,stroke-width:3px
+
+    style F1 fill:#9c27b0,stroke:#ffffff,color:#ffffff
+    style F2 fill:#9c27b0,stroke:#ffffff,color:#ffffff
+    style F3 fill:#9c27b0,stroke:#ffffff,color:#ffffff
+    style F4 fill:#9c27b0,stroke:#ffffff,color:#ffffff
+    style F5 fill:#9c27b0,stroke:#ffffff,color:#ffffff
+
+    style C1 fill:#9c27b0,stroke:#ffffff,color:#ffffff
+    style C2 fill:#9c27b0,stroke:#ffffff,color:#ffffff
+    style C3 fill:#9c27b0,stroke:#ffffff,color:#ffffff
+    style C4 fill:#9c27b0,stroke:#ffffff,color:#ffffff
+    style C5 fill:#9c27b0,stroke:#ffffff,color:#ffffff
+
+    style L1 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style L2 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style L3 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style L4 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+
+    style T1 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style T2 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style T3 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style T4 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style T5 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style T6 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+
+    style M1 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style M2 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style M3 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style M4 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style M5 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style M6 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style M7 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+
+    style K1 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style K2 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style K3 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style K4 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style K5 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style K6 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style K7 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+
+    style N1 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style N2 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style N3 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style N4 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style N5 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+
+    style O1 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style O2 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style O3 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+
+    style A1 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style A2 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style A3 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+
+    style AD1 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style AD2 fill:#ba68c8,stroke:#ffffff,color:#ffffff
+    style AD3 fill:#ba68c8,stroke:#ffffff,color:#ffffff</code></pre>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 10, 2026 16:27:15 UTC">February 10, 2026</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 10, 2026 14:02:57 UTC">February 10, 2026</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+  
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../networking/index.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Networking">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Networking
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../about.html" class="md-footer__link md-footer__link--next" aria-label="Next: About">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                About
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy;2026 Siddhant Bali. All rights reserved.
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://codingismeditation.github.io/" target="_blank" rel="noopener" title="Home" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M277.8 8.6c-12.3-11.4-31.3-11.4-43.5 0l-224 208c-9.6 9-12.8 22.9-8 35.1S18.8 272 32 272h16v176c0 35.3 28.7 64 64 64h288c35.3 0 64-28.7 64-64V272h16c13.2 0 25-8.1 29.8-20.3s1.6-26.2-8-35.1zM240 320h32c26.5 0 48 21.5 48 48v96H192v-96c0-26.5 21.5-48 48-48"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.youtube.com/@CodingIsMeditation" target="_blank" rel="noopener" title="CodingIsMeditation YouTube Channel" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://x.com/siddhantbuilds" target="_blank" rel="noopener" title="Author&#39;s Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/codingismeditation" target="_blank" rel="noopener" title="Author&#39;s GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/siddhantbuilds/" target="_blank" rel="noopener" title="Author&#39;s LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:siddhant.bali.work@gmail.com" target="_blank" rel="noopener" title="Author&#39;s Email" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+
+  <div class="md-footer-meta ">
+    <div class="md-footer-meta__inner">
+
+      <!-- Custom line ABOVE copyright -->
+      <div class="md-footer-copyright" style="margin-bottom: 6px;">
+        <blockquote>
+        <p>The <a href="https://codingismeditation.github.io/">codingismeditation.github.io</a>, authored by <a href="https://github.com/kintsugi-programmer">Kintsugi-Programmer</a>, is less a comprehensive resource and more an Artifact of Continuous Research and Deep Inquiry into Computer Science and Software Engineering. It serves as a transparent ledger of the author&#39;s relentless pursuit of mastery, from the foundational algorithms to modern full-stack implementation.</p>
+        <blockquote>
+        <p>Made with 💚 <a href="https://github.com/kintsugi-programmer">Kintsugi-Programmer</a></p>
+        </blockquote>
+        </blockquote>
+      </div>
+
+    </div>
+  </div>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.instant.preview", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.prune", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "search.share", "header.autohide", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

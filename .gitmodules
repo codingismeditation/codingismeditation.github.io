@@ -1,3 +1,6 @@
 [submodule "docs/interview/networking"]
 	path = docs/interview/networking
 	url = https://github.com/kintsugi-programmer/kintsugi-stack-networking
+[submodule "docs/interview/dbms"]
+	path = docs/interview/dbms
+	url = https://github.com/kintsugi-programmer/kintsugi-stack-dbms

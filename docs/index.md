@@ -20,13 +20,14 @@ keywords:
 
 ## Modules
 
-- [Interview](interview/index.md)
-  - [Networking](networking/index.md)
+* [Interview](interview/index.md)
+    * [Networking](interview/networking/index.md)
+    * [DBMS](interview/dbms/index.md)
 
 ## Others
 
-- [About](about.md)
-- [Contributing](contributing.md)
+* [About](about.md)
+* [Contributing](contributing.md)
 
 
 > Made with 💚 [Kintsugi-Programmer](https://github.com/kintsugi-programmer)
