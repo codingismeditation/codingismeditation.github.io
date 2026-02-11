@@ -1014,19 +1014,25 @@
 
 <h2 id="basic-dbms-interview-questions">Basic DBMS Interview Questions</h2>
 <h3 id="1-what-is-meant-by-dbms-and-what-is-its-utility-explain-rdbms-with-examples">1. What is meant by DBMS and what is its utility? Explain RDBMS with examples.</h3>
-<p><strong>DBMS (Database Management System)</strong>
-*   <strong>Definition:</strong> A set of applications or programs that enable users to create and maintain a database.
-*   <strong>Utility:</strong>
-    *   Provides a tool or interface for performing various operations such as inserting, deleting, updating, etc., into a database.
-    *   Enables the storage of data more compactly and securely compared to a file-based system.
-    *   Helps users overcome problems like <strong>data inconsistency</strong> and <strong>data redundancy</strong> in a database.
-    *   Makes using a database more convenient and organized.
-*   <strong>Examples:</strong> File systems, XML, Windows Registry, etc.</p>
-<p><strong>RDBMS (Relational Database Management System)</strong>
-*   <strong>Definition:</strong> Introduced in the 1970s to access and store data more efficiently than DBMS.
-*   <strong>Structure:</strong> Stores data in the form of <strong>tables</strong> (rows and columns) compared to DBMS which stores data as files.
-*   <strong>Utility:</strong> Storing data as rows and columns makes it easier to locate specific values in the database and makes it more efficient compared to DBMS.
-*   <strong>Examples:</strong> MySQL, Oracle DB, etc.</p>
+<p><strong>DBMS (Database Management System)</strong></p>
+<ul>
+<li><strong>Definition:</strong> A set of applications or programs that enable users to create and maintain a database.</li>
+<li><strong>Utility:</strong><ul>
+<li>Provides a tool or interface for performing various operations such as inserting, deleting, updating, etc., into a database.</li>
+<li>Enables the storage of data more compactly and securely compared to a file-based system.</li>
+<li>Helps users overcome problems like <strong>data inconsistency</strong> and <strong>data redundancy</strong> in a database.</li>
+<li>Makes using a database more convenient and organized.</li>
+</ul>
+</li>
+<li><strong>Examples:</strong> File systems, XML, Windows Registry, etc.</li>
+</ul>
+<p><strong>RDBMS (Relational Database Management System)</strong></p>
+<ul>
+<li><strong>Definition:</strong> Introduced in the 1970s to access and store data more efficiently than DBMS.</li>
+<li><strong>Structure:</strong> Stores data in the form of <strong>tables</strong> (rows and columns) compared to DBMS which stores data as files.</li>
+<li><strong>Utility:</strong> Storing data as rows and columns makes it easier to locate specific values in the database and makes it more efficient compared to DBMS.</li>
+<li><strong>Examples:</strong> MySQL, Oracle DB, etc.</li>
+</ul>
 <p><img alt="alt text" src="images/image-1.webp" /></p>
 <h3 id="2-what-is-meant-by-a-database">2. What is meant by a database?</h3>
 <ul>
@@ -1069,26 +1075,34 @@
 </ul>
 <p><img alt="alt text" src="images/image-2.webp" /></p>
 <h3 id="5-explain-different-languages-present-in-dbms">5. Explain different languages present in DBMS.</h3>
-<p><strong>DDL (Data Definition Language)</strong>
-*   Contains commands required to define the database.
-*   <strong>Examples:</strong>
+<p><strong>DDL (Data Definition Language)</strong></p>
+<ul>
+<li>Contains commands required to define the database.</li>
+<li><strong>Examples:</strong>
     <div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">CREATE</span><span class="p">,</span><span class="w"> </span><span class="k">ALTER</span><span class="p">,</span><span class="w"> </span><span class="k">DROP</span><span class="p">,</span><span class="w"> </span><span class="k">TRUNCATE</span><span class="p">,</span><span class="w"> </span><span class="k">RENAME</span>
-</span></code></pre></div></p>
-<p><strong>DML (Data Manipulation Language)</strong>
-*   Contains commands required to manipulate the data present in the database.
-*   <strong>Examples:</strong>
+</span></code></pre></div></li>
+</ul>
+<p><strong>DML (Data Manipulation Language)</strong></p>
+<ul>
+<li>Contains commands required to manipulate the data present in the database.</li>
+<li><strong>Examples:</strong>
     <div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">UPDATE</span><span class="p">,</span><span class="w"> </span><span class="k">INSERT</span><span class="p">,</span><span class="w"> </span><span class="k">DELETE</span>
-</span></code></pre></div></p>
-<p><strong>DCL (Data Control Language)</strong>
-*   Contains commands required to deal with user permissions and controls of the database system.
-*   <strong>Examples:</strong>
+</span></code></pre></div></li>
+</ul>
+<p><strong>DCL (Data Control Language)</strong></p>
+<ul>
+<li>Contains commands required to deal with user permissions and controls of the database system.</li>
+<li><strong>Examples:</strong>
     <div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">GRANT</span><span class="p">,</span><span class="w"> </span><span class="k">REVOKE</span>
-</span></code></pre></div></p>
-<p><strong>TCL (Transaction Control Language)</strong>
-*   Contains commands required to deal with the transaction of the database.
-*   <strong>Examples:</strong>
+</span></code></pre></div></li>
+</ul>
+<p><strong>TCL (Transaction Control Language)</strong></p>
+<ul>
+<li>Contains commands required to deal with the transaction of the database.</li>
+<li><strong>Examples:</strong>
     <div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">COMMIT</span><span class="p">,</span><span class="w"> </span><span class="k">ROLLBACK</span><span class="p">,</span><span class="w"> </span><span class="n">SAVEPOINT</span>
-</span></code></pre></div></p>
+</span></code></pre></div></li>
+</ul>
 <h3 id="6-what-is-meant-by-acid-properties-in-dbms">6. What is meant by ACID properties in DBMS?</h3>
 <p>ACID properties ensure a safe and secure way of sharing data among multiple users.</p>
 <ul>
@@ -1252,15 +1266,23 @@
 <ul>
 <li><strong>E-R Model:</strong> A diagrammatic approach to database design where real-world objects are represented as entities and relationships between them are mentioned.</li>
 </ul>
-<p><strong>Terms:</strong>
-*   <strong>Entity:</strong> A real-world object having attributes that represent characteristics of that particular object.
-    *   <em>Example:</em> A student, an employee, or a teacher.
-*   <strong>Entity Type:</strong> A collection of entities that have the same attributes.
-    *   One or more related tables in a database represent an entity type.
-    *   Attributes uniquely identify the entity.
-    *   <em>Example:</em> A student entity type has attributes like <code>student_id</code>, <code>student_name</code>, etc.
-*   <strong>Entity Set:</strong> A set of <strong>all</strong> the entities present in a specific entity type in a database.
-    *   <em>Example:</em> A set of all students, employees, teachers, etc.</p>
+<p><strong>Terms:</strong></p>
+<ul>
+<li><strong>Entity:</strong> A real-world object having attributes that represent characteristics of that particular object.<ul>
+<li><em>Example:</em> A student, an employee, or a teacher.</li>
+</ul>
+</li>
+<li><strong>Entity Type:</strong> A collection of entities that have the same attributes.<ul>
+<li>One or more related tables in a database represent an entity type.</li>
+<li>Attributes uniquely identify the entity.</li>
+<li><em>Example:</em> A student entity type has attributes like <code>student_id</code>, <code>student_name</code>, etc.</li>
+</ul>
+</li>
+<li><strong>Entity Set:</strong> A set of <strong>all</strong> the entities present in a specific entity type in a database.<ul>
+<li><em>Example:</em> A set of all students, employees, teachers, etc.</li>
+</ul>
+</li>
+</ul>
 <p>Example: Student Management System Sample
 <img alt="alt text" src="images/image-9.webp" /></p>
 <p>Example: Hospital Management System Sample
@@ -1338,29 +1360,37 @@
 </li>
 </ul>
 <h3 id="13-explain-the-difference-between-the-delete-and-truncate-command-in-a-dbms">13. Explain the difference between the DELETE and TRUNCATE command in a DBMS.</h3>
-<p><strong>DELETE Command</strong>
-*   Needed to delete rows from a table based on the condition provided by the <code>WHERE</code> clause.
-*   Deletes only rows specified by the <code>WHERE</code> clause.
-*   Can be rolled back if required.
-*   Maintains a log to lock the row of the table before deleting it; hence, it is <strong>slow</strong>.</p>
-<p><strong>TRUNCATE Command</strong>
-*   Needed to remove complete data from a table.
-*   Like a DELETE command with <strong>no</strong> <code>WHERE</code> clause.
-*   Removes complete data from a table.
-*   Can be rolled back even if required.
-*   Does <strong>not</strong> maintain a log and deletes the whole table at once; hence, it is <strong>fast</strong>.</p>
+<p><strong>DELETE Command</strong></p>
+<ul>
+<li>Needed to delete rows from a table based on the condition provided by the <code>WHERE</code> clause.</li>
+<li>Deletes only rows specified by the <code>WHERE</code> clause.</li>
+<li>Can be rolled back if required.</li>
+<li>Maintains a log to lock the row of the table before deleting it; hence, it is <strong>slow</strong>.</li>
+</ul>
+<p><strong>TRUNCATE Command</strong></p>
+<ul>
+<li>Needed to remove complete data from a table.</li>
+<li>Like a DELETE command with <strong>no</strong> <code>WHERE</code> clause.</li>
+<li>Removes complete data from a table.</li>
+<li>Can be rolled back even if required.</li>
+<li>Does <strong>not</strong> maintain a log and deletes the whole table at once; hence, it is <strong>fast</strong>.</li>
+</ul>
 <h3 id="14-what-is-a-lock-explain-the-major-difference-between-a-shared-lock-and-an-exclusive-lock-during-a-transaction-in-a-database">14. What is a lock? Explain the major difference between a shared lock and an exclusive lock during a transaction in a database.</h3>
 <ul>
 <li><strong>Lock:</strong> A mechanism to protect a shared piece of data from getting updated by two or more database users at the same time. When a single user/session acquires a lock, no other user/session can modify that data until the lock is released.</li>
 </ul>
-<p><strong>Shared Lock</strong>
-*   Required for <strong>reading</strong> a data item.
-*   Many transactions may hold a lock on the same data item.
-*   Multiple transactions are <strong>allowed</strong> to read data items.</p>
-<p><strong>Exclusive Lock</strong>
-*   Required for any transaction about to perform a <strong>write</strong> operation.
-*   Does <strong>not</strong> allow more than one transaction.
-*   Prevents inconsistency in the database.</p>
+<p><strong>Shared Lock</strong></p>
+<ul>
+<li>Required for <strong>reading</strong> a data item.</li>
+<li>Many transactions may hold a lock on the same data item.</li>
+<li>Multiple transactions are <strong>allowed</strong> to read data items.</li>
+</ul>
+<p><strong>Exclusive Lock</strong></p>
+<ul>
+<li>Required for any transaction about to perform a <strong>write</strong> operation.</li>
+<li>Does <strong>not</strong> allow more than one transaction.</li>
+<li>Prevents inconsistency in the database.</li>
+</ul>
 <pre class="mermaid"><code>stateDiagram-v2
     [*] --&gt; Unlocked
     Unlocked --&gt; SharedLock : Read Request
@@ -1403,35 +1433,51 @@
 <p><img alt="alt text" src="images/image-14.webp" /></p>
 <p>Reference Example Sample:
 <img alt="alt text" src="images/image-15.webp" /></p>
-<p><strong>1. First Normal Form (1NF)</strong>
-*   Simplest type. Conditions:
-    *   Every column must have a <strong>single value</strong> and should be <strong>atomic</strong>.
-    *   <strong>Duplicate columns</strong> from the same table should be removed.
-    *   Separate tables should be created for each group of related data.
-    *   Each row should be identified with a <strong>unique column</strong>.</p>
+<p><strong>1. First Normal Form (1NF)</strong></p>
+<ul>
+<li>Simplest type. Conditions:<ul>
+<li>Every column must have a <strong>single value</strong> and should be <strong>atomic</strong>.</li>
+<li><strong>Duplicate columns</strong> from the same table should be removed.</li>
+<li>Separate tables should be created for each group of related data.</li>
+<li>Each row should be identified with a <strong>unique column</strong>.</li>
+</ul>
+</li>
+</ul>
 <p>Sample's 1NF form:
 <img alt="alt text" src="images/image-16.webp" /></p>
-<p><strong>2. Second Normal Form (2NF)</strong>
-*   Conditions:
-    *   Table must be in <strong>1NF</strong>.
-    *   Every <strong>non-prime attribute</strong> should be <strong>fully functionally dependent</strong> on the primary key.
-    *   <em>Explanation:</em> Every non-key attribute must depend on the primary key such that if any key element is deleted, the non-key element will be saved.</p>
+<p><strong>2. Second Normal Form (2NF)</strong></p>
+<ul>
+<li>Conditions:<ul>
+<li>Table must be in <strong>1NF</strong>.</li>
+<li>Every <strong>non-prime attribute</strong> should be <strong>fully functionally dependent</strong> on the primary key.</li>
+<li><em>Explanation:</em> Every non-key attribute must depend on the primary key such that if any key element is deleted, the non-key element will be saved.</li>
+</ul>
+</li>
+</ul>
 <p>Sample's 2NF form:
 <img alt="alt text" src="images/image-17.webp" />
 <img alt="alt text" src="images/image-18.webp" /></p>
-<p><strong>3. Third Normal Form (3NF)</strong>
-*   Conditions:
-    *   Table must be in <strong>2NF</strong>.
-    *   There is <strong>no transitive functional dependency</strong> of one attribute on any attribute in the same table.</p>
+<p><strong>3. Third Normal Form (3NF)</strong></p>
+<ul>
+<li>Conditions:<ul>
+<li>Table must be in <strong>2NF</strong>.</li>
+<li>There is <strong>no transitive functional dependency</strong> of one attribute on any attribute in the same table.</li>
+</ul>
+</li>
+</ul>
 <p>Sample's 3NF form:
 <img alt="alt text" src="images/image-20.webp" />
 <img alt="alt text" src="images/image-21.webp" />
 <img alt="alt text" src="images/image-19.webp" /></p>
-<p><strong>4. Boyce-Codd Normal Form (BCNF) / 3.5NF</strong>
-*   Advanced form of 3NF. Conditions:
-    *   Table must be in <strong>3NF</strong>.
-    *   For every functional dependency <code>A -&gt; B</code>, <strong>A</strong> should be the <strong>super key</strong> of the table.
-    *   <em>Implication:</em> A can't be a non-prime attribute if B is a prime attribute.</p>
+<p><strong>4. Boyce-Codd Normal Form (BCNF) / 3.5NF</strong></p>
+<ul>
+<li>Advanced form of 3NF. Conditions:<ul>
+<li>Table must be in <strong>3NF</strong>.</li>
+<li>For every functional dependency <code>A -&gt; B</code>, <strong>A</strong> should be the <strong>super key</strong> of the table.</li>
+<li><em>Implication:</em> A can't be a non-prime attribute if B is a prime attribute.</li>
+</ul>
+</li>
+</ul>
 <pre class="mermaid"><code>flowchart LR
     Unnormalized[Unnormalized Data] --&gt; 1NF
     1NF["1NF&lt;br/&gt;Atomic Values&lt;br/&gt;Unique Rows"] --&gt; 2NF
@@ -1444,31 +1490,45 @@
     style 3NF fill:#2c5282,stroke:#4a90e2,color:#fff
     style BCNF fill:#276749,stroke:#48bb78,color:#fff</code></pre>
 <h3 id="17-explain-different-types-of-keys-in-a-database">17. Explain different types of keys in a database.</h3>
-<p><strong>1. Candidate Key</strong>
-*   A set of properties that can uniquely identify a table.
-*   Each table may have multiple candidate keys.
-*   One key amongst them is chosen as the primary key.
-*   <em>Example:</em> <code>studentId</code> and <code>firstName</code> can both be Candidate Keys if they uniquely identify every tuple.</p>
-<p><strong>2. Super Key</strong>
-*   A set of attributes that can uniquely identify a tuple.
-*   Candidate key and primary key are <strong>subsets</strong> of the super key (the super key is their superset).</p>
-<p><strong>3. Primary Key</strong>
-*   A set of attributes used to uniquely identify every tuple.
-*   Chosen from the candidate keys.
-*   Does <strong>not</strong> allow NULL values.
-*   <em>Example:</em> <code>studentId</code> chosen over <code>firstName</code> for the student table.</p>
-<p><strong>4. Unique Key</strong>
-*   Similar to primary key but <strong>allows NULL values</strong> in the column.
-*   Essentially primary keys with NULL values.</p>
-<p><strong>5. Alternate Key</strong>
-*   All candidate keys <strong>not</strong> chosen as primary keys.
-*   <em>Example:</em> If <code>studentId</code> is Primary, <code>firstName</code> and <code>lastname</code> are alternate keys.</p>
-<p><strong>6. Foreign Key</strong>
-*   An attribute that can only take values present in one table common to the attribute present in another table.
-*   <em>Example:</em> <code>courseId</code> in the Student table is a foreign key to the Course table.</p>
-<p><strong>7. Composite Key</strong>
-*   A combination of <strong>two or more columns</strong> that can uniquely identify each tuple in a table.
-*   <em>Example:</em> Grouping <code>studentId</code> and <code>firstname</code>.</p>
+<p><strong>1. Candidate Key</strong></p>
+<ul>
+<li>A set of properties that can uniquely identify a table.</li>
+<li>Each table may have multiple candidate keys.</li>
+<li>One key amongst them is chosen as the primary key.</li>
+<li><em>Example:</em> <code>studentId</code> and <code>firstName</code> can both be Candidate Keys if they uniquely identify every tuple.</li>
+</ul>
+<p><strong>2. Super Key</strong></p>
+<ul>
+<li>A set of attributes that can uniquely identify a tuple.</li>
+<li>Candidate key and primary key are <strong>subsets</strong> of the super key (the super key is their superset).</li>
+</ul>
+<p><strong>3. Primary Key</strong></p>
+<ul>
+<li>A set of attributes used to uniquely identify every tuple.</li>
+<li>Chosen from the candidate keys.</li>
+<li>Does <strong>not</strong> allow NULL values.</li>
+<li><em>Example:</em> <code>studentId</code> chosen over <code>firstName</code> for the student table.</li>
+</ul>
+<p><strong>4. Unique Key</strong></p>
+<ul>
+<li>Similar to primary key but <strong>allows NULL values</strong> in the column.</li>
+<li>Essentially primary keys with NULL values.</li>
+</ul>
+<p><strong>5. Alternate Key</strong></p>
+<ul>
+<li>All candidate keys <strong>not</strong> chosen as primary keys.</li>
+<li><em>Example:</em> If <code>studentId</code> is Primary, <code>firstName</code> and <code>lastname</code> are alternate keys.</li>
+</ul>
+<p><strong>6. Foreign Key</strong></p>
+<ul>
+<li>An attribute that can only take values present in one table common to the attribute present in another table.</li>
+<li><em>Example:</em> <code>courseId</code> in the Student table is a foreign key to the Course table.</li>
+</ul>
+<p><strong>7. Composite Key</strong></p>
+<ul>
+<li>A combination of <strong>two or more columns</strong> that can uniquely identify each tuple in a table.</li>
+<li><em>Example:</em> Grouping <code>studentId</code> and <code>firstname</code>.</li>
+</ul>
 <pre class="mermaid"><code>flowchart TB
     SK[Super Key&lt;br/&gt;All Possible Combinations] --&gt; CK
     CK[Candidate Key&lt;br/&gt;Minimal Super Key] --&gt; PK
@@ -1488,18 +1548,22 @@
 <p><img alt="alt text" src="images/image-22.webp" /></p>
 <p><img alt="alt text" src="images/image-23.webp" /></p>
 <h3 id="18-explain-the-difference-between-a-2-tier-and-3-tier-architecture-in-a-dbms">18. Explain the difference between a 2-tier and 3-tier architecture in a DBMS.</h3>
-<p><strong>2-Tier Architecture</strong>
-*   <strong>Client-Server architecture.</strong>
-*   Applications at the client end <strong>directly communicate</strong> with the database at the server end.
-*   <strong>No middleware</strong> involved.
-*   <strong>Examples:</strong> Contact Management System created using MS-Access, Railway Reservation System.</p>
+<p><strong>2-Tier Architecture</strong></p>
+<ul>
+<li><strong>Client-Server architecture.</strong></li>
+<li>Applications at the client end <strong>directly communicate</strong> with the database at the server end.</li>
+<li><strong>No middleware</strong> involved.</li>
+<li><strong>Examples:</strong> Contact Management System created using MS-Access, Railway Reservation System.</li>
+</ul>
 <p><img alt="alt text" src="images/image-24.webp" /></p>
-<p><strong>3-Tier Architecture</strong>
-*   Contains another layer (<strong>Middleware</strong>) between the client and the server.
-*   Provides <strong>GUI</strong> to users.
-*   Makes the system much more secure and accessible.
-*   <strong>Flow:</strong> Client Application &lt;-&gt; Server Application &lt;-&gt; Database System.
-*   <strong>Examples:</strong> Designing registration forms (text box, label, button), large websites on the Internet.</p>
+<p><strong>3-Tier Architecture</strong></p>
+<ul>
+<li>Contains another layer (<strong>Middleware</strong>) between the client and the server.</li>
+<li>Provides <strong>GUI</strong> to users.</li>
+<li>Makes the system much more secure and accessible.</li>
+<li><strong>Flow:</strong> Client Application &lt;-&gt; Server Application &lt;-&gt; Database System.</li>
+<li><strong>Examples:</strong> Designing registration forms (text box, label, button), large websites on the Internet.</li>
+</ul>
 <p><img alt="alt text" src="images/image-25.webp" /></p>
 <pre class="mermaid"><code>flowchart TB
     subgraph TwoTier["2-Tier Architecture"]
@@ -1735,7 +1799,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 10, 2026 18:08:18 UTC">February 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 11, 2026 21:56:25 UTC">February 11, 2026</span>
   </span>
 
     
