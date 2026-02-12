@@ -8,6 +8,9 @@ nav:
     - Networking: interview/networking/index.md
     - DBMS: interview/dbms/index.md
     - SQL-DS: interview/sql-ds/index.md
+  - Explorations:
+    - Index: exploration/index.md
+    - Bun: exploration/bun/index.md
   - About: about.md
   - Contributing: contributing.md
   # - Backend:
