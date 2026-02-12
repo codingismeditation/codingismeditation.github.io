@@ -7,3 +7,6 @@
 [submodule "docs/interview/sql-ds"]
 	path = docs/interview/sql-ds
 	url = https://github.com/kintsugi-programmer/kintsugi-stack-interview-sql-ds
+[submodule "docs/exploration/bun"]
+	path = docs/exploration/bun
+	url = https://github.com/kintsugi-programmer/kintsugi-stack-bun
