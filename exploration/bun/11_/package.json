@@ -1,0 +1,16 @@
+{
+  "name": "11_",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "scripts": {
+    "dev":"bun --watch --env-file=.env.development index.ts"
+    ,"start":"bun --env-file=.env.production index.ts"
+  }
+}
