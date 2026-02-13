@@ -10,3 +10,6 @@
 [submodule "docs/exploration/bun"]
 	path = docs/exploration/bun
 	url = https://github.com/kintsugi-programmer/kintsugi-stack-bun
+[submodule "docs/backend-art"]
+	path = docs/backend-art
+	url = https://github.com/kintsugi-programmer/kintsugi-stack-backend
