@@ -1,0 +1,1808 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A foundational explanation of backend systems, covering server architecture, end-to-end request flow from browser to application server, the role of centralized data management, and the technical reasons backend logic cannot execute in frontend environments.">
+      
+      
+      
+        <link rel="canonical" href="https://codingismeditation.github.io/backend-art/introduction.html">
+      
+      
+        <link rel="prev" href="overview.html">
+      
+      
+        <link rel="next" href="../interview/index.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Introduction to Backend Engineering - Coding Is Meditation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Introduction to Backend Engineering - Coding Is Meditation" />
+<meta property="og:description" content="A foundational explanation of backend systems, covering server architecture, end-to-end request flow from browser to application server, the role of centralized data management, and the technical reasons backend logic cannot execute in frontend environments." />
+<meta property="og:image" content="https://codingismeditation.github.io/assets/images/social/backend-art/introduction.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://codingismeditation.github.io/backend-art/introduction.html" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Introduction to Backend Engineering - Coding Is Meditation" />
+<meta property="twitter:description" content="A foundational explanation of backend systems, covering server architecture, end-to-end request flow from browser to application server, the role of centralized data management, and the technical reasons backend logic cannot execute in frontend environments." />
+<meta property="twitter:image" content="https://codingismeditation.github.io/assets/images/social/backend-art/introduction.png" />
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="yellow">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-to-backend-engineering" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="Coding Is Meditation" class="md-header__button md-logo" aria-label="Coding Is Meditation" data-md-component="logo">
+      
+  <img src="../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Coding Is Meditation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduction to Backend Engineering
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="yellow"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="yellow"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kintsugi-programmer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kintsugi-programmer
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+  
+  The Art of Backend
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../interview/index.html" class="md-tabs__link">
+          
+  
+  
+  Interview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../exploration/index.html" class="md-tabs__link">
+          
+  
+  
+  Explorations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../contributing.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Contributing
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Coding Is Meditation" class="md-nav__button md-logo" aria-label="Coding Is Meditation" data-md-component="logo">
+      
+  <img src="../assets/images/logo.png" alt="logo">
+
+    </a>
+    Coding Is Meditation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kintsugi-programmer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kintsugi-programmer
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Art of Backend
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    The Art of Backend
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Backend Engineering
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="introduction.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Backend Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-definition-of-a-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Definition of a Backend
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Definition of a Backend">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-traditional-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Traditional Definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-end-to-end-request-flow-backend-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. End-to-End Request Flow (Backend Demo)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. End-to-End Request Flow (Backend Demo)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-step-1-the-browser-domain-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Step 1: The Browser &amp; Domain Name
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-step-2-dns-server-domain-name-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Step 2: DNS Server (Domain Name System)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-step-3-cloud-infrastructure-aws-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Step 3: Cloud Infrastructure (AWS EC2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-step-4-the-firewall-aws-security-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Step 4: The Firewall (AWS Security Groups)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-step-5-reverse-proxy-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Step 5: Reverse Proxy (Nginx)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-step-6-the-application-server-nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6. Step 6: The Application Server (Node.js)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-summary-of-the-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7. Summary of the Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-purpose-of-backend-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The Purpose of Backend Systems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. The Purpose of Backend Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-the-core-concept-centralized-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. The Core Concept: Centralized Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-example-the-like-button-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Example: The "Like" Button Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-why-this-requires-a-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Why this requires a Backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-frontend-architecture-vs-backend-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Frontend Architecture vs. Backend Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Frontend Architecture vs. Backend Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-frontend-request-flow-nextjs-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Frontend Request Flow (Next.js Demo)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-key-difference-execution-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Key Difference: Execution Environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-why-backend-logic-cannot-be-on-the-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Why Backend Logic Cannot be on the Frontend
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Why Backend Logic Cannot be on the Frontend">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-security-and-sandboxing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Security and Sandboxing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-cors-cross-origin-resource-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. CORS (Cross-Origin Resource Sharing)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-database-connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Database Connections
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-computing-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4. Computing Power
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-complete-introduction-to-backend-engineering-roadmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Complete Introduction to Backend Engineering Roadmap
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../interview/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../exploration/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explorations
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../index.html" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    The Art of Backend
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="introduction-to-backend-engineering">Introduction to Backend Engineering</h1>
+<p>What Is a Backend, How It works and Why Does It Matter?</p>
+<p><img alt="alt text" src="image-2.webp" /></p>
+<div style="position:relative;width:100%;padding-bottom:56.25%;height:0;">
+  <iframe
+    src="https://www.youtube.com/embed/JF-ZV1TjO-M?si=LJdlA6sbQEVHd2E2"
+    title="YouTube video player"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<h2 id="1-definition-of-a-backend">1. Definition of a Backend</h2>
+<h3 id="11-traditional-definition">1.1. Traditional Definition</h3>
+<p>A backend is a computer that listens for requests through an open port (accessible over the internet) to allow clients or frontends to connect, send data, or receive data.</p>
+<ul>
+<li><strong>Communication Protocols:</strong> HTTP, WebSocket, gRPC.</li>
+<li><strong>Common Ports:</strong> <ul>
+<li><strong>80:</strong> Standard HTTP.</li>
+<li><strong>443:</strong> Secure HTTPS.</li>
+</ul>
+</li>
+<li><strong>Role:</strong> It is called a "Server" because it provides or "serves" content.</li>
+<li><strong>Content Types Served:</strong><ul>
+<li>Static files (Images, JavaScript, HTML).</li>
+<li>Data formats (JSON).</li>
+</ul>
+</li>
+<li><strong>Data Ingestion:</strong> It accepts data sent by the client.</li>
+</ul>
+<pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
+flowchart LR
+    Client[Client/Frontend] --&gt;|HTTP :80| Server[Backend Server]
+    Client --&gt;|HTTPS :443| Server
+    Client --&gt;|WebSocket| Server
+    Client --&gt;|gRPC| Server
+    Server --&gt;|JSON| Client
+    Server --&gt;|HTML/CSS/JS| Client
+    Server --&gt;|Images| Client</code></pre>
+<hr />
+<h2 id="2-end-to-end-request-flow-backend-demo">2. End-to-End Request Flow (Backend Demo)</h2>
+<p>This trace follows a request starting from a browser and reaching a backend server deployed on AWS.</p>
+<h3 id="21-step-1-the-browser-domain-name">2.1. Step 1: The Browser &amp; Domain Name</h3>
+<ul>
+<li><strong>Action:</strong> A request is initiated by entering a domain name in the browser (e.g., <code>backend-demo.senus.doxyz</code>).</li>
+<li><strong>Initial Lookup:</strong> The browser must resolve this domain name to an IP address to know where to connect.</li>
+</ul>
+<h3 id="22-step-2-dns-server-domain-name-system">2.2. Step 2: DNS Server (Domain Name System)</h3>
+<p>The DNS server translates domain names into IP addresses. It contains specific record types:
+*   <strong>A Records:</strong> Used to point a domain or subdomain to a specific <strong>IP Address</strong>.
+    *   <em>Example:</em> The subdomain <code>backend-demo</code> points to a specific Public IP address of an AWS EC2 instance.
+*   <strong>CNAME Records:</strong> Used to point a domain or subdomain to another <strong>domain name</strong>.</p>
+<pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
+flowchart TB
+    Domain[backend-demo.senus.doxyz] --&gt; DNS[DNS Server]
+    DNS --&gt; ARecord{Record Type?}
+    ARecord --&gt;|A Record| IP[IP Address: 52.23.45.67]
+    ARecord --&gt;|CNAME Record| AnotherDomain[Another Domain]
+    IP --&gt; EC2[AWS EC2 Instance]</code></pre>
+<h3 id="23-step-3-cloud-infrastructure-aws-ec2">2.3. Step 3: Cloud Infrastructure (AWS EC2)</h3>
+<ul>
+<li><strong>Destination:</strong> The IP address obtained from the A Record belongs to an <strong>EC2 instance</strong> (a virtual server) located in a specific AWS subnet.</li>
+<li><strong>Public IP:</strong> The request travels through the internet to reach this specific Public IP address.</li>
+</ul>
+<h3 id="24-step-4-the-firewall-aws-security-groups">2.4. Step 4: The Firewall (AWS Security Groups)</h3>
+<p>Before the request enters the actual computer (instance), it passes through a cloud-native firewall.
+*   <strong>Function:</strong> Filters traffic based on allowed ports.
+*   <strong>AWS Security Groups:</strong> define which ports are accessible over the internet.
+*   <strong>Configuration in Demo:</strong>
+    *   <strong>Port 22:</strong> Allowed for SSH access (logging into terminals/command prompts).
+    *   <strong>Port 443:</strong> Allowed for HTTPS traffic.
+    *   <strong>Port 80:</strong> Allowed for HTTP traffic.
+*   <strong>Warning:</strong> If ports 80 or 443 are not explicitly allowed in the Security Group, AWS blocks the request immediately. It will never reach the server.</p>
+<pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
+flowchart LR
+    Request[Incoming Request] --&gt; Firewall{AWS Security Groups}
+    Firewall --&gt;|Port 22 SSH| Allow22[Allowed ✓]
+    Firewall --&gt;|Port 80 HTTP| Allow80[Allowed ✓]
+    Firewall --&gt;|Port 443 HTTPS| Allow443[Allowed ✓]
+    Firewall --&gt;|Other Ports| Block[Blocked ✗]
+    Allow22 --&gt; Instance[EC2 Instance]
+    Allow80 --&gt; Instance
+    Allow443 --&gt; Instance
+    Block -.-&gt; Reject[Request Rejected]</code></pre>
+<h3 id="25-step-5-reverse-proxy-nginx">2.5. Step 5: Reverse Proxy (Nginx)</h3>
+<p>Once the request passes the firewall and enters the instance, it hits a <strong>Reverse Proxy</strong>.
+*   <strong>Definition:</strong> A server sitting in front of other servers to manage redirects, configurations, and SSL from a centralized place (rather than configuring every application server individually).
+*   <strong>Tool Used:</strong> <strong>Nginx</strong>.
+*   <strong>SSL Management:</strong> <strong>Certbot</strong> is used to assign SSL certificates automatically.
+*   <strong>Nginx Configuration Logic:</strong>
+    1.  <strong>Listen:</strong> Listens for requests on Port 80.
+    2.  <strong>Redirect:</strong> Redirects Port 80 requests to Port 443 (HTTPS).
+    3.  <strong>Server Name:</strong> Checks the domain name (e.g., <code>backend-demo</code>).
+    4.  <strong>Proxy Pass:</strong> Forwards traffic matching that domain to the local application server running on a specific internal port.
+    *   <em>Example Code Logic:</em>
+        <div class="language-nginx highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">server_name</span><span class="w"> </span><span class="s">backend-demo.senus.doxyz</span><span class="p">;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://localhost:3001</span><span class="p">;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
+</span></code></pre></div></p>
+<pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
+flowchart TD
+    Request[Incoming Request] --&gt; Listen{Port 80?}
+    Listen --&gt;|Yes| Redirect[Redirect to Port 443]
+    Listen --&gt;|No Port 443| CheckName{Check Server Name}
+    Redirect --&gt; CheckName
+    CheckName --&gt;|backend-demo.senus.doxyz| SSL[Apply SSL/TLS]
+    CheckName --&gt;|Other Domain| OtherApp[Other Application]
+    SSL --&gt; Proxy[Proxy Pass]
+    Proxy --&gt; LocalApp[localhost:3001]</code></pre>
+<h3 id="26-step-6-the-application-server-nodejs">2.6. Step 6: The Application Server (Node.js)</h3>
+<ul>
+<li><strong>Final Destination:</strong> Nginx forwards the request to <strong>localhost:3001</strong>.</li>
+<li><strong>Process Management:</strong> <strong>PM2</strong> is used to manage the Node processes.<ul>
+<li><em>Example:</em> <code>pm2 list</code> shows processes for frontend and backend.</li>
+</ul>
+</li>
+<li><strong>Execution:</strong> The Node server processes the request and returns the response (e.g., JSON data).</li>
+<li><strong>Localhost Parity:</strong> From the perspective of the EC2 instance, the server is running on <code>localhost</code>.<ul>
+<li><em>Note:</em> Running <code>curl localhost:3001/users</code> inside the instance returns the same response as accessing the public domain from the browser.</li>
+</ul>
+</li>
+</ul>
+<h3 id="27-summary-of-the-flow">2.7. Summary of the Flow</h3>
+<ol>
+<li><strong>Browser:</strong> Initiates request.</li>
+<li><strong>DNS:</strong> Resolves domain to AWS Public IP.</li>
+<li><strong>AWS Firewall:</strong> Allows traffic on Port 443/80.</li>
+<li><strong>Instance:</strong> Receives request.</li>
+<li><strong>Nginx (Reverse Proxy):</strong> Receives request, handles SSL, identifies domain, forwards to internal port.</li>
+<li><strong>Node Server:</strong> Receives request on <code>localhost:3001</code>, processes it, returns response.</li>
+</ol>
+<pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
+flowchart LR
+    Browser[Browser] --&gt;|Domain Name| DNS[DNS Server]
+    DNS --&gt;|Public IP| Firewall[AWS Security Groups]
+    Firewall --&gt;|Port 443/80| Instance[EC2 Instance]
+    Instance --&gt; Nginx[Nginx Reverse Proxy]
+    Nginx --&gt;|SSL, Domain Check| Node[Node.js Server :3001]
+    Node --&gt;|Response| Nginx
+    Nginx --&gt; Instance
+    Instance --&gt; Firewall
+    Firewall --&gt; DNS
+    DNS --&gt; Browser</code></pre>
+<hr />
+<h2 id="3-the-purpose-of-backend-systems">3. The Purpose of Backend Systems</h2>
+<p>Why are backends necessary?</p>
+<h3 id="31-the-core-concept-centralized-data">3.1. The Core Concept: Centralized Data</h3>
+<p>If you strip down the responsibility of a backend to a single word, it is <strong>Data</strong>.
+*   The need to <strong>fetch</strong> data.
+*   The need to <strong>receive</strong> data.
+*   The need to <strong>persist</strong> (save) data.</p>
+<pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
+flowchart TB
+    Backend[Backend Server] --&gt; Data{Data Operations}
+    Data --&gt; Fetch[Fetch Data]
+    Data --&gt; Receive[Receive Data]
+    Data --&gt; Persist[Persist Data]
+
+    Fetch --&gt; Database[(Centralized Database)]
+    Receive --&gt; Database
+    Persist --&gt; Database
+
+    Client1[Client 1] &lt;--&gt;|Request/Response| Backend
+    Client2[Client 2] &lt;--&gt;|Request/Response| Backend
+    Client3[Client 3] &lt;--&gt;|Request/Response| Backend
+    ClientN[Client N...] &lt;--&gt;|Request/Response| Backend</code></pre>
+<h3 id="32-example-the-like-button-flow">3.2. Example: The "Like" Button Flow</h3>
+<p>Imagine a user liking a friend's post on Instagram:
+1.  <strong>User Action:</strong> User clicks the "Like" button.
+2.  <strong>Request:</strong> The app sends a request to the server.
+3.  <strong>Identification:</strong> The server parses the request to identify the user (ID/Name).
+4.  <strong>Persistence:</strong> The server <strong>saves</strong> the action (the "like") to a database.
+5.  <strong>Logic:</strong> The server identifies the owner of the post.
+6.  <strong>Notification:</strong> The server triggers an action to send a notification to the post owner's phone.</p>
+<pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
+sequenceDiagram
+    participant User
+    participant App
+    participant Server
+    participant Database
+    participant PostOwner
+
+    User-&gt;&gt;App: Clicks Like Button
+    App-&gt;&gt;Server: Send Like Request
+    Server-&gt;&gt;Server: Parse Request (Identify User ID)
+    Server-&gt;&gt;Database: Save Like Action
+    Database--&gt;&gt;Server: Confirmation
+    Server-&gt;&gt;Server: Identify Post Owner
+    Server-&gt;&gt;PostOwner: Send Notification
+    Server--&gt;&gt;App: Success Response
+    App--&gt;&gt;User: Update UI</code></pre>
+<h3 id="33-why-this-requires-a-backend">3.3. Why this requires a Backend</h3>
+<ul>
+<li><strong>Centralization:</strong> The server must hold information about <em>all</em> users and <em>all</em> states.</li>
+<li><strong>Client Limitation:</strong> A user's app/frontend only contains data relevant to that specific user (their profile, their feed). It does not possess the global state required to route notifications to other users.</li>
+<li><strong>State Management:</strong> Interactions between different users require a centralized computer to mediate and persist these changes.</li>
+</ul>
+<pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
+flowchart TB
+    subgraph Server["Backend: Global State"]
+        Backend[Backend Server] --&gt; AllUsers[All Users Data]
+        Backend --&gt; AllPosts[All Posts Data]
+        Backend --&gt; AllStates[All App States]
+        Backend --&gt; Route[Route Between Users]
+    end
+
+    subgraph Client1["User 1 App: Limited State"]
+        App1[User 1 Frontend] --&gt; Profile1[Own Profile]
+        App1 --&gt; Feed1[Own Feed]
+        App1 -.Cannot Access.-&gt; OtherUsers[Other Users ✗]
+    end
+
+    subgraph Client2["User 2 App: Limited State"]
+        App2[User 2 Frontend] --&gt; Profile2[Own Profile]
+        App2 --&gt; Feed2[Own Feed]
+        App2 -.Cannot Access.-&gt; OtherUsers2[Other Users ✗]
+    end
+
+    App1 &lt;--&gt;|Mediated by Backend| Backend
+    App2 &lt;--&gt;|Mediated by Backend| Backend</code></pre>
+<hr />
+<h2 id="4-frontend-architecture-vs-backend-architecture">4. Frontend Architecture vs. Backend Architecture</h2>
+<p>To understand why backend logic cannot live in the frontend, we must look at how the frontend works end-to-end.</p>
+<h3 id="41-frontend-request-flow-nextjs-demo">4.1. Frontend Request Flow (Next.js Demo)</h3>
+<ol>
+<li><strong>Initial Fetch:</strong> Browser requests the frontend domain (e.g., <code>frontend-demo</code>).</li>
+<li><strong>DNS &amp; Firewall:</strong> Same flow as backend (Resolves IP -&gt; Passes Firewall 80/443).</li>
+<li><strong>Nginx:</strong> Listens for frontend domain, redirects to frontend application port (e.g., <code>localhost:3000</code>).</li>
+<li><strong>Server Response:</strong> The Next.js server sends back:<ul>
+<li>The main HTML file.</li>
+<li>CSS files (Styles).</li>
+<li>JavaScript files (Logic).</li>
+<li>Static resources (Images/Fonts).</li>
+</ul>
+</li>
+<li><strong>Browser Execution:</strong><ul>
+<li><strong>Painting:</strong> Browser fetches CSS and paints the UI (backgrounds, fonts, buttons).</li>
+<li><strong>Hydration:</strong> Browser fetches JavaScript and "hydrates" the page, adding event listeners to buttons and interactions.</li>
+</ul>
+</li>
+</ol>
+<pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
+flowchart LR
+    Browser[Browser] --&gt;|Request| DNS[DNS &amp; Firewall]
+    DNS --&gt; Nginx[Nginx :3000]
+    Nginx --&gt; NextJS[Next.js Server]
+    NextJS --&gt;|HTML| Browser
+    NextJS --&gt;|CSS| Browser
+    NextJS --&gt;|JavaScript| Browser
+    NextJS --&gt;|Static Assets| Browser
+    Browser --&gt;|Paint UI| Render[Render Engine]
+    Browser --&gt;|Hydrate| Execute[Execute JS]</code></pre>
+<h3 id="42-key-difference-execution-environment">4.2. Key Difference: Execution Environment</h3>
+<ul>
+<li><strong>Backend:</strong> The server receives a request, <strong>processes the logic on the server</strong>, and sends back the <em>result</em>.</li>
+<li><strong>Frontend:</strong> The server sends the <em>code</em> (HTML/JS/CSS) to the client. <strong>The browser (client's machine) runs the code.</strong></li>
+</ul>
+<pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
+flowchart TB
+    subgraph Backend["Backend Execution"]
+        BReq[Client Request] --&gt; BServer[Server]
+        BServer --&gt; BLogic[Process Logic on Server]
+        BLogic --&gt; BResult[Return Result]
+        BResult --&gt; BClient[Client]
+    end
+
+    subgraph Frontend["Frontend Execution"]
+        FReq[Client Request] --&gt; FServer[Server]
+        FServer --&gt; FCode[Send Code HTML/JS/CSS]
+        FCode --&gt; FClient[Client Browser]
+        FClient --&gt; FExec[Execute Code on Client]
+    end</code></pre>
+<hr />
+<h2 id="5-why-backend-logic-cannot-be-on-the-frontend">5. Why Backend Logic Cannot be on the Frontend</h2>
+<p>There are four specific reasons why backend logic (database connections, heavy processing) cannot be moved to the frontend.</p>
+<pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
+flowchart TD
+    Backend[Backend Logic] --&gt; Reasons{Why Not Frontend?}
+    Reasons --&gt; R1[Security &amp; Sandboxing]
+    Reasons --&gt; R2[CORS Restrictions]
+    Reasons --&gt; R3[Database Connections]
+    Reasons --&gt; R4[Computing Power]
+
+    R1 --&gt; R1A[No File System Access]
+    R1 --&gt; R1B[Limited APIs]
+
+    R2 --&gt; R2A[Cross-Origin Blocked]
+    R2 --&gt; R2B[Header Requirements]
+
+    R3 --&gt; R3A[No Connection Pooling]
+    R3 --&gt; R3B[Database Overload]
+
+    R4 --&gt; R4A[Variable Hardware]
+    R4 --&gt; R4B[Performance Issues]</code></pre>
+<h3 id="51-security-and-sandboxing">5.1. Security and Sandboxing</h3>
+<ul>
+<li><strong>Sandboxed Environment:</strong> Browsers isolate the execution environment. Code cannot access the user's operating system, processes, or file system.</li>
+<li><strong>Limited Access:</strong> Frontend code can only access specific browser APIs (DOM, Local Storage, Cookies).</li>
+<li><strong>The Problem:</strong><ul>
+<li>Backend servers often need to access the file system (e.g., writing logs, accessing environment variables). Browsers strictly block this.</li>
+</ul>
+</li>
+<li><strong>Rationale:</strong> If browsers did not enforce this isolation, visiting a malicious website could allow remote code to scan your file system, copy sensitive files, and send them to a remote server.</li>
+</ul>
+<pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
+flowchart TB
+    subgraph Browser["Browser Sandbox"]
+        JS[JavaScript Code] --&gt; Allowed{Allowed?}
+        Allowed --&gt;|Yes| DOM[DOM API]
+        Allowed --&gt;|Yes| Storage[Local Storage]
+        Allowed --&gt;|Yes| Cookies[Cookies]
+        Allowed --&gt;|No| FS[File System ❌]
+        Allowed --&gt;|No| OS[Operating System ❌]
+        Allowed --&gt;|No| Processes[System Processes ❌]
+    end
+
+    subgraph Backend["Backend Server"]
+        Server[Server Code] --&gt; Full[Full Access]
+        Full --&gt; FSAccess[File System ✓]
+        Full --&gt; EnvVars[Environment Variables ✓]
+        Full --&gt; Logs[Write Logs ✓]
+    end</code></pre>
+<h3 id="52-cors-cross-origin-resource-sharing">5.2. CORS (Cross-Origin Resource Sharing)</h3>
+<ul>
+<li><strong>Definition:</strong> A browser security policy that restricts JavaScript from calling external APIs that reside on a different domain than the current page.</li>
+<li><strong>Restriction:</strong> You can only fetch resources from the same domain unless the external API explicitly allows it via HTTP headers.</li>
+<li><strong>The Problem:</strong> Backend servers often need to fetch data from multiple third-party sources. If those sources do not have specific CORS headers configured for your client, the browser will block the request. A backend server does not have this restriction.</li>
+</ul>
+<pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
+flowchart TB
+    subgraph Frontend["Frontend Browser"]
+        Page[myapp.com] --&gt;|Fetch| Check{Same Origin?}
+        Check --&gt;|Yes myapp.com| Allow[Request Allowed ✓]
+        Check --&gt;|No api.other.com| Headers{CORS Headers?}
+        Headers --&gt;|Present| Allow2[Request Allowed ✓]
+        Headers --&gt;|Missing| Block[Request Blocked ❌]
+    end
+
+    subgraph Backend["Backend Server"]
+        BServer[Backend] --&gt;|Fetch| API1[api.service1.com ✓]
+        BServer --&gt;|Fetch| API2[api.service2.com ✓]
+        BServer --&gt;|Fetch| API3[api.service3.com ✓]
+        Note[No CORS Restrictions]
+    end</code></pre>
+<h3 id="53-database-connections">5.3. Database Connections</h3>
+<ul>
+<li><strong>Drivers:</strong> Backend servers use native database drivers (e.g., <code>pg</code> for Postgres, MongoDB drivers).<ul>
+<li>These are designed to handle <strong>socket connections</strong> and <strong>binary data</strong>.</li>
+<li>They maintain <strong>persistent connections</strong>.</li>
+</ul>
+</li>
+<li><strong>Connection Pooling:</strong><ul>
+<li>Backends maintain a "pool" of open connections to the database.</li>
+<li>They reuse these connections for thousands of incoming requests.</li>
+<li>Creating and destroying a connection for every single request is expensive and would overwhelm the database.</li>
+</ul>
+</li>
+<li><strong>The Problem:</strong><ul>
+<li>Browsers are not designed to maintain persistent connections.</li>
+<li>Browsers cannot manage connection pooling.</li>
+<li>If logic were on the frontend, every single user would open a unique connection to the database. This would flood the database server with too many connections, causing it to crash.</li>
+</ul>
+</li>
+</ul>
+<pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
+flowchart TB
+    subgraph Backend["Backend: Connection Pooling"]
+        BS[Backend Server] --&gt; Pool[Connection Pool]
+        Pool --&gt; C1[Connection 1]
+        Pool --&gt; C2[Connection 2]
+        Pool --&gt; C3[Connection 3]
+        C1 --&gt; DB1[(Database)]
+        C2 --&gt; DB1
+        C3 --&gt; DB1
+        R1[Request 1] -.Reuse.-&gt; C1
+        R2[Request 2] -.Reuse.-&gt; C2
+        R3[Request 1000] -.Reuse.-&gt; C3
+    end
+
+    subgraph Frontend["Frontend: Individual Connections"]
+        User1[User 1] --&gt; Conn1[New Connection]
+        User2[User 2] --&gt; Conn2[New Connection]
+        User3[User 3] --&gt; Conn3[New Connection]
+        UserN[User N...] --&gt; ConnN[New Connection]
+        Conn1 --&gt; DB2[(Database OVERLOAD)]
+        Conn2 --&gt; DB2
+        Conn3 --&gt; DB2
+        ConnN --&gt; DB2
+    end</code></pre>
+<h3 id="54-computing-power">5.4. Computing Power</h3>
+<ul>
+<li><strong>Variability:</strong> Frontend applications run on user devices (smartphones, old laptops, desktops).<ul>
+<li>Hardware specs vary wildly (e.g., 256MB RAM, single-core processors).</li>
+</ul>
+</li>
+<li><strong>The Problem:</strong><ul>
+<li>Heavy business logic requires reliable computing power.</li>
+<li>Running heavy logic on a low-end client device causes lag or crashes.</li>
+</ul>
+</li>
+<li><strong>Backend Advantage:</strong> A centralized server is a controlled environment. You can easily scale CPU and Memory resources to handle increased load, ensuring consistent performance regardless of the user's device.</li>
+</ul>
+<pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
+flowchart TB
+    subgraph Frontend["Frontend: Variable Hardware"]
+        Device1[Smartphone&lt;br/&gt;256MB RAM&lt;br/&gt;Single Core]
+        Device2[Old Laptop&lt;br/&gt;2GB RAM&lt;br/&gt;Dual Core]
+        Device3[Desktop&lt;br/&gt;16GB RAM&lt;br/&gt;8 Cores]
+        Logic[Heavy Business Logic] -.-&gt; Device1
+        Logic -.-&gt; Device2
+        Logic -.-&gt; Device3
+        Device1 --&gt; Crash[Crash/Lag ✗]
+        Device2 --&gt; Slow[Poor Performance]
+        Device3 --&gt; OK[Works ✓]
+    end
+
+    subgraph Backend["Backend: Controlled Environment"]
+        Server[Centralized Server&lt;br/&gt;32GB RAM&lt;br/&gt;16 Cores]
+        Scale[Scalable Resources]
+        Server --&gt; Consistent[Consistent Performance ✓]
+        Scale --&gt; MoreCPU[+CPU]
+        Scale --&gt; MoreRAM[+Memory]
+        Scale --&gt; MoreServers[+Servers]
+    end</code></pre>
+<h2 id="6-complete-introduction-to-backend-engineering-roadmap">6. Complete Introduction to Backend Engineering Roadmap</h2>
+<pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
+flowchart TD
+    A["Introduction to Backend"] --&gt; B["1. Definition of a Backend"]
+    B --&gt; B1["1.1. Traditional Definition"]
+    B1 --&gt; C["2. End-to-End Request Flow"]
+    C --&gt; C1["2.1. The Browser &amp; Domain Name"]
+    C1 --&gt; C2["2.2. DNS Server"]
+    C2 --&gt; C3["2.3. Cloud Infrastructure"]
+    C3 --&gt; C4["2.4. The Firewall"]
+    C4 --&gt; C5["2.5. Reverse Proxy"]
+    C5 --&gt; C6["2.6. The Application Server"]
+    C6 --&gt; C7["2.7. Summary of the Flow"]
+    C7 --&gt; D["3. The Purpose of Backend Systems"]
+    D --&gt; D1["3.1. Centralized Data"]
+    D1 --&gt; D2["3.2. Like Button Flow"]
+    D2 --&gt; D3["3.3. Why Backend Required"]
+    D3 --&gt; E["4. Frontend vs Backend Architecture"]
+    E --&gt; E1["4.1. Frontend Request Flow"]
+    E1 --&gt; E2["4.2. Execution Environment"]
+    E2 --&gt; F["5. Why Backend Logic Cannot be on Frontend"]
+    F --&gt; F1["5.1. Security and Sandboxing"]
+    F1 --&gt; F2["5.2. CORS"]
+    F2 --&gt; F3["5.3. Database Connections"]
+    F3 --&gt; F4["5.4. Computing Power"]
+
+    classDef mainNode fill:#2d2d2d,stroke:#555555,color:#e6edf3
+    classDef subNode fill:#3a3a3a,stroke:#666666,color:#e6edf3
+
+    class A mainNode
+    class B,C,D,E,F mainNode
+    class B1,C1,C2,C3,C4,C5,C6,C7,D1,D2,D3,E1,E2,F1,F2,F3,F4 subNode</code></pre>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 13, 2026 22:49:35 UTC">February 13, 2026</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 13, 2026 22:49:35 UTC">February 13, 2026</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+  
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="overview.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../interview/index.html" class="md-footer__link md-footer__link--next" aria-label="Next: Index">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Index
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy;2026 Siddhant Bali. All rights reserved.
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://codingismeditation.github.io/" target="_blank" rel="noopener" title="Home" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M277.8 8.6c-12.3-11.4-31.3-11.4-43.5 0l-224 208c-9.6 9-12.8 22.9-8 35.1S18.8 272 32 272h16v176c0 35.3 28.7 64 64 64h288c35.3 0 64-28.7 64-64V272h16c13.2 0 25-8.1 29.8-20.3s1.6-26.2-8-35.1zM240 320h32c26.5 0 48 21.5 48 48v96H192v-96c0-26.5 21.5-48 48-48"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.youtube.com/@CodingIsMeditation" target="_blank" rel="noopener" title="CodingIsMeditation YouTube Channel" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://x.com/siddhantbuilds" target="_blank" rel="noopener" title="Author&#39;s Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/codingismeditation" target="_blank" rel="noopener" title="Author&#39;s GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/siddhantbuilds/" target="_blank" rel="noopener" title="Author&#39;s LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:siddhant.bali.work@gmail.com" target="_blank" rel="noopener" title="Author&#39;s Email" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+
+  <div class="md-footer-meta ">
+    <div class="md-footer-meta__inner">
+
+      <!-- Custom line ABOVE copyright -->
+      <div class="md-footer-copyright" style="margin-bottom: 6px;">
+        <blockquote>
+        <p>The <a href="https://codingismeditation.github.io/">codingismeditation.github.io</a>, authored by <a href="https://github.com/kintsugi-programmer">Kintsugi-Programmer</a>, is less a comprehensive resource and more an Artifact of Continuous Research and Deep Inquiry into Computer Science and Software Engineering. It serves as a transparent ledger of the author&#39;s relentless pursuit of mastery, from the foundational algorithms to modern full-stack implementation.</p>
+        <blockquote>
+        <p>Made with 💚 <a href="https://github.com/kintsugi-programmer">Kintsugi-Programmer</a></p>
+        </blockquote>
+        </blockquote>
+      </div>
+
+    </div>
+  </div>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.instant.preview", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.prune", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "search.share", "header.autohide", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
