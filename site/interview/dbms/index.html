@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A structured guide covering fundamental to advanced DBMS concepts including relational databases, ACID properties, normalization, entity-relationship modeling, transaction management, and database architecture patterns.">
+        <meta name="description" content="Comprehensive DBMS interview guide covering 76 questions across 9 topics — DBMS fundamentals, ACID properties, normalization, SQL querying, database indexing, query optimization, security, replication, sharding, crash recovery, Write-Ahead Logging, and transaction concurrency including MVCC, deadlocks, and isolation levels.">
       
       
       
@@ -27,7 +27,7 @@
     
     
       
-        <title>DBMS Database Management Systems - Coding Is Meditation</title>
+        <title>DBMS Interview Questions - Coding Is Meditation</title>
       
     
     
@@ -63,16 +63,16 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="DBMS Database Management Systems - Coding Is Meditation" />
-<meta property="og:description" content="A structured guide covering fundamental to advanced DBMS concepts including relational databases, ACID properties, normalization, entity-relationship modeling, transaction management, and database architecture patterns." />
+<meta property="og:title" content="DBMS Interview Questions - Coding Is Meditation" />
+<meta property="og:description" content="Comprehensive DBMS interview guide covering 76 questions across 9 topics — DBMS fundamentals, ACID properties, normalization, SQL querying, database indexing, query optimization, security, replication, sharding, crash recovery, Write-Ahead Logging, and transaction concurrency including MVCC, deadlocks, and isolation levels." />
 <meta property="og:image" content="https://codingismeditation.github.io/assets/images/social/interview/dbms/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://codingismeditation.github.io/interview/dbms/index.html" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="DBMS Database Management Systems - Coding Is Meditation" />
-<meta property="twitter:description" content="A structured guide covering fundamental to advanced DBMS concepts including relational databases, ACID properties, normalization, entity-relationship modeling, transaction management, and database architecture patterns." />
+<meta property="twitter:title" content="DBMS Interview Questions - Coding Is Meditation" />
+<meta property="twitter:description" content="Comprehensive DBMS interview guide covering 76 questions across 9 topics — DBMS fundamentals, ACID properties, normalization, SQL querying, database indexing, query optimization, security, replication, sharding, crash recovery, Write-Ahead Logging, and transaction concurrency including MVCC, deadlocks, and isolation levels." />
 <meta property="twitter:image" content="https://codingismeditation.github.io/assets/images/social/interview/dbms/index.png" />
 </head>
   
@@ -128,7 +128,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              DBMS Database Management Systems
+              DBMS Interview Questions
             
           </span>
         </div>
@@ -904,6 +904,746 @@
     <span class="md-ellipsis">
       
         18. Explain the difference between a 2-tier and 3-tier architecture in a DBMS.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dbms-indexing-query-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DBMS Indexing &amp; Query Optimization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DBMS Indexing &amp; Query Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#19-what-is-selectivitycardinality-and-why-does-it-matter-for-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. What is selectivity/cardinality and why does it matter for indexing?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20-what-is-an-index-and-why-can-indexing-slow-down-insertupdatedelete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. What is an index and why can indexing slow down INSERT/UPDATE/DELETE?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21-difference-between-clustered-and-non-clustered-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        21. Difference between clustered and non-clustered index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-when-does-a-query-not-use-an-index-even-if-one-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        22. When does a query not use an index even if one exists?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-what-is-a-composite-index-and-the-leftmost-prefix-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        23. What is a composite index and the leftmost prefix rule?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-what-is-a-covering-index-and-how-does-it-reduce-table-lookups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        24. What is a covering index and how does it reduce table lookups?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-what-is-an-execution-plan-and-what-do-you-check-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        25. What is an execution plan and what do you check first?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-index-scan-vs-index-seek-and-when-they-occur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        26. Index scan vs index seek and when they occur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-what-is-index-fragmentation-or-bloat-and-its-impact" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        27. What is index fragmentation or bloat and its impact?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-common-production-reasons-for-slow-queries-and-debugging-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        28. Common production reasons for slow queries and debugging flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dbms-security-governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DBMS Security &amp; Governance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DBMS Security &amp; Governance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#29-risk-of-giving-apps-superuser-db-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        29. Risk of giving apps superuser DB permissions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#30-what-is-sql-injection-and-how-do-parameterized-queries-prevent-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        30. What is SQL injection and how do parameterized queries prevent it?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31-db-authentication-vs-authorization-and-roles-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        31. DB authentication vs authorization and roles in practice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-what-is-row-level-security-and-a-real-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        32. What is row-level security and a real use-case?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-encryption-at-rest-vs-encryption-in-transit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        33. Encryption at rest vs encryption in transit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-how-do-you-store-db-credentials-safely" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        34. How do you store DB credentials safely?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-what-does-least-privilege-mean-in-db-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        35. What does least privilege mean in DB access control?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-what-is-auditing-and-what-should-be-logged" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        36. What is auditing and what should be logged?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-how-do-you-protect-pii-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        37. How do you protect PII data?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dbms-sql-querying" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DBMS SQL &amp; Querying
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DBMS SQL &amp; Querying">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#38-difference-between-where-and-having" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        38. Difference between WHERE and HAVING
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39-inner-join-vs-left-join-and-when-left-join-behaves-like-inner-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        39. INNER JOIN vs LEFT JOIN and when LEFT JOIN behaves like INNER JOIN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#40-what-causes-duplicate-rows-after-a-join-and-how-to-fix-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        40. What causes duplicate rows after a JOIN, and how to fix it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#41-what-is-a-correlated-subquery-and-when-is-it-slower-than-a-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        41. What is a correlated subquery, and when is it slower than a JOIN?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-union-vs-union-all-from-a-performance-viewpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        42. UNION vs UNION ALL from a performance viewpoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-how-to-write-top-n-per-group-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        43. How to write Top-N per group queries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-what-is-a-cte-and-how-it-differs-from-a-subquery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        44. What is a CTE and how it differs from a subquery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-what-is-a-view-and-when-should-you-avoid-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        45. What is a VIEW and when should you avoid it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-what-is-a-materialized-view-and-its-trade-offs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        46. What is a materialized view and its trade-offs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replication-sharding-distributed-db-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replication, Sharding &amp; Distributed DB Concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Replication, Sharding &amp; Distributed DB Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#47-what-is-partitioning-or-sharding-and-when-should-you-shard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        47. What is partitioning or sharding and when should you shard?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#48-what-is-replication-lag-and-how-should-apps-handle-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        48. What is replication lag and how should apps handle it?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#49-leaderfollower-vs-multi-leader-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        49. Leader–follower vs multi-leader replication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#50-what-is-replication-and-why-do-teams-add-read-replicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        50. What is replication, and why do teams add read replicas?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#51-hash-based-vs-range-based-sharding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        51. Hash-based vs range-based sharding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-what-is-a-hot-shard-or-partition-and-how-do-you-mitigate-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        52. What is a hot shard or partition and how do you mitigate it?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-what-is-eventual-consistency-in-simple-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        53. What is eventual consistency in simple terms?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-strong-reads-vs-stale-reads-and-when-to-use-stale-reads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        54. Strong reads vs stale reads and when to use stale reads
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-why-are-distributed-transactions-hard-and-how-do-teams-avoid-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        55. Why are distributed transactions hard and how do teams avoid them?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-designing-a-db-setup-for-multi-region-high-availability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        56. Designing a DB setup for multi-region high availability
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-logging-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage, Logging &amp; Recovery
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage, Logging &amp; Recovery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#57-how-do-you-design-safe-schema-migrations-with-minimal-downtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        57. How do you design safe schema migrations with minimal downtime?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58-what-are-rpo-and-rto-and-why-do-interviewers-ask-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        58. What are RPO and RTO and why do interviewers ask them?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#59-difference-between-replication-and-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        59. Difference between replication and backup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#60-what-happens-during-crash-recovery-high-level-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        60. What happens during crash recovery (high-level steps)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#61-redo-log-vs-undo-log-conceptual-difference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        61. Redo log vs undo log (conceptual difference)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-what-are-checkpoints-and-how-do-they-reduce-recovery-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        62. What are checkpoints and how do they reduce recovery time?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-what-is-point-in-time-recovery-pitr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        63. What is Point-in-Time Recovery (PITR)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-full-vs-incremental-backups-and-when-to-use-each" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        64. Full vs incremental backups and when to use each
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-difference-between-logical-backup-and-physical-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        65. Difference between logical backup and physical backup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#66-what-is-write-ahead-logging-wal-and-why-is-it-critical-for-durability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        66. What is Write-Ahead Logging (WAL) and why is it critical for durability?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transactions-isolation-concurrency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transactions, Isolation &amp; Concurrency
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transactions, Isolation &amp; Concurrency">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#67-when-should-you-use-a-read-only-transaction-or-snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        67. When should you use a read-only transaction or snapshot?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#68-what-is-a-transaction-and-what-does-autocommit-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        68. What is a transaction and what does autocommit mean?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#69-explain-the-four-isolation-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        69. Explain the four isolation levels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#70-dirty-read-non-repeatable-read-and-phantom-read" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        70. Dirty read, non-repeatable read, and phantom read
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#71-what-is-a-lost-update-and-how-do-you-prevent-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        71. What is a lost update and how do you prevent it?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-optimistic-locking-vs-pessimistic-locking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        72. Optimistic locking vs pessimistic locking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-what-is-mvcc-and-how-does-it-improve-read-concurrency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        73. What is MVCC and how does it improve read concurrency?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-what-is-a-deadlock-and-how-do-databases-resolve-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        74. What is a deadlock and how do databases resolve it?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-what-is-lock-escalation-and-why-can-it-slow-systems-down" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        75. What is lock escalation and why can it slow systems down?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-what-is-write-skew-and-why-is-it-tricky" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        76. What is write skew and why is it tricky?
       
     </span>
   </a>
@@ -1715,15 +2455,18 @@
     subgraph TwoTier["2-Tier Architecture"]
         C1[Client Application&lt;br/&gt;Presentation + Business Logic]
         D1[(Database Server&lt;br/&gt;Data Layer)]
-        C1 &lt;--&gt; D1
+        C1 --&gt; D1
+        D1 --&gt; C1
     end
 
     subgraph ThreeTier["3-Tier Architecture"]
         C2[Client Application&lt;br/&gt;Presentation Layer]
-        M[Middleware/Application Server&lt;br/&gt;Business Logic Layer]
+        M[Middleware / Application Server&lt;br/&gt;Business Logic Layer]
         D2[(Database Server&lt;br/&gt;Data Layer)]
-        C2 &lt;--&gt; M
-        M &lt;--&gt; D2
+        C2 --&gt; M
+        M --&gt; C2
+        M --&gt; D2
+        D2 --&gt; M
     end
 
     style C1 fill:#2c5282,stroke:#4a90e2,color:#fff
@@ -1733,196 +2476,1027 @@
     style D2 fill:#1a365d,stroke:#4a90e2,color:#fff
     style TwoTier fill:#1e293b,stroke:#4a90e2,color:#fff
     style ThreeTier fill:#1e293b,stroke:#4a90e2,color:#fff</code></pre>
+<hr />
+<h2 id="dbms-indexing-query-optimization">DBMS Indexing &amp; Query Optimization</h2>
+<h3 id="19-what-is-selectivitycardinality-and-why-does-it-matter-for-indexing">19. What is selectivity/cardinality and why does it matter for indexing?</h3>
+<ul>
+<li><strong>Selectivity</strong> refers to how unique the values in a column are.</li>
+<li><strong>High selectivity</strong> means most values are unique (e.g., user IDs). <strong>Low selectivity</strong> means many rows share the same value (e.g., status flags).</li>
+<li>Indexes work best on <strong>high-selectivity columns</strong>. Indexing low-selectivity columns often gives little benefit.</li>
+<li>Understanding data distribution helps decide which columns should be indexed.</li>
+</ul>
+<h3 id="20-what-is-an-index-and-why-can-indexing-slow-down-insertupdatedelete">20. What is an index and why can indexing slow down INSERT/UPDATE/DELETE?</h3>
+<ul>
+<li>An <strong>index</strong> is a data structure that helps the database find rows faster without scanning the full table.</li>
+<li>It improves <strong>read performance</strong> by reducing the amount of data searched.</li>
+<li>However, every time you insert, update, or delete data, the index also needs to be updated.</li>
+<li>This <strong>extra write overhead</strong> slows down write operations. The more indexes a table has, the slower writes become.</li>
+<li>Indexing is always a balance between <strong>read speed</strong> and <strong>write performance</strong>.</li>
+</ul>
+<h3 id="21-difference-between-clustered-and-non-clustered-index">21. Difference between clustered and non-clustered index</h3>
+<ul>
+<li><strong>Clustered Index:</strong> Defines the physical order of data in the table. A table can have <strong>only one</strong> clustered index. Faster for range queries.</li>
+<li><strong>Non-Clustered Index:</strong> Stores a separate structure that points to the actual rows. Does not change how data is stored on disk. Better for specific lookups.</li>
+<li>Choosing the wrong type can lead to inefficient queries.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    subgraph CI["Clustered Index"]
+        direction TB
+        CD[(Table Data\nordered by index key)] --&gt; CR1[Row 1: id=1]
+        CD --&gt; CR2[Row 2: id=2]
+        CD --&gt; CR3[Row 3: id=3]
+    end
+    subgraph NCI["Non-Clustered Index"]
+        direction TB
+        NI[Index Structure\nsorted by key] --&gt; P1[Pointer → Row A]
+        NI --&gt; P2[Pointer → Row B]
+        NI --&gt; P3[Pointer → Row C]
+        P1 --&gt; ND[(Table Data\nunordered)]
+        P2 --&gt; ND
+        P3 --&gt; ND
+    end
+    style CI fill:#1e3a5f,stroke:#4a90e2,color:#fff
+    style NCI fill:#1a365d,stroke:#4a90e2,color:#fff
+    style CD fill:#2c5282,stroke:#4a90e2,color:#fff
+    style ND fill:#2c5282,stroke:#4a90e2,color:#fff
+    style NI fill:#744210,stroke:#ed8936,color:#fff</code></pre>
+<h3 id="22-when-does-a-query-not-use-an-index-even-if-one-exists">22. When does a query not use an index even if one exists?</h3>
+<ul>
+<li>The query optimizer thinks a <strong>full table scan is faster</strong> (e.g., when a large percentage of rows match the condition).</li>
+<li>Using <strong>functions on indexed columns</strong> can prevent index usage.</li>
+<li><strong>Mismatched data types</strong> or implicit conversions can break index access.</li>
+<li>Poorly written queries confuse the optimizer.</li>
+</ul>
+<h3 id="23-what-is-a-composite-index-and-the-leftmost-prefix-rule">23. What is a composite index and the leftmost prefix rule?</h3>
+<ul>
+<li>A <strong>composite index</strong> is an index created on <strong>multiple columns</strong> together.</li>
+<li>The <strong>leftmost prefix rule</strong> means the index is used only if the query filters starting from the first column.</li>
+<li><em>Example:</em> An index on <code>(user_id, order_date)</code> works for queries filtering by <code>user_id</code>, but <strong>not</strong> for queries filtering only by <code>order_date</code>.</li>
+<li>Always match index column order with real query usage.</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+    IDX["Composite Index\n(user_id, order_date, amount)"]
+    IDX --&gt; Q1["WHERE user_id = 5\n✅ Uses index"]
+    IDX --&gt; Q2["WHERE user_id = 5\nAND order_date = '2024-01-01'\n✅ Uses index"]
+    IDX --&gt; Q3["WHERE user_id = 5\nAND order_date = '2024-01-01'\nAND amount &gt; 100\n✅ Uses index"]
+    IDX --&gt; Q4["WHERE order_date = '2024-01-01'\n❌ Skips index\n(no leftmost prefix)"]
+    IDX --&gt; Q5["WHERE amount &gt; 100\n❌ Skips index\n(no leftmost prefix)"]
+    style IDX fill:#744210,stroke:#ed8936,color:#fff
+    style Q1 fill:#276749,stroke:#48bb78,color:#fff
+    style Q2 fill:#276749,stroke:#48bb78,color:#fff
+    style Q3 fill:#276749,stroke:#48bb78,color:#fff
+    style Q4 fill:#742a2a,stroke:#f56565,color:#fff
+    style Q5 fill:#742a2a,stroke:#f56565,color:#fff</code></pre>
+<h3 id="24-what-is-a-covering-index-and-how-does-it-reduce-table-lookups">24. What is a covering index and how does it reduce table lookups?</h3>
+<ul>
+<li>A <strong>covering index</strong> contains <strong>all the columns needed by a query</strong>.</li>
+<li>This allows the database to fetch results directly from the index <strong>without accessing the table</strong>, resulting in fewer disk reads.</li>
+<li>Especially useful for <strong>read-heavy/reporting queries</strong>.</li>
+<li>Trade-off: They increase index size and slow down writes.</li>
+</ul>
+<h3 id="25-what-is-an-execution-plan-and-what-do-you-check-first">25. What is an execution plan and what do you check first?</h3>
+<ul>
+<li>An <strong>execution plan</strong> shows how the database executes a query step by step — which indexes are used, how tables are joined, etc.</li>
+<li><strong>First checks:</strong><ul>
+<li>Are <strong>indexes being used</strong> or ignored?</li>
+<li>Are there <strong>full table scans</strong> on large tables?</li>
+<li>What are the <strong>estimated vs actual row counts</strong>?</li>
+</ul>
+</li>
+<li>A bad execution plan usually points to missing or incorrect indexes.</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+    Q([Run Query]) --&gt; EP[Get Execution Plan]
+    EP --&gt; C1{Index Used?}
+    C1 --&gt;|Yes| C2{Full Table Scan\non Large Table?}
+    C1 --&gt;|No| Fix1[Add or Fix Index]
+    C2 --&gt;|No| C3{Estimated vs Actual\nRow Count Match?}
+    C2 --&gt;|Yes| Fix2[Rewrite Query or\nAdd Index]
+    C3 --&gt;|Yes| OK([Plan is Healthy])
+    C3 --&gt;|No| Fix3[Update Statistics\nor Rewrite Query]
+    style Q fill:#2d3748,stroke:#4a90e2,color:#fff
+    style EP fill:#2c5282,stroke:#4a90e2,color:#fff
+    style OK fill:#276749,stroke:#48bb78,color:#fff
+    style Fix1 fill:#742a2a,stroke:#f56565,color:#fff
+    style Fix2 fill:#742a2a,stroke:#f56565,color:#fff
+    style Fix3 fill:#744210,stroke:#ed8936,color:#fff</code></pre>
+<h3 id="26-index-scan-vs-index-seek-and-when-they-occur">26. Index scan vs index seek and when they occur</h3>
+<ul>
+<li><strong>Index Seek:</strong> The database jumps directly to matching rows using the index. Fast and efficient. Indicates good indexing and selective filters.</li>
+<li><strong>Index Scan:</strong> The database scans a large part or all of the index. Happens when many rows match the condition.</li>
+<li>Frequent scans on large datasets can hurt performance.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    subgraph Seek["Index Seek ✅ (Fast)"]
+        direction TB
+        SK1[Index Root] --&gt; SK2[Branch Node]
+        SK2 --&gt; SK3[Target Leaf]
+        SK3 --&gt; SK4["Matching Row\n(Direct Jump)"]
+    end
+    subgraph Scan["Index Scan ⚠️ (Slower)"]
+        direction TB
+        SC1[Index Start] --&gt; SC2[Leaf 1]
+        SC2 --&gt; SC3[Leaf 2]
+        SC3 --&gt; SC4[Leaf 3]
+        SC4 --&gt; SC5["... N Leaves\n(Full Traversal)"]
+    end
+    style Seek fill:#1e3a5f,stroke:#48bb78,color:#fff
+    style Scan fill:#1e293b,stroke:#ed8936,color:#fff
+    style SK4 fill:#276749,stroke:#48bb78,color:#fff
+    style SC5 fill:#744210,stroke:#ed8936,color:#fff</code></pre>
+<h3 id="27-what-is-index-fragmentation-or-bloat-and-its-impact">27. What is index fragmentation or bloat and its impact?</h3>
+<ul>
+<li><strong>Index fragmentation</strong> happens when index pages become disorganized over time due to frequent inserts, updates, and deletes.</li>
+<li>Fragmented indexes require <strong>more disk reads</strong>, causing query performance to slowly degrade.</li>
+<li><strong>Fix:</strong> Rebuilding or reorganizing indexes. Regular maintenance is important for long-running production systems.</li>
+</ul>
+<h3 id="28-common-production-reasons-for-slow-queries-and-debugging-flow">28. Common production reasons for slow queries and debugging flow</h3>
+<ul>
+<li>Slow queries are often caused by <strong>missing indexes</strong>, <strong>bad joins</strong>, or <strong>large data growth</strong>.</li>
+<li><strong>Debugging steps:</strong><ol>
+<li>Check query execution time and execution plans.</li>
+<li>Look for full scans, high I/O, or blocking locks.</li>
+<li>Tune indexes to fix most issues.</li>
+</ol>
+</li>
+<li>Performance debugging is about <strong>data size</strong>, not just SQL syntax.</li>
+</ul>
+<hr />
+<h2 id="dbms-security-governance">DBMS Security &amp; Governance</h2>
+<h3 id="29-risk-of-giving-apps-superuser-db-permissions">29. Risk of giving apps superuser DB permissions</h3>
+<ul>
+<li>Superuser access allows full control over the database.</li>
+<li>If an app is compromised, attackers gain <strong>unlimited power</strong> — leading to data loss or system damage.</li>
+<li>It also increases the impact of bugs or bad queries.</li>
+<li><strong>Best practice:</strong> Production apps should <strong>never</strong> use superuser accounts. Limiting permissions reduces risk significantly.</li>
+</ul>
+<h3 id="30-what-is-sql-injection-and-how-do-parameterized-queries-prevent-it">30. What is SQL injection and how do parameterized queries prevent it?</h3>
+<ul>
+<li><strong>SQL Injection</strong> happens when user input is treated as part of a SQL command, allowing attackers to modify the query to access or change data.</li>
+<li><strong>Parameterized queries</strong> separate SQL logic from user input — the database treats inputs <strong>only as values</strong>, not executable code.</li>
+<li>This completely blocks injection attacks and is the safest, most common defense.</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+    subgraph Unsafe["❌ SQL Injection Vulnerable"]
+        U1[User Input: '\' OR 1=1 --'] --&gt; U2["Query: SELECT * FROM users\nWHERE name = '' OR 1=1 --'"]
+        U2 --&gt; U3["Returns ALL rows\n🔓 Data breach!"]
+    end
+    subgraph Safe["✅ Parameterized Query"]
+        S1[User Input: '\' OR 1=1 --'] --&gt; S2["Query: SELECT * FROM users\nWHERE name = ?"]
+        S2 --&gt; S3[DB treats input as literal value]
+        S3 --&gt; S4["Returns 0 rows\n🔒 Safe"]
+    end
+    style Unsafe fill:#742a2a,stroke:#f56565,color:#fff
+    style Safe fill:#1e3a5f,stroke:#48bb78,color:#fff
+    style U3 fill:#742a2a,stroke:#f56565,color:#fff
+    style S4 fill:#276749,stroke:#48bb78,color:#fff</code></pre>
+<h3 id="31-db-authentication-vs-authorization-and-roles-in-practice">31. DB authentication vs authorization and roles in practice</h3>
+<ul>
+<li><strong>Authentication:</strong> Checks <em>who you are</em> (username/password).</li>
+<li><strong>Authorization:</strong> Decides <em>what actions you are allowed</em> to perform.</li>
+<li><strong>Roles</strong> group permissions (read, write, admin) and are assigned to users instead of individual privileges.</li>
+<li>This makes access easier to manage and audit.</li>
+</ul>
+<h3 id="32-what-is-row-level-security-and-a-real-use-case">32. What is row-level security and a real use-case?</h3>
+<ul>
+<li><strong>Row-level security</strong> restricts which rows a user can see in a table — the same query returns different results for different users.</li>
+<li><strong>Use-case:</strong> <strong>Multi-tenant systems</strong> where each customer sees only their own data.</li>
+<li>The logic is enforced by the database itself, preventing accidental data leaks at the app layer.</li>
+</ul>
+<h3 id="33-encryption-at-rest-vs-encryption-in-transit">33. Encryption at rest vs encryption in transit</h3>
+<ul>
+<li><strong>Encryption at Rest:</strong> Protects <strong>data stored on disk</strong>. Prevents data theft if disks or backups are accessed.</li>
+<li><strong>Encryption in Transit:</strong> Protects <strong>data moving</strong> between the app and database (e.g., using TLS/SSL).</li>
+<li>Both are required for full security — one does not replace the other.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    App[Application] --&gt;|TLS/SSL Encrypted\nEncryption in Transit| DB[(Database Server)]
+    DB --&gt;|Encrypted at Rest\non disk &amp; backups| Disk[💾 Disk / Storage]
+    style App fill:#2c5282,stroke:#4a90e2,color:#fff
+    style DB fill:#1a365d,stroke:#4a90e2,color:#fff
+    style Disk fill:#744210,stroke:#ed8936,color:#fff</code></pre>
+<h3 id="34-how-do-you-store-db-credentials-safely">34. How do you store DB credentials safely?</h3>
+<ul>
+<li>DB credentials should <strong>never</strong> be hardcoded in source code.</li>
+<li>Stored in a <strong>secrets manager</strong> or secure vault; applications fetch credentials at runtime.</li>
+<li>Access is controlled using IAM or service identities.</li>
+<li>Secrets can be rotated without code changes, reducing the risk of leaks.</li>
+</ul>
+<h3 id="35-what-does-least-privilege-mean-in-db-access-control">35. What does least privilege mean in DB access control?</h3>
+<ul>
+<li><strong>Least privilege</strong> means giving <strong>only the permissions strictly required</strong>.</li>
+<li>Applications should not have admin or schema-altering access; read-only users should not be able to write data.</li>
+<li>This limits damage if credentials are compromised and reduces the chance of human error.</li>
+</ul>
+<h3 id="36-what-is-auditing-and-what-should-be-logged">36. What is auditing and what should be logged?</h3>
+<ul>
+<li><strong>Auditing</strong> tracks important actions performed in the database.</li>
+<li><strong>What to log:</strong> Logins, permission changes, schema updates, and sensitive data access.</li>
+<li>Audit logs help in <strong>security investigations and compliance</strong>. They must be protected from tampering.</li>
+</ul>
+<h3 id="37-how-do-you-protect-pii-data">37. How do you protect PII data?</h3>
+<ul>
+<li>PII can be protected using <strong>masking</strong>, <strong>tokenization</strong>, or <strong>encryption</strong>.</li>
+<li><strong>Masking:</strong> Hides parts of the data for non-privileged users.</li>
+<li><strong>Tokenization:</strong> Replaces sensitive values with safe references.</li>
+<li><strong>Encryption:</strong> Protects data at rest and in backups.</li>
+<li>The goal is minimizing exposure by using the right technique for each access need.</li>
+</ul>
+<hr />
+<h2 id="dbms-sql-querying">DBMS SQL &amp; Querying</h2>
+<h3 id="38-difference-between-where-and-having">38. Difference between WHERE and HAVING</h3>
+<ul>
+<li><strong>WHERE</strong> filters rows <strong>before</strong> any grouping or aggregation. It works on individual records and <strong>cannot</strong> use aggregate functions.</li>
+<li><strong>HAVING</strong> is applied <strong>after</strong> <code>GROUP BY</code> and is meant for filtering aggregated results.</li>
+<li><em>Example:</em> Filter orders by status → use <code>WHERE</code>. Filter customers with total orders &gt; 5 → use <code>HAVING</code>.</li>
+<li>A good rule: <strong>filter early using WHERE</strong> whenever possible.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    T[(Raw Table Rows)] --&gt; W[WHERE Filter\nearly, row-by-row]
+    W --&gt; GB[GROUP BY]
+    GB --&gt; AGG[Aggregate\nCOUNT / SUM / AVG]
+    AGG --&gt; H[HAVING Filter\non aggregated results]
+    H --&gt; R([Result Set])
+    style T fill:#1a365d,stroke:#4a90e2,color:#fff
+    style W fill:#744210,stroke:#ed8936,color:#fff
+    style GB fill:#2c5282,stroke:#4a90e2,color:#fff
+    style AGG fill:#2c5282,stroke:#4a90e2,color:#fff
+    style H fill:#6a1b9a,stroke:#ce93d8,color:#fff
+    style R fill:#276749,stroke:#48bb78,color:#fff</code></pre>
+<h3 id="39-inner-join-vs-left-join-and-when-left-join-behaves-like-inner-join">39. INNER JOIN vs LEFT JOIN and when LEFT JOIN behaves like INNER JOIN</h3>
+<ul>
+<li><strong>INNER JOIN:</strong> Returns only rows that exist in <strong>both</strong> tables.</li>
+<li><strong>LEFT JOIN:</strong> Returns all rows from the <strong>left table</strong>, even if there is no matching row on the right side.</li>
+<li><strong>Gotcha:</strong> A LEFT JOIN can accidentally behave like an INNER JOIN if you add conditions on the right table in the <code>WHERE</code> clause (removes NULL rows). Fix: put right-table conditions inside the <code>ON</code> clause instead.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    subgraph IJ["INNER JOIN"]
+        direction LR
+        LA([Table A]) --&gt; AB([Matching Rows Only])
+        LB([Table B]) --&gt; AB
+    end
+    subgraph LJ["LEFT JOIN"]
+        direction LR
+        LL([All of Table A]) --&gt; LJ2([Matched Rows])
+        LL --&gt; LN([Unmatched rows: NULL on right])
+        LB2([Table B]) --&gt; LJ2
+    end
+    style IJ fill:#1e3a5f,stroke:#4a90e2,color:#fff
+    style LJ fill:#1a365d,stroke:#48bb78,color:#fff
+    style AB fill:#2c5282,stroke:#4a90e2,color:#fff
+    style LJ2 fill:#276749,stroke:#48bb78,color:#fff
+    style LN fill:#2d3748,stroke:#4a90e2,color:#fff</code></pre>
+<h3 id="40-what-causes-duplicate-rows-after-a-join-and-how-to-fix-it">40. What causes duplicate rows after a JOIN, and how to fix it</h3>
+<ul>
+<li>Duplicate rows appear when one row in a table matches <strong>multiple rows</strong> in another (one-to-many relationships).</li>
+<li><strong>Fixes:</strong><ul>
+<li>Aggregate data before joining.</li>
+<li>Ensure you are joining on the correct keys.</li>
+<li>Use <code>DISTINCT</code> cautiously (it can hide real data issues).</li>
+</ul>
+</li>
+<li>Understanding the data structure is more important than forcing uniqueness.</li>
+</ul>
+<h3 id="41-what-is-a-correlated-subquery-and-when-is-it-slower-than-a-join">41. What is a correlated subquery, and when is it slower than a JOIN?</h3>
+<ul>
+<li>A <strong>correlated subquery</strong> depends on values from the outer query and runs <strong>once for each row</strong> returned by the main query.</li>
+<li>Because of this repeated execution, it can be <strong>slow on large datasets</strong>.</li>
+<li>In many cases, the same logic can be rewritten using a <code>JOIN</code>, which executes more efficiently.</li>
+<li>Best avoided in high-volume production queries.</li>
+</ul>
+<h3 id="42-union-vs-union-all-from-a-performance-viewpoint">42. UNION vs UNION ALL from a performance viewpoint</h3>
+<ul>
+<li><strong>UNION:</strong> Combines results and <strong>removes duplicate rows</strong>. Requires extra sorting/comparison — slower.</li>
+<li><strong>UNION ALL:</strong> Appends results <strong>without checking for duplicates</strong> — faster and uses fewer resources.</li>
+<li>If datasets do not overlap, <strong>always prefer <code>UNION ALL</code></strong>.</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+    Q1[Query 1 Results] --&gt; U{UNION Type?}
+    Q2[Query 2 Results] --&gt; U
+    U --&gt;|UNION| SORT[Sort + Deduplicate\nExtra overhead ⚠️]
+    U --&gt;|UNION ALL| FAST[Direct Append\nNo deduplication ✅]
+    SORT --&gt; R1([Final Result\nNo duplicates])
+    FAST --&gt; R2([Final Result\nMay have duplicates])
+    style U fill:#2c5282,stroke:#4a90e2,color:#fff
+    style SORT fill:#744210,stroke:#ed8936,color:#fff
+    style FAST fill:#276749,stroke:#48bb78,color:#fff
+    style R1 fill:#2d3748,stroke:#4a90e2,color:#fff
+    style R2 fill:#2d3748,stroke:#4a90e2,color:#fff</code></pre>
+<h3 id="43-how-to-write-top-n-per-group-queries">43. How to write Top-N per group queries</h3>
+<ul>
+<li>Use <strong>window functions</strong> like <code>ROW_NUMBER()</code> with <code>PARTITION BY</code> to rank rows within each group, then filter the top N.</li>
+<li>Alternative: Use a correlated subquery comparing values within the same group (older databases).</li>
+<li>Window functions are clearer, faster, and easier to maintain in modern SQL.</li>
+</ul>
+<h3 id="44-what-is-a-cte-and-how-it-differs-from-a-subquery">44. What is a CTE and how it differs from a subquery</h3>
+<ul>
+<li>A <strong>CTE</strong> (Common Table Expression), written using the <code>WITH</code> clause, is a temporary named result set used within a query.</li>
+<li>Makes complex queries easier to <strong>read and maintain</strong> compared to nested subqueries.</li>
+<li>CTEs can be referenced <strong>multiple times</strong> in the same query.</li>
+<li><strong>Recursive CTEs</strong> handle hierarchical data (e.g., employee reporting structures).</li>
+</ul>
+<h3 id="45-what-is-a-view-and-when-should-you-avoid-it">45. What is a VIEW and when should you avoid it</h3>
+<ul>
+<li>A <strong>view</strong> is a stored SQL query that behaves like a virtual table. It simplifies complex queries and provides consistent data access.</li>
+<li>Views <strong>do not store data</strong> — the underlying query runs every time the view is accessed.</li>
+<li><strong>Avoid views</strong> for heavy calculations or frequently accessed large datasets, as they can hide inefficient SQL and make debugging harder.</li>
+</ul>
+<h3 id="46-what-is-a-materialized-view-and-its-trade-offs">46. What is a materialized view and its trade-offs</h3>
+<ul>
+<li>A <strong>materialized view</strong> stores the <strong>actual result</strong> of a query, making read operations very fast — useful for reporting and analytics.</li>
+<li><strong>Trade-offs:</strong> Data can become <strong>stale</strong> and needs to be refreshed (manually or on a schedule). Refreshing can be expensive.</li>
+<li>Best used when fast reads are more important than real-time accuracy.</li>
+</ul>
+<hr />
+<h2 id="replication-sharding-distributed-db-concepts">Replication, Sharding &amp; Distributed DB Concepts</h2>
+<h3 id="47-what-is-partitioning-or-sharding-and-when-should-you-shard">47. What is partitioning or sharding and when should you shard?</h3>
+<ul>
+<li><strong>Sharding</strong> splits data across multiple databases based on a key, distributing reads and writes to improve scalability.</li>
+<li>Used when a single database can no longer handle the load or data size.</li>
+<li><strong>Downsides:</strong> Increases system complexity; cross-shard queries become harder.</li>
+<li>Teams usually shard <strong>only after vertical scaling is no longer enough</strong>.</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+    App[Application] --&gt; Router[Shard Router / Proxy]
+    Router --&gt;|shard_key mod 3 = 0| S1[(Shard 1\nUser IDs 0,3,6...)]
+    Router --&gt;|shard_key mod 3 = 1| S2[(Shard 2\nUser IDs 1,4,7...)]
+    Router --&gt;|shard_key mod 3 = 2| S3[(Shard 3\nUser IDs 2,5,8...)]
+    style App fill:#2c5282,stroke:#4a90e2,color:#fff
+    style Router fill:#744210,stroke:#ed8936,color:#fff
+    style S1 fill:#1a365d,stroke:#4a90e2,color:#fff
+    style S2 fill:#1a365d,stroke:#4a90e2,color:#fff
+    style S3 fill:#1a365d,stroke:#4a90e2,color:#fff</code></pre>
+<h3 id="48-what-is-replication-lag-and-how-should-apps-handle-it">48. What is replication lag and how should apps handle it?</h3>
+<ul>
+<li><strong>Replication lag</strong> is the delay between when data is written on the primary and when it appears on replicas.</li>
+<li>Apps must <strong>not assume replicas are always up to date</strong>.</li>
+<li><strong>Critical reads</strong> should go to the primary database; <strong>non-critical reads</strong> can tolerate some delay.</li>
+<li>Handling lag correctly avoids user-facing inconsistencies.</li>
+</ul>
+<pre class="mermaid"><code>sequenceDiagram
+    participant App
+    participant Primary
+    participant Replica
+    App-&gt;&gt;Primary: WRITE (insert order)
+    Primary--&gt;&gt;App: OK
+    Note over Primary,Replica: Replication lag (ms to seconds)
+    App-&gt;&gt;Replica: READ (get order)
+    Replica--&gt;&gt;App: ⚠️ Stale / Missing row
+    Note over App: Critical reads should go to Primary
+    App-&gt;&gt;Primary: READ (critical)
+    Primary--&gt;&gt;App: ✅ Fresh data</code></pre>
+<h3 id="49-leaderfollower-vs-multi-leader-replication">49. Leader–follower vs multi-leader replication</h3>
+<ul>
+<li><strong>Leader–Follower:</strong> One node handles writes; others only replicate. Simpler and safer but has a <strong>single write bottleneck</strong>.</li>
+<li><strong>Multi-Leader:</strong> Allows writes on multiple nodes. Improves write availability but introduces <strong>conflict risks</strong> and added complexity.</li>
+<li>Most teams prefer leader–follower unless multi-region writes are required.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    subgraph LF["Leader-Follower"]
+        LFW[Leader\nWrites Only] --&gt;|Replicate| LFF1[Follower 1\nReads Only]
+        LFW --&gt;|Replicate| LFF2[Follower 2\nReads Only]
+    end
+    subgraph ML["Multi-Leader"]
+        ML1[Leader A\nWrites + Reads] --&gt;|Sync to B| ML2[Leader B\nWrites + Reads]
+        ML2 --&gt;|Sync to A| ML1
+        ML1 --&gt;|Replicate| MLF1[Follower]
+        ML2 --&gt;|Replicate| MLF2[Follower]
+    end
+    style LF fill:#1e3a5f,stroke:#4a90e2,color:#fff
+    style ML fill:#3b1f4e,stroke:#ce93d8,color:#fff
+    style LFW fill:#276749,stroke:#48bb78,color:#fff
+    style ML1 fill:#6a1b9a,stroke:#ce93d8,color:#fff
+    style ML2 fill:#6a1b9a,stroke:#ce93d8,color:#fff</code></pre>
+<h3 id="50-what-is-replication-and-why-do-teams-add-read-replicas">50. What is replication, and why do teams add read replicas?</h3>
+<ul>
+<li><strong>Replication</strong> means copying data from one database to one or more others.</li>
+<li><strong>Read replicas</strong> scale read traffic — reads go to replicas while writes go to the primary.</li>
+<li>This reduces load on the main system and also helps with availability if the primary has issues.</li>
+</ul>
+<h3 id="51-hash-based-vs-range-based-sharding">51. Hash-based vs range-based sharding</h3>
+<ul>
+<li><strong>Hash-based:</strong> Distributes data evenly using a hash function. Avoids hot spots but makes range queries harder.</li>
+<li><strong>Range-based:</strong> Groups data by value ranges (e.g., date or ID). Good for range queries but can cause uneven load (hot partitions).</li>
+<li>The choice depends on <strong>query patterns and workload characteristics</strong>.</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+    D[(All Data)] --&gt; S{Sharding Strategy}
+    S --&gt;|Hash-based| H1["Shard 1\nhash(key) mod 3 = 0"]
+    S --&gt;|Hash-based| H2["Shard 2\nhash(key) mod 3 = 1"]
+    S --&gt;|Hash-based| H3["Shard 3\nhash(key) mod 3 = 2"]
+    S --&gt;|Range-based| R1["Shard A\nID: 1 - 1000"]
+    S --&gt;|Range-based| R2["Shard B\nID: 1001 - 2000"]
+    S --&gt;|Range-based| R3["Shard C\nID: 2001+"]
+    style H1 fill:#276749,stroke:#48bb78,color:#fff
+    style H2 fill:#276749,stroke:#48bb78,color:#fff
+    style H3 fill:#276749,stroke:#48bb78,color:#fff
+    style R1 fill:#1565c0,stroke:#90caf9,color:#fff
+    style R2 fill:#1565c0,stroke:#90caf9,color:#fff
+    style R3 fill:#1565c0,stroke:#90caf9,color:#fff
+    style D fill:#2d3748,stroke:#4a90e2,color:#fff
+    style S fill:#2c5282,stroke:#4a90e2,color:#fff</code></pre>
+<h3 id="52-what-is-a-hot-shard-or-partition-and-how-do-you-mitigate-it">52. What is a hot shard or partition and how do you mitigate it?</h3>
+<ul>
+<li>A <strong>hot shard</strong> occurs when too much traffic hits a single shard due to skewed data or popular keys.</li>
+<li><strong>Mitigation:</strong> Better shard keys, adding randomness, splitting hot shards, or caching hot data.</li>
+<li>Monitoring is key to early detection.</li>
+</ul>
+<h3 id="53-what-is-eventual-consistency-in-simple-terms">53. What is eventual consistency in simple terms?</h3>
+<ul>
+<li><strong>Eventual consistency</strong> means data will become consistent <strong>over time</strong>, not immediately. Different nodes may temporarily show different values.</li>
+<li>The system prioritizes <strong>availability and performance</strong> over immediate accuracy.</li>
+<li>Works well for social feeds or analytics; <strong>not suitable</strong> for financial transactions.</li>
+</ul>
+<pre class="mermaid"><code>sequenceDiagram
+    participant User
+    participant NodeA
+    participant NodeB
+    User-&gt;&gt;NodeA: WRITE: likes = 100
+    NodeA--&gt;&gt;User: OK
+    User-&gt;&gt;NodeB: READ: likes?
+    NodeB--&gt;&gt;User: 99 (stale — not yet synced)
+    Note over NodeA,NodeB: Replication in progress...
+    NodeA-&gt;&gt;NodeB: Sync: likes = 100
+    User-&gt;&gt;NodeB: READ: likes?
+    NodeB--&gt;&gt;User: ✅ 100 (eventually consistent)</code></pre>
+<h3 id="54-strong-reads-vs-stale-reads-and-when-to-use-stale-reads">54. Strong reads vs stale reads and when to use stale reads</h3>
+<ul>
+<li><strong>Strong reads:</strong> Always return the <strong>latest committed data</strong>, usually from the primary. Accurate but slower.</li>
+<li><strong>Stale reads:</strong> May return <strong>slightly outdated data</strong> from replicas. Faster and more scalable.</li>
+<li>Stale reads are acceptable for non-critical data like dashboards. Choose based on <strong>business correctness needs</strong>.</li>
+</ul>
+<h3 id="55-why-are-distributed-transactions-hard-and-how-do-teams-avoid-them">55. Why are distributed transactions hard and how do teams avoid them?</h3>
+<ul>
+<li>Distributed transactions span multiple databases/services, can fail partially, and make error handling and recovery complex.</li>
+<li><strong>Two-phase commit</strong> is slow and fragile at scale.</li>
+<li>Teams avoid distributed transactions by redesigning workflows using <strong>event-driven systems</strong> and <strong>eventual consistency</strong> as common alternatives.</li>
+</ul>
+<h3 id="56-designing-a-db-setup-for-multi-region-high-availability">56. Designing a DB setup for multi-region high availability</h3>
+<ul>
+<li>Multi-region setups replicate data across geographic locations; one region acts as the primary for writes, others serve reads and act as failover targets.</li>
+<li><strong>Key requirements:</strong> Automated failover, health checks, and handling replication lag at the app level.</li>
+<li>The design balances <strong>availability, consistency, and cost</strong>.</li>
+</ul>
+<hr />
+<h2 id="storage-logging-recovery">Storage, Logging &amp; Recovery</h2>
+<h3 id="57-how-do-you-design-safe-schema-migrations-with-minimal-downtime">57. How do you design safe schema migrations with minimal downtime?</h3>
+<ul>
+<li>Safe migrations <strong>avoid locking tables</strong> for long periods.</li>
+<li>Use <strong>small, backward-compatible steps</strong>: add new columns first, update code, then remove old columns later.</li>
+<li><strong>Test migrations on production-like data</strong> before rollout to reduce downtime and rollback risk.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    S1["Step 1:\nAdd new column\n(nullable)"] --&gt; S2["Step 2:\nDeploy new code\n(writes to both columns)"]
+    S2 --&gt; S3["Step 3:\nBackfill old rows"]
+    S3 --&gt; S4["Step 4:\nSwitch reads to new column"]
+    S4 --&gt; S5["Step 5:\nDrop old column"]
+    style S1 fill:#2c5282,stroke:#4a90e2,color:#fff
+    style S2 fill:#2c5282,stroke:#4a90e2,color:#fff
+    style S3 fill:#744210,stroke:#ed8936,color:#fff
+    style S4 fill:#276749,stroke:#48bb78,color:#fff
+    style S5 fill:#742a2a,stroke:#f56565,color:#fff</code></pre>
+<h3 id="58-what-are-rpo-and-rto-and-why-do-interviewers-ask-them">58. What are RPO and RTO and why do interviewers ask them?</h3>
+<ul>
+<li><strong>RPO (Recovery Point Objective):</strong> How much <strong>data loss</strong> is acceptable in a failure.</li>
+<li><strong>RTO (Recovery Time Objective):</strong> How long the <strong>system can stay down</strong>.</li>
+<li>These metrics connect database design to business requirements, showing you understand backups, recovery, and system reliability.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    Failure([Failure Event]) --&gt; |Time to restore| RTO
+    LastBackup([Last Backup]) --&gt; |Data loss window| RPO
+    RPO[RPO: Recovery Point Objective\nHow much data loss is OK?]
+    RTO[RTO: Recovery Time Objective\nHow long can system be down?]
+    RPO --&gt; Backup[Drives backup frequency]
+    RTO --&gt; HA[Drives HA and failover speed]
+    style Failure fill:#742a2a,stroke:#f56565,color:#fff
+    style LastBackup fill:#2c5282,stroke:#4a90e2,color:#fff
+    style RPO fill:#744210,stroke:#ed8936,color:#fff
+    style RTO fill:#6a1b9a,stroke:#ce93d8,color:#fff
+    style Backup fill:#276749,stroke:#48bb78,color:#fff
+    style HA fill:#276749,stroke:#48bb78,color:#fff</code></pre>
+<h3 id="59-difference-between-replication-and-backup">59. Difference between replication and backup</h3>
+<ul>
+<li><strong>Replication:</strong> Copies data <strong>continuously</strong> to another system for availability. Helps keep systems running but does <strong>not</strong> protect against bad data changes.</li>
+<li><strong>Backup:</strong> <strong>Snapshots</strong> taken at intervals for recovery. Allows restoring old correct data.</li>
+<li>Both are needed but serve <strong>different goals</strong>.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    Primary[(Primary DB)] --&gt;|Continuous Sync| Replica[(Replica\nHigh Availability)]
+    Primary --&gt;|Periodic Snapshot| Backup[(Backup\nPoint-in-Time Recovery)]
+    Replica --&gt;|Failover| Available([System Stays Up])
+    Backup --&gt;|Restore| Recovered([Data Corruption Fixed])
+    style Primary fill:#2c5282,stroke:#4a90e2,color:#fff
+    style Replica fill:#1a365d,stroke:#4a90e2,color:#fff
+    style Backup fill:#744210,stroke:#ed8936,color:#fff
+    style Available fill:#276749,stroke:#48bb78,color:#fff
+    style Recovered fill:#276749,stroke:#48bb78,color:#fff</code></pre>
+<h3 id="60-what-happens-during-crash-recovery-high-level-steps">60. What happens during crash recovery (high-level steps)?</h3>
+<ol>
+<li>The database reads the <strong>transaction logs</strong>.</li>
+<li>It <strong>redoes</strong> committed transactions that were not written to disk.</li>
+<li>It <strong>undoes</strong> uncommitted transactions to remove partial changes.</li>
+<li>This restores the database to a <strong>consistent state</strong> automatically when the database restarts.</li>
+</ol>
+<pre class="mermaid"><code>flowchart TD
+    Crash([System Crash]) --&gt; Start[DB Restarts]
+    Start --&gt; ReadLog[Read Transaction Logs]
+    ReadLog --&gt; Redo[REDO Phase\nReapply committed transactions\nnot yet on disk]
+    Redo --&gt; Undo[UNDO Phase\nRoll back uncommitted\ntransactions]
+    Undo --&gt; Consistent([DB is Consistent ✅])
+    style Crash fill:#742a2a,stroke:#f56565,color:#fff
+    style Start fill:#2c5282,stroke:#4a90e2,color:#fff
+    style ReadLog fill:#2c5282,stroke:#4a90e2,color:#fff
+    style Redo fill:#744210,stroke:#ed8936,color:#fff
+    style Undo fill:#6a1b9a,stroke:#ce93d8,color:#fff
+    style Consistent fill:#276749,stroke:#48bb78,color:#fff</code></pre>
+<h3 id="61-redo-log-vs-undo-log-conceptual-difference">61. Redo log vs undo log (conceptual difference)</h3>
+<ul>
+<li><strong>Redo Log:</strong> Records changes that need to be <strong>reapplied</strong> after a crash. Ensures <strong>durability</strong> of committed transactions.</li>
+<li><strong>Undo Log:</strong> Stores old values so changes can be <strong>rolled back</strong>. Ensures <strong>consistency</strong> when transactions fail.</li>
+<li>Both work together to keep data correct.</li>
+</ul>
+<h3 id="62-what-are-checkpoints-and-how-do-they-reduce-recovery-time">62. What are checkpoints and how do they reduce recovery time?</h3>
+<ul>
+<li><strong>Checkpoints</strong> flush modified data from memory to disk at regular intervals.</li>
+<li>After a crash, recovery starts from the <strong>last checkpoint</strong> instead of the beginning, significantly shortening startup time.</li>
+<li>Frequent checkpoints improve recovery speed but can add write overhead.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    T0([DB Start]) --&gt; CP1[Checkpoint 1]
+    CP1 --&gt; CP2[Checkpoint 2]
+    CP2 --&gt; CP3[Checkpoint 3]
+    CP3 --&gt; Crash([Crash ❌])
+    Crash --&gt; Restart[DB Restarts]
+    Restart --&gt;|Replay from CP3 only| CP3
+    CP3 --&gt; Recovered([Consistent State ✅])
+    style T0 fill:#2d3748,stroke:#4a90e2,color:#fff
+    style CP1 fill:#2c5282,stroke:#4a90e2,color:#fff
+    style CP2 fill:#2c5282,stroke:#4a90e2,color:#fff
+    style CP3 fill:#276749,stroke:#48bb78,color:#fff
+    style Crash fill:#742a2a,stroke:#f56565,color:#fff
+    style Restart fill:#744210,stroke:#ed8936,color:#fff
+    style Recovered fill:#276749,stroke:#48bb78,color:#fff</code></pre>
+<h3 id="63-what-is-point-in-time-recovery-pitr">63. What is Point-in-Time Recovery (PITR)?</h3>
+<ul>
+<li><strong>PITR</strong> allows restoring the database to an <strong>exact moment in the past</strong> using a full backup combined with transaction logs (e.g., WAL).</li>
+<li>Useful when data is <strong>accidentally deleted or corrupted</strong> — instead of restoring to the last backup, you recover just before the mistake.</li>
+<li>Essential for real-world failure recovery.</li>
+</ul>
+<h3 id="64-full-vs-incremental-backups-and-when-to-use-each">64. Full vs incremental backups and when to use each</h3>
+<ul>
+<li><strong>Full Backup:</strong> Captures the entire database. Simple to restore but takes more time and storage.</li>
+<li><strong>Incremental Backup:</strong> Stores only changes since the last backup. Faster and smaller but requires multiple steps to restore.</li>
+<li>Most production systems use a <strong>mix of both</strong> — full backups periodically, incremental backups frequently.</li>
+</ul>
+<h3 id="65-difference-between-logical-backup-and-physical-backup">65. Difference between logical backup and physical backup</h3>
+<ul>
+<li><strong>Logical Backup:</strong> Stores data as SQL statements or logical records. Portable across systems/versions; easier to inspect.</li>
+<li><strong>Physical Backup:</strong> Copies raw database files as they are on disk. Much faster to restore but less flexible.</li>
+<li>Physical backups are better for <strong>large databases</strong>; logical backups are better for <strong>portability</strong>.</li>
+</ul>
+<h3 id="66-what-is-write-ahead-logging-wal-and-why-is-it-critical-for-durability">66. What is Write-Ahead Logging (WAL) and why is it critical for durability?</h3>
+<ul>
+<li><strong>WAL</strong> means all changes are <strong>first written to a log before being applied</strong> to actual data files.</li>
+<li>Even if the system crashes, the database knows what changes were intended and can replay the log during recovery.</li>
+<li>WAL guarantees <strong>committed data is not lost</strong>. Without WAL, crashes could corrupt data permanently.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    TX([Transaction]) --&gt; WL[Write to WAL Log]
+    WL --&gt; DF[Apply to Data Files]
+    WL --&gt; Commit([Commit Success])
+    Crash([Crash!]) --&gt; Replay[Replay WAL on Restart]
+    Replay --&gt; Recover([Data Recovered ✅])
+    style TX fill:#2d3748,stroke:#4a90e2,color:#fff
+    style WL fill:#744210,stroke:#ed8936,color:#fff
+    style DF fill:#2c5282,stroke:#4a90e2,color:#fff
+    style Commit fill:#276749,stroke:#48bb78,color:#fff
+    style Crash fill:#742a2a,stroke:#f56565,color:#fff
+    style Replay fill:#744210,stroke:#ed8936,color:#fff
+    style Recover fill:#276749,stroke:#48bb78,color:#fff</code></pre>
+<hr />
+<h2 id="transactions-isolation-concurrency">Transactions, Isolation &amp; Concurrency</h2>
+<h3 id="67-when-should-you-use-a-read-only-transaction-or-snapshot">67. When should you use a read-only transaction or snapshot?</h3>
+<ul>
+<li><strong>Read-only transactions</strong> are useful when you need <strong>consistent data for reports</strong> — they show data as it existed at a specific time.</li>
+<li>They prevent data changes from affecting long-running reads while <strong>not blocking writers</strong>.</li>
+<li>This improves both concurrency and consistency.</li>
+</ul>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Report
+    participant DB
+    participant Writer
+    Report-&gt;&gt;DB: BEGIN READ ONLY (snapshot at T1)
+    Writer-&gt;&gt;DB: UPDATE orders SET status='shipped'
+    DB--&gt;&gt;Writer: OK (new version created)
+    Report-&gt;&gt;DB: SELECT * FROM orders
+    DB--&gt;&gt;Report: ✅ Returns data as of T1 (unaffected by write)
+    Report-&gt;&gt;DB: COMMIT</code></pre>
+<h3 id="68-what-is-a-transaction-and-what-does-autocommit-mean">68. What is a transaction and what does autocommit mean?</h3>
+<ul>
+<li>A <strong>transaction</strong> is a set of database operations treated as <strong>one logical unit</strong> — all succeed together or are all rolled back.</li>
+<li><strong>Autocommit</strong> means each statement is automatically committed as soon as it runs (every query is its own transaction).</li>
+<li>For multi-step operations, autocommit is usually <strong>turned off</strong>.</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+    subgraph AC["Autocommit ON"]
+        AS1[INSERT] --&gt; AC1([Auto Commit ✅])
+        AS2[UPDATE] --&gt; AC2([Auto Commit ✅])
+        AS3[DELETE] --&gt; AC3([Auto Commit ✅])
+    end
+    subgraph TX["Explicit Transaction"]
+        BEGIN([BEGIN]) --&gt; TS1[INSERT]
+        TS1 --&gt; TS2[UPDATE]
+        TS2 --&gt; TS3[DELETE]
+        TS3 --&gt; TXOK([COMMIT ✅ All succeed])
+        TS2 --&gt;|Error| TXFAIL([ROLLBACK ❌ All undone])
+    end
+    style AC fill:#1e3a5f,stroke:#4a90e2,color:#fff
+    style TX fill:#1a365d,stroke:#48bb78,color:#fff
+    style TXOK fill:#276749,stroke:#48bb78,color:#fff
+    style TXFAIL fill:#742a2a,stroke:#f56565,color:#fff</code></pre>
+<h3 id="69-explain-the-four-isolation-levels">69. Explain the four isolation levels</h3>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Read Uncommitted</strong></td>
+<td>Can read uncommitted data; can give incorrect results</td>
+</tr>
+<tr>
+<td><strong>Read Committed</strong></td>
+<td>Only committed data is visible; values can change between reads</td>
+</tr>
+<tr>
+<td><strong>Repeatable Read</strong></td>
+<td>Rows already read won't change during the transaction</td>
+</tr>
+<tr>
+<td><strong>Serializable</strong></td>
+<td>Strictest; behaves as if transactions run one by one</td>
+</tr>
+</tbody>
+</table>
+<p>Higher isolation reduces <strong>concurrency</strong> but improves <strong>consistency</strong>.</p>
+<pre class="mermaid"><code>flowchart LR
+    RU["Read Uncommitted\n❌ Dirty Reads possible"] --&gt; RC
+    RC["Read Committed\n✅ No Dirty Reads\n❌ Non-Repeatable Reads"] --&gt; RR
+    RR["Repeatable Read\n✅ No Non-Repeatable Reads\n❌ Phantom Reads possible"] --&gt; SER
+    SER["Serializable\n✅ No Anomalies\n🐢 Lowest Concurrency"]
+    style RU fill:#742a2a,stroke:#f56565,color:#fff
+    style RC fill:#744210,stroke:#ed8936,color:#fff
+    style RR fill:#1565c0,stroke:#90caf9,color:#fff
+    style SER fill:#276749,stroke:#48bb78,color:#fff</code></pre>
+<h3 id="70-dirty-read-non-repeatable-read-and-phantom-read">70. Dirty read, non-repeatable read, and phantom read</h3>
+<ul>
+<li><strong>Dirty Read:</strong> Reads uncommitted data that may be rolled back.</li>
+<li><strong>Non-Repeatable Read:</strong> Same row shows <strong>different values</strong> within a transaction (due to another transaction updating it).</li>
+<li><strong>Phantom Read:</strong> New rows appear in <strong>repeated queries</strong> with the same condition (due to another transaction inserting rows).</li>
+<li>Isolation levels exist to control these problems.</li>
+</ul>
+<pre class="mermaid"><code>sequenceDiagram
+    participant T1
+    participant DB
+    participant T2
+    Note over T1,T2: Dirty Read
+    T2-&gt;&gt;DB: UPDATE balance = 0 (not committed)
+    T1-&gt;&gt;DB: READ balance
+    DB--&gt;&gt;T1: 0 (dirty! T2 may rollback)
+    T2-&gt;&gt;DB: ROLLBACK
+    Note over T1,T2: Non-Repeatable Read
+    T1-&gt;&gt;DB: READ price = 100
+    T2-&gt;&gt;DB: UPDATE price = 200; COMMIT
+    T1-&gt;&gt;DB: READ price again
+    DB--&gt;&gt;T1: 200 (changed within T1!)
+    Note over T1,T2: Phantom Read
+    T1-&gt;&gt;DB: SELECT WHERE age &gt; 18 (5 rows)
+    T2-&gt;&gt;DB: INSERT new adult row; COMMIT
+    T1-&gt;&gt;DB: SELECT WHERE age &gt; 18
+    DB--&gt;&gt;T1: 6 rows (phantom appeared!)</code></pre>
+<h3 id="71-what-is-a-lost-update-and-how-do-you-prevent-it">71. What is a lost update and how do you prevent it?</h3>
+<ul>
+<li>A <strong>lost update</strong> happens when two transactions update the same data based on an old value — the second update overwrites the first.</li>
+<li><strong>Prevention:</strong> Use proper isolation levels, version checks, or <strong>optimistic locking</strong>.</li>
+</ul>
+<pre class="mermaid"><code>sequenceDiagram
+    participant T1
+    participant DB
+    participant T2
+    T1-&gt;&gt;DB: READ stock = 10
+    T2-&gt;&gt;DB: READ stock = 10
+    T1-&gt;&gt;DB: UPDATE stock = 10 - 3 = 7; COMMIT
+    T2-&gt;&gt;DB: UPDATE stock = 10 - 5 = 5; COMMIT
+    Note over DB: ❌ Lost Update! T1's deduction overwritten.\nActual: should be 2, result is 5.</code></pre>
+<h3 id="72-optimistic-locking-vs-pessimistic-locking">72. Optimistic locking vs pessimistic locking</h3>
+<ul>
+<li><strong>Optimistic Locking:</strong> Assumes conflicts are rare. Checks for changes before committing (via a version number or timestamp). Suits <strong>read-heavy systems</strong>.</li>
+<li><strong>Pessimistic Locking:</strong> Locks data upfront to block other transactions. Avoids conflicts but <strong>reduces concurrency</strong>.</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+    subgraph OPT["Optimistic Locking"]
+        OR[Read row + version=5] --&gt; OW["Modify data"]
+        OW --&gt; OC{"version still = 5?"}
+        OC --&gt;|Yes| OS([Commit ✅])
+        OC --&gt;|No| OF([Retry / Conflict ❌])
+    end
+    subgraph PESS["Pessimistic Locking"]
+        PL[Acquire Lock] --&gt; PR[Read row]
+        PR --&gt; PW[Modify data]
+        PW --&gt; PC([Commit + Release Lock ✅])
+        PL --&gt;|Others wait| PW2[Other T waits...]
+    end
+    style OPT fill:#1e3a5f,stroke:#4a90e2,color:#fff
+    style PESS fill:#1a365d,stroke:#4a90e2,color:#fff
+    style OS fill:#276749,stroke:#48bb78,color:#fff
+    style OF fill:#742a2a,stroke:#f56565,color:#fff
+    style PC fill:#276749,stroke:#48bb78,color:#fff</code></pre>
+<h3 id="73-what-is-mvcc-and-how-does-it-improve-read-concurrency">73. What is MVCC and how does it improve read concurrency?</h3>
+<ul>
+<li><strong>MVCC (Multi-Version Concurrency Control)</strong> allows multiple versions of data to exist simultaneously.</li>
+<li><strong>Readers</strong> see a consistent snapshot without <strong>blocking writers</strong>. Writers create new versions instead of modifying existing rows.</li>
+<li>This greatly improves performance under heavy read load. Old versions are cleaned up later.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    T1([Reader T1\nat snapshot T=100]) --&gt; V1["Reads row version\nv1: balance=500"]
+    T2([Writer T2]) --&gt; V2["Creates new version\nv2: balance=450"]
+    V2 --&gt; DB[(DB stores both versions\nv1 + v2)]
+    V1 --&gt; DB
+    DB --&gt; GC[Garbage Collector\ncleans old versions later]
+    style T1 fill:#276749,stroke:#48bb78,color:#fff
+    style T2 fill:#744210,stroke:#ed8936,color:#fff
+    style V1 fill:#2c5282,stroke:#4a90e2,color:#fff
+    style V2 fill:#6a1b9a,stroke:#ce93d8,color:#fff
+    style GC fill:#742a2a,stroke:#f56565,color:#fff</code></pre>
+<h3 id="74-what-is-a-deadlock-and-how-do-databases-resolve-it">74. What is a deadlock and how do databases resolve it?</h3>
+<ul>
+<li>A <strong>deadlock</strong> happens when transactions <strong>wait on each other's locks indefinitely</strong> — each holds a lock the other needs.</li>
+<li>Databases detect deadlocks by checking for <strong>wait cycles</strong> and resolve them by <strong>rolling back one transaction</strong>.</li>
+<li>The rolled-back transaction can then be retried.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    T1([Transaction T1]) --&gt;|Holds Lock on| RA[(Row A)]
+    T1 --&gt;|Waiting for| RB
+    T2([Transaction T2]) --&gt;|Holds Lock on| RB[(Row B)]
+    T2 --&gt;|Waiting for| RA
+    RA -.-&gt;|Blocked| T2
+    RB -.-&gt;|Blocked| T1
+    DETECT[DB Detects\nWait Cycle] --&gt; KILL[Rolls back T2]
+    KILL --&gt; RESOLVE([T1 Completes ✅])
+    style T1 fill:#2c5282,stroke:#4a90e2,color:#fff
+    style T2 fill:#6a1b9a,stroke:#ce93d8,color:#fff
+    style DETECT fill:#744210,stroke:#ed8936,color:#fff
+    style KILL fill:#742a2a,stroke:#f56565,color:#fff
+    style RESOLVE fill:#276749,stroke:#48bb78,color:#fff</code></pre>
+<h3 id="75-what-is-lock-escalation-and-why-can-it-slow-systems-down">75. What is lock escalation and why can it slow systems down?</h3>
+<ul>
+<li><strong>Lock escalation</strong> replaces many small locks with a larger lock (e.g., row-level locks become a table-level lock).</li>
+<li>This reduces lock overhead but <strong>blocks more queries</strong>, causing system-wide slowdowns under heavy load.</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+    RL1[Row Lock 1] --&gt; TL
+    RL2[Row Lock 2] --&gt; TL
+    RL3[Row Lock 3] --&gt; TL
+    RL4["... N Row Locks"] --&gt; TL
+    TL["DB Escalates to\nTable-Level Lock ⚠️"]
+    TL --&gt; Block["All other queries\nblocked on this table"]
+    style RL1 fill:#2c5282,stroke:#4a90e2,color:#fff
+    style RL2 fill:#2c5282,stroke:#4a90e2,color:#fff
+    style RL3 fill:#2c5282,stroke:#4a90e2,color:#fff
+    style RL4 fill:#2c5282,stroke:#4a90e2,color:#fff
+    style TL fill:#744210,stroke:#ed8936,color:#fff
+    style Block fill:#742a2a,stroke:#f56565,color:#fff</code></pre>
+<h3 id="76-what-is-write-skew-and-why-is-it-tricky">76. What is write skew and why is it tricky?</h3>
+<ul>
+<li><strong>Write skew</strong> occurs when two transactions read the same data and update <strong>different rows</strong>. Each transaction sees valid data, but the final result <strong>breaks a rule</strong>.</li>
+<li>This can happen even under <strong>Repeatable Read</strong> isolation, because the rows aren't directly updated — locks don't prevent it.</li>
+<li><strong>Serializable</strong> isolation is usually required to prevent write skew.</li>
+</ul>
+<pre class="mermaid"><code>sequenceDiagram
+    participant T1
+    participant DB
+    participant T2
+    Note over T1,T2: Rule: At least 1 doctor on-call
+    T1-&gt;&gt;DB: READ on-call doctors = [Dr.A, Dr.B]
+    T2-&gt;&gt;DB: READ on-call doctors = [Dr.A, Dr.B]
+    T1-&gt;&gt;DB: UPDATE Dr.A = off-call (sees 2, thinks safe)
+    T2-&gt;&gt;DB: UPDATE Dr.B = off-call (sees 2, thinks safe)
+    Note over DB: ❌ Write Skew! No doctors on-call.\nRule violated despite both transactions seeming valid.
+    Note over DB: ✅ Fix: Use SERIALIZABLE isolation.</code></pre>
 <h2 id="complete-dbms-roadmap">Complete DBMS Roadmap</h2>
 <pre class="mermaid"><code>flowchart TD
-    Start([DBMS Subject]) --&gt; Fundamentals
+    Start([DBMS Mastery]) --&gt; Basic
 
-    Fundamentals[DBMS Fundamentals] --&gt; F1[Introduction to DBMS]
-    Fundamentals --&gt; F2[DBMS vs RDBMS]
-    Fundamentals --&gt; F3[Database Definition]
-    Fundamentals --&gt; F4[File Systems vs DBMS]
-    Fundamentals --&gt; F5[DBMS Advantages]
+    %% BASIC
+    Basic["🟣 Basic DBMS\nQ1-7"] --&gt; B1["DBMS &amp; Utility\nRDBMS Examples"]
+    Basic --&gt; B2["What is a Database?"]
+    Basic --&gt; B3["File-Based System Issues"]
+    Basic --&gt; B4["Advantages of DBMS"]
+    Basic --&gt; B5["DDL / DML / DCL / TCL"]
+    Basic --&gt; B6["ACID Properties"]
+    Basic --&gt; B7["NULL vs Zero vs Blank"]
+    Basic --&gt; Intermediate
 
-    F1 --&gt; Core
-    F2 --&gt; Core
-    F3 --&gt; Core
-    F4 --&gt; Core
-    F5 --&gt; Core
+    %% INTERMEDIATE
+    Intermediate["🔵 Intermediate DBMS\nQ8-15"] --&gt; I1["Data Warehousing &amp; ETL"]
+    Intermediate --&gt; I2["Data Abstraction Levels\nPhysical / Logical / View"]
+    Intermediate --&gt; I3["ER Model\nEntity / Entity Type / Set"]
+    Intermediate --&gt; I4["Relationship Types\n1-1 / 1-N / N-N / Self"]
+    Intermediate --&gt; I5["Intension vs Extension"]
+    Intermediate --&gt; I6["DELETE vs TRUNCATE"]
+    Intermediate --&gt; I7["Locks\nShared vs Exclusive"]
+    Intermediate --&gt; I8["Normalization vs Denormalization"]
+    Intermediate --&gt; Advanced
 
-    Core[Core Database Concepts] --&gt; C1[Database Structure]
-    Core --&gt; C2[Tables, Rows, Columns]
-    Core --&gt; C3[NULL Values vs Zero vs Blank]
-    Core --&gt; C4[Data Abstraction Levels]
-    Core --&gt; C5[Intension vs Extension]
+    %% ADVANCED
+    Advanced["🟠 Advanced DBMS\nQ16-18"] --&gt; AD1["Normalization Forms\n1NF / 2NF / 3NF / BCNF"]
+    Advanced --&gt; AD2["Types of Keys\nPK / FK / CK / SK / UK / AK"]
+    Advanced --&gt; AD3["2-Tier vs 3-Tier Architecture"]
+    Advanced --&gt; Indexing
 
-    C1 --&gt; Languages
-    C2 --&gt; Languages
-    C3 --&gt; Languages
-    C4 --&gt; Languages
-    C5 --&gt; Languages
+    %% INDEXING &amp; QUERY OPTIMIZATION
+    Indexing["🟡 Indexing &amp; Query Opt\nQ19-28"] --&gt; IX1["Selectivity &amp; Cardinality"]
+    Indexing --&gt; IX2["Index Basics\nRead vs Write Trade-off"]
+    Indexing --&gt; IX3["Clustered vs Non-Clustered"]
+    Indexing --&gt; IX4["When Queries Skip Indexes"]
+    Indexing --&gt; IX5["Composite Index\nLeftmost Prefix Rule"]
+    Indexing --&gt; IX6["Covering Index"]
+    Indexing --&gt; IX7["Execution Plans\nSeek vs Scan"]
+    Indexing --&gt; IX8["Index Fragmentation &amp; Bloat"]
+    Indexing --&gt; IX9["Slow Query Debugging Flow"]
+    Indexing --&gt; Security
 
-    Languages[Database Languages] --&gt; L1[DDL - Data Definition Language]
-    Languages --&gt; L2[DML - Data Manipulation Language]
-    Languages --&gt; L3[DCL - Data Control Language]
-    Languages --&gt; L4[TCL - Transaction Control Language]
+    %% SECURITY &amp; GOVERNANCE
+    Security["🔴 Security &amp; Governance\nQ29-37"] --&gt; SE1["Risk of Superuser Permissions"]
+    Security --&gt; SE2["SQL Injection &amp; Parameterized Queries"]
+    Security --&gt; SE3["Authentication vs Authorization"]
+    Security --&gt; SE4["Row-Level Security"]
+    Security --&gt; SE5["Encryption at Rest vs in Transit"]
+    Security --&gt; SE6["Safe Credential Storage"]
+    Security --&gt; SE7["Least Privilege"]
+    Security --&gt; SE8["Auditing &amp; Logging"]
+    Security --&gt; SE9["Protecting PII"]
+    Security --&gt; SQL
 
-    L1 --&gt; Transactions
-    L2 --&gt; Transactions
-    L3 --&gt; Transactions
-    L4 --&gt; Transactions
+    %% SQL &amp; QUERYING
+    SQL["🟢 SQL &amp; Querying\nQ38-46"] --&gt; SQ1["WHERE vs HAVING"]
+    SQL --&gt; SQ2["INNER JOIN vs LEFT JOIN"]
+    SQL --&gt; SQ3["Duplicate Rows After JOIN"]
+    SQL --&gt; SQ4["Correlated Subquery vs JOIN"]
+    SQL --&gt; SQ5["UNION vs UNION ALL"]
+    SQL --&gt; SQ6["Top-N per Group &amp; Row Number"]
+    SQL --&gt; SQ7["CTE vs Subquery"]
+    SQL --&gt; SQ8["VIEW - When to Avoid"]
+    SQL --&gt; SQ9["Materialized View Trade-offs"]
+    SQL --&gt; Replication
 
-    Transactions[Transaction Management] --&gt; T1[ACID Properties]
-    Transactions --&gt; T2[Atomicity]
-    Transactions --&gt; T3[Consistency]
-    Transactions --&gt; T4[Isolation]
-    Transactions --&gt; T5[Durability]
-    Transactions --&gt; T6[Locks - Shared vs Exclusive]
+    %% REPLICATION, SHARDING &amp; DISTRIBUTED
+    Replication["🔵 Replication, Sharding\n&amp; Distributed Q47-56"] --&gt; R1["Sharding &amp; When to Shard"]
+    Replication --&gt; R2["Replication Lag &amp; App Handling"]
+    Replication --&gt; R3["Leader-Follower vs Multi-Leader"]
+    Replication --&gt; R4["Read Replicas &amp; Scaling"]
+    Replication --&gt; R5["Hash vs Range Sharding"]
+    Replication --&gt; R6["Hot Shard Mitigation"]
+    Replication --&gt; R7["Eventual Consistency"]
+    Replication --&gt; R8["Strong vs Stale Reads"]
+    Replication --&gt; R9["Distributed Transactions"]
+    Replication --&gt; R10["Multi-Region High Availability"]
+    Replication --&gt; Storage
 
-    T1 --&gt; Modeling
-    T2 --&gt; Modeling
-    T3 --&gt; Modeling
-    T4 --&gt; Modeling
-    T5 --&gt; Modeling
-    T6 --&gt; Modeling
+    %% STORAGE, LOGGING &amp; RECOVERY
+    Storage["🟠 Storage, Logging\n&amp; Recovery Q57-66"] --&gt; ST1["Safe Schema Migrations"]
+    Storage --&gt; ST2["RPO &amp; RTO"]
+    Storage --&gt; ST3["Replication vs Backup"]
+    Storage --&gt; ST4["Crash Recovery Steps"]
+    Storage --&gt; ST5["Redo Log vs Undo Log"]
+    Storage --&gt; ST6["Checkpoints"]
+    Storage --&gt; ST7["Point-in-Time Recovery PITR"]
+    Storage --&gt; ST8["Full vs Incremental Backup"]
+    Storage --&gt; ST9["Logical vs Physical Backup"]
+    Storage --&gt; ST10["Write-Ahead Logging WAL"]
+    Storage --&gt; Concurrency
 
-    Modeling[Data Modeling] --&gt; M1[Entity-Relationship Model]
-    Modeling --&gt; M2[Entity, Entity Type, Entity Set]
-    Modeling --&gt; M3[Relationship Types]
-    Modeling --&gt; M4[One-to-One]
-    Modeling --&gt; M5[One-to-Many]
-    Modeling --&gt; M6[Many-to-Many]
-    Modeling --&gt; M7[Self-Referencing]
+    %% TRANSACTIONS, ISOLATION &amp; CONCURRENCY
+    Concurrency["🟣 Transactions, Isolation\n&amp; Concurrency Q67-76"] --&gt; CO1["Read-Only Transactions &amp; Snapshots"]
+    Concurrency --&gt; CO2["Transactions &amp; Autocommit"]
+    Concurrency --&gt; CO3["Four Isolation Levels"]
+    Concurrency --&gt; CO4["Dirty / Non-Repeatable / Phantom Reads"]
+    Concurrency --&gt; CO5["Lost Update Prevention"]
+    Concurrency --&gt; CO6["Optimistic vs Pessimistic Locking"]
+    Concurrency --&gt; CO7["MVCC &amp; Read Concurrency"]
+    Concurrency --&gt; CO8["Deadlocks &amp; Resolution"]
+    Concurrency --&gt; CO9["Lock Escalation"]
+    Concurrency --&gt; CO10["Write Skew"]
+    Concurrency --&gt; End(["Mastery"])
 
-    M1 --&gt; Keys
-    M2 --&gt; Keys
-    M3 --&gt; Keys
-    M4 --&gt; Keys
-    M5 --&gt; Keys
-    M6 --&gt; Keys
-    M7 --&gt; Keys
+    %% STYLES - Section nodes
+    style Start fill:#4a148c,stroke:#ce93d8,color:#fff,stroke-width:3px
+    style End fill:#1b5e20,stroke:#a5d6a7,color:#fff,stroke-width:3px
+    style Basic fill:#6a1b9a,stroke:#ce93d8,color:#fff,stroke-width:2px
+    style Intermediate fill:#1565c0,stroke:#90caf9,color:#fff,stroke-width:2px
+    style Advanced fill:#e65100,stroke:#ffcc80,color:#fff,stroke-width:2px
+    style Indexing fill:#f57f17,stroke:#fff9c4,color:#000,stroke-width:2px
+    style Security fill:#b71c1c,stroke:#ef9a9a,color:#fff,stroke-width:2px
+    style SQL fill:#1b5e20,stroke:#a5d6a7,color:#fff,stroke-width:2px
+    style Replication fill:#0d47a1,stroke:#90caf9,color:#fff,stroke-width:2px
+    style Storage fill:#bf360c,stroke:#ffccbc,color:#fff,stroke-width:2px
+    style Concurrency fill:#4a148c,stroke:#ce93d8,color:#fff,stroke-width:2px
 
-    Keys[Database Keys] --&gt; K1[Super Key]
-    Keys --&gt; K2[Candidate Key]
-    Keys --&gt; K3[Primary Key]
-    Keys --&gt; K4[Foreign Key]
-    Keys --&gt; K5[Unique Key]
-    Keys --&gt; K6[Alternate Key]
-    Keys --&gt; K7[Composite Key]
+    %% STYLES - Basic leaf nodes
+    style B1 fill:#8e24aa,stroke:#ce93d8,color:#fff
+    style B2 fill:#8e24aa,stroke:#ce93d8,color:#fff
+    style B3 fill:#8e24aa,stroke:#ce93d8,color:#fff
+    style B4 fill:#8e24aa,stroke:#ce93d8,color:#fff
+    style B5 fill:#8e24aa,stroke:#ce93d8,color:#fff
+    style B6 fill:#8e24aa,stroke:#ce93d8,color:#fff
+    style B7 fill:#8e24aa,stroke:#ce93d8,color:#fff
 
-    K1 --&gt; Normalization
-    K2 --&gt; Normalization
-    K3 --&gt; Normalization
-    K4 --&gt; Normalization
-    K5 --&gt; Normalization
-    K6 --&gt; Normalization
-    K7 --&gt; Normalization
+    %% STYLES - Intermediate leaf nodes
+    style I1 fill:#1976d2,stroke:#90caf9,color:#fff
+    style I2 fill:#1976d2,stroke:#90caf9,color:#fff
+    style I3 fill:#1976d2,stroke:#90caf9,color:#fff
+    style I4 fill:#1976d2,stroke:#90caf9,color:#fff
+    style I5 fill:#1976d2,stroke:#90caf9,color:#fff
+    style I6 fill:#1976d2,stroke:#90caf9,color:#fff
+    style I7 fill:#1976d2,stroke:#90caf9,color:#fff
+    style I8 fill:#1976d2,stroke:#90caf9,color:#fff
 
-    Normalization[Normalization] --&gt; N1[Normalization vs Denormalization]
-    Normalization --&gt; N2[First Normal Form - 1NF]
-    Normalization --&gt; N3[Second Normal Form - 2NF]
-    Normalization --&gt; N4[Third Normal Form - 3NF]
-    Normalization --&gt; N5[Boyce-Codd Normal Form - BCNF]
+    %% STYLES - Advanced leaf nodes
+    style AD1 fill:#ef6c00,stroke:#ffcc80,color:#fff
+    style AD2 fill:#ef6c00,stroke:#ffcc80,color:#fff
+    style AD3 fill:#ef6c00,stroke:#ffcc80,color:#fff
 
-    N1 --&gt; Operations
-    N2 --&gt; Operations
-    N3 --&gt; Operations
-    N4 --&gt; Operations
-    N5 --&gt; Operations
+    %% STYLES - Indexing leaf nodes
+    style IX1 fill:#f9a825,stroke:#fff9c4,color:#000
+    style IX2 fill:#f9a825,stroke:#fff9c4,color:#000
+    style IX3 fill:#f9a825,stroke:#fff9c4,color:#000
+    style IX4 fill:#f9a825,stroke:#fff9c4,color:#000
+    style IX5 fill:#f9a825,stroke:#fff9c4,color:#000
+    style IX6 fill:#f9a825,stroke:#fff9c4,color:#000
+    style IX7 fill:#f9a825,stroke:#fff9c4,color:#000
+    style IX8 fill:#f9a825,stroke:#fff9c4,color:#000
+    style IX9 fill:#f9a825,stroke:#fff9c4,color:#000
 
-    Operations[Database Operations] --&gt; O1[DELETE Command]
-    Operations --&gt; O2[TRUNCATE Command]
-    Operations --&gt; O3[Data Manipulation]
+    %% STYLES - Security leaf nodes
+    style SE1 fill:#c62828,stroke:#ef9a9a,color:#fff
+    style SE2 fill:#c62828,stroke:#ef9a9a,color:#fff
+    style SE3 fill:#c62828,stroke:#ef9a9a,color:#fff
+    style SE4 fill:#c62828,stroke:#ef9a9a,color:#fff
+    style SE5 fill:#c62828,stroke:#ef9a9a,color:#fff
+    style SE6 fill:#c62828,stroke:#ef9a9a,color:#fff
+    style SE7 fill:#c62828,stroke:#ef9a9a,color:#fff
+    style SE8 fill:#c62828,stroke:#ef9a9a,color:#fff
+    style SE9 fill:#c62828,stroke:#ef9a9a,color:#fff
 
-    O1 --&gt; Architecture
-    O2 --&gt; Architecture
-    O3 --&gt; Architecture
+    %% STYLES - SQL leaf nodes
+    style SQ1 fill:#2e7d32,stroke:#a5d6a7,color:#fff
+    style SQ2 fill:#2e7d32,stroke:#a5d6a7,color:#fff
+    style SQ3 fill:#2e7d32,stroke:#a5d6a7,color:#fff
+    style SQ4 fill:#2e7d32,stroke:#a5d6a7,color:#fff
+    style SQ5 fill:#2e7d32,stroke:#a5d6a7,color:#fff
+    style SQ6 fill:#2e7d32,stroke:#a5d6a7,color:#fff
+    style SQ7 fill:#2e7d32,stroke:#a5d6a7,color:#fff
+    style SQ8 fill:#2e7d32,stroke:#a5d6a7,color:#fff
+    style SQ9 fill:#2e7d32,stroke:#a5d6a7,color:#fff
 
-    Architecture[Database Architecture] --&gt; A1[2-Tier Architecture]
-    Architecture --&gt; A2[3-Tier Architecture]
-    Architecture --&gt; A3[Client-Server Model]
+    %% STYLES - Replication leaf nodes
+    style R1 fill:#1565c0,stroke:#90caf9,color:#fff
+    style R2 fill:#1565c0,stroke:#90caf9,color:#fff
+    style R3 fill:#1565c0,stroke:#90caf9,color:#fff
+    style R4 fill:#1565c0,stroke:#90caf9,color:#fff
+    style R5 fill:#1565c0,stroke:#90caf9,color:#fff
+    style R6 fill:#1565c0,stroke:#90caf9,color:#fff
+    style R7 fill:#1565c0,stroke:#90caf9,color:#fff
+    style R8 fill:#1565c0,stroke:#90caf9,color:#fff
+    style R9 fill:#1565c0,stroke:#90caf9,color:#fff
+    style R10 fill:#1565c0,stroke:#90caf9,color:#fff
 
-    A1 --&gt; Advanced
-    A2 --&gt; Advanced
-    A3 --&gt; Advanced
+    %% STYLES - Storage leaf nodes
+    style ST1 fill:#d84315,stroke:#ffccbc,color:#fff
+    style ST2 fill:#d84315,stroke:#ffccbc,color:#fff
+    style ST3 fill:#d84315,stroke:#ffccbc,color:#fff
+    style ST4 fill:#d84315,stroke:#ffccbc,color:#fff
+    style ST5 fill:#d84315,stroke:#ffccbc,color:#fff
+    style ST6 fill:#d84315,stroke:#ffccbc,color:#fff
+    style ST7 fill:#d84315,stroke:#ffccbc,color:#fff
+    style ST8 fill:#d84315,stroke:#ffccbc,color:#fff
+    style ST9 fill:#d84315,stroke:#ffccbc,color:#fff
+    style ST10 fill:#d84315,stroke:#ffccbc,color:#fff
 
-    Advanced[Advanced Topics] --&gt; AD1[Data Warehousing]
-    Advanced --&gt; AD2[ETL Process]
-    Advanced --&gt; AD3[Data Analytics]
-
-    AD1 --&gt; End([Mastery])
-    AD2 --&gt; End
-    AD3 --&gt; End
-
-    style Start fill:#6a4c93,stroke:#ffffff,color:#ffffff,stroke-width:3px
-    style Fundamentals fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
-    style Core fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
-    style Languages fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
-    style Transactions fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
-    style Modeling fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
-    style Keys fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
-    style Normalization fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
-    style Operations fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
-    style Architecture fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
-    style Advanced fill:#7b1fa2,stroke:#ffffff,color:#ffffff,stroke-width:2px
-    style End fill:#6a4c93,stroke:#ffffff,color:#ffffff,stroke-width:3px
-
-    style F1 fill:#9c27b0,stroke:#ffffff,color:#ffffff
-    style F2 fill:#9c27b0,stroke:#ffffff,color:#ffffff
-    style F3 fill:#9c27b0,stroke:#ffffff,color:#ffffff
-    style F4 fill:#9c27b0,stroke:#ffffff,color:#ffffff
-    style F5 fill:#9c27b0,stroke:#ffffff,color:#ffffff
-
-    style C1 fill:#9c27b0,stroke:#ffffff,color:#ffffff
-    style C2 fill:#9c27b0,stroke:#ffffff,color:#ffffff
-    style C3 fill:#9c27b0,stroke:#ffffff,color:#ffffff
-    style C4 fill:#9c27b0,stroke:#ffffff,color:#ffffff
-    style C5 fill:#9c27b0,stroke:#ffffff,color:#ffffff
-
-    style L1 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style L2 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style L3 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style L4 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-
-    style T1 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style T2 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style T3 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style T4 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style T5 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style T6 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-
-    style M1 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style M2 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style M3 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style M4 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style M5 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style M6 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style M7 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-
-    style K1 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style K2 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style K3 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style K4 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style K5 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style K6 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style K7 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-
-    style N1 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style N2 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style N3 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style N4 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style N5 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-
-    style O1 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style O2 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style O3 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-
-    style A1 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style A2 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style A3 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-
-    style AD1 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style AD2 fill:#ba68c8,stroke:#ffffff,color:#ffffff
-    style AD3 fill:#ba68c8,stroke:#ffffff,color:#ffffff</code></pre>
+    %% STYLES - Concurrency leaf nodes
+    style CO1 fill:#6a1b9a,stroke:#ce93d8,color:#fff
+    style CO2 fill:#6a1b9a,stroke:#ce93d8,color:#fff
+    style CO3 fill:#6a1b9a,stroke:#ce93d8,color:#fff
+    style CO4 fill:#6a1b9a,stroke:#ce93d8,color:#fff
+    style CO5 fill:#6a1b9a,stroke:#ce93d8,color:#fff
+    style CO6 fill:#6a1b9a,stroke:#ce93d8,color:#fff
+    style CO7 fill:#6a1b9a,stroke:#ce93d8,color:#fff
+    style CO8 fill:#6a1b9a,stroke:#ce93d8,color:#fff
+    style CO9 fill:#6a1b9a,stroke:#ce93d8,color:#fff
+    style CO10 fill:#6a1b9a,stroke:#ce93d8,color:#fff</code></pre>
 
 
 
@@ -1945,7 +3519,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 11, 2026 21:56:25 UTC">February 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 22, 2026 11:12:30 UTC">February 22, 2026</span>
   </span>
 
     
