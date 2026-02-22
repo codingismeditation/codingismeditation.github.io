@@ -1190,10 +1190,14 @@ flowchart LR
 <li><strong>Initial Lookup:</strong> The browser must resolve this domain name to an IP address to know where to connect.</li>
 </ul>
 <h3 id="22-step-2-dns-server-domain-name-system">2.2. Step 2: DNS Server (Domain Name System)</h3>
-<p>The DNS server translates domain names into IP addresses. It contains specific record types:
-*   <strong>A Records:</strong> Used to point a domain or subdomain to a specific <strong>IP Address</strong>.
-    *   <em>Example:</em> The subdomain <code>backend-demo</code> points to a specific Public IP address of an AWS EC2 instance.
-*   <strong>CNAME Records:</strong> Used to point a domain or subdomain to another <strong>domain name</strong>.</p>
+<p>The DNS server translates domain names into IP addresses. It contains specific record types:</p>
+<ul>
+<li><strong>A Records:</strong> Used to point a domain or subdomain to a specific <strong>IP Address</strong>.<ul>
+<li><em>Example:</em> The subdomain <code>backend-demo</code> points to a specific Public IP address of an AWS EC2 instance.</li>
+</ul>
+</li>
+<li><strong>CNAME Records:</strong> Used to point a domain or subdomain to another <strong>domain name</strong>.</li>
+</ul>
 <pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
 flowchart TB
     Domain[backend-demo.senus.doxyz] --&gt; DNS[DNS Server]
@@ -1207,14 +1211,18 @@ flowchart TB
 <li><strong>Public IP:</strong> The request travels through the internet to reach this specific Public IP address.</li>
 </ul>
 <h3 id="24-step-4-the-firewall-aws-security-groups">2.4. Step 4: The Firewall (AWS Security Groups)</h3>
-<p>Before the request enters the actual computer (instance), it passes through a cloud-native firewall.
-*   <strong>Function:</strong> Filters traffic based on allowed ports.
-*   <strong>AWS Security Groups:</strong> define which ports are accessible over the internet.
-*   <strong>Configuration in Demo:</strong>
-    *   <strong>Port 22:</strong> Allowed for SSH access (logging into terminals/command prompts).
-    *   <strong>Port 443:</strong> Allowed for HTTPS traffic.
-    *   <strong>Port 80:</strong> Allowed for HTTP traffic.
-*   <strong>Warning:</strong> If ports 80 or 443 are not explicitly allowed in the Security Group, AWS blocks the request immediately. It will never reach the server.</p>
+<p>Before the request enters the actual computer (instance), it passes through a cloud-native firewall.</p>
+<ul>
+<li><strong>Function:</strong> Filters traffic based on allowed ports.</li>
+<li><strong>AWS Security Groups:</strong> define which ports are accessible over the internet.</li>
+<li><strong>Configuration in Demo:</strong><ul>
+<li><strong>Port 22:</strong> Allowed for SSH access (logging into terminals/command prompts).</li>
+<li><strong>Port 443:</strong> Allowed for HTTPS traffic.</li>
+<li><strong>Port 80:</strong> Allowed for HTTP traffic.</li>
+</ul>
+</li>
+<li><strong>Warning:</strong> If ports 80 or 443 are not explicitly allowed in the Security Group, AWS blocks the request immediately. It will never reach the server.</li>
+</ul>
 <pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
 flowchart LR
     Request[Incoming Request] --&gt; Firewall{AWS Security Groups}
@@ -1227,21 +1235,25 @@ flowchart LR
     Allow443 --&gt; Instance
     Block -.-&gt; Reject[Request Rejected]</code></pre>
 <h3 id="25-step-5-reverse-proxy-nginx">2.5. Step 5: Reverse Proxy (Nginx)</h3>
-<p>Once the request passes the firewall and enters the instance, it hits a <strong>Reverse Proxy</strong>.
-*   <strong>Definition:</strong> A server sitting in front of other servers to manage redirects, configurations, and SSL from a centralized place (rather than configuring every application server individually).
-*   <strong>Tool Used:</strong> <strong>Nginx</strong>.
-*   <strong>SSL Management:</strong> <strong>Certbot</strong> is used to assign SSL certificates automatically.
-*   <strong>Nginx Configuration Logic:</strong>
-    1.  <strong>Listen:</strong> Listens for requests on Port 80.
-    2.  <strong>Redirect:</strong> Redirects Port 80 requests to Port 443 (HTTPS).
-    3.  <strong>Server Name:</strong> Checks the domain name (e.g., <code>backend-demo</code>).
-    4.  <strong>Proxy Pass:</strong> Forwards traffic matching that domain to the local application server running on a specific internal port.
-    *   <em>Example Code Logic:</em>
-        <div class="language-nginx highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">server_name</span><span class="w"> </span><span class="s">backend-demo.senus.doxyz</span><span class="p">;</span>
+<p>Once the request passes the firewall and enters the instance, it hits a <strong>Reverse Proxy</strong>.</p>
+<ul>
+<li><strong>Definition:</strong> A server sitting in front of other servers to manage redirects, configurations, and SSL from a centralized place (rather than configuring every application server individually).</li>
+<li><strong>Tool Used:</strong> <strong>Nginx</strong>.</li>
+<li><strong>SSL Management:</strong> <strong>Certbot</strong> is used to assign SSL certificates automatically.</li>
+<li><strong>Nginx Configuration Logic:</strong><ol>
+<li><strong>Listen:</strong> Listens for requests on Port 80.</li>
+<li><strong>Redirect:</strong> Redirects Port 80 requests to Port 443 (HTTPS).</li>
+<li><strong>Server Name:</strong> Checks the domain name (e.g., <code>backend-demo</code>).</li>
+<li><strong>Proxy Pass:</strong> Forwards traffic matching that domain to the local application server running on a specific internal port.</li>
+<li><em>Example Code Logic:</em>
+    <div class="language-nginx highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">server_name</span><span class="w"> </span><span class="s">backend-demo.senus.doxyz</span><span class="p">;</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://localhost:3001</span><span class="p">;</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
-</span></code></pre></div></p>
+</span></code></pre></div></li>
+</ol>
+</li>
+</ul>
 <pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
 flowchart TD
     Request[Incoming Request] --&gt; Listen{Port 80?}
@@ -1290,10 +1302,12 @@ flowchart LR
 <h2 id="3-the-purpose-of-backend-systems">3. The Purpose of Backend Systems</h2>
 <p>Why are backends necessary?</p>
 <h3 id="31-the-core-concept-centralized-data">3.1. The Core Concept: Centralized Data</h3>
-<p>If you strip down the responsibility of a backend to a single word, it is <strong>Data</strong>.
-*   The need to <strong>fetch</strong> data.
-*   The need to <strong>receive</strong> data.
-*   The need to <strong>persist</strong> (save) data.</p>
+<p>If you strip down the responsibility of a backend to a single word, it is <strong>Data</strong>.</p>
+<ul>
+<li>The need to <strong>fetch</strong> data.</li>
+<li>The need to <strong>receive</strong> data.</li>
+<li>The need to <strong>persist</strong> (save) data.</li>
+</ul>
 <pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
 flowchart TB
     Backend[Backend Server] --&gt; Data{Data Operations}
@@ -1310,13 +1324,15 @@ flowchart TB
     Client3[Client 3] &lt;--&gt;|Request/Response| Backend
     ClientN[Client N...] &lt;--&gt;|Request/Response| Backend</code></pre>
 <h3 id="32-example-the-like-button-flow">3.2. Example: The "Like" Button Flow</h3>
-<p>Imagine a user liking a friend's post on Instagram:
-1.  <strong>User Action:</strong> User clicks the "Like" button.
-2.  <strong>Request:</strong> The app sends a request to the server.
-3.  <strong>Identification:</strong> The server parses the request to identify the user (ID/Name).
-4.  <strong>Persistence:</strong> The server <strong>saves</strong> the action (the "like") to a database.
-5.  <strong>Logic:</strong> The server identifies the owner of the post.
-6.  <strong>Notification:</strong> The server triggers an action to send a notification to the post owner's phone.</p>
+<p>Imagine a user liking a friend's post on Instagram:</p>
+<ol>
+<li><strong>User Action:</strong> User clicks the "Like" button.</li>
+<li><strong>Request:</strong> The app sends a request to the server.</li>
+<li><strong>Identification:</strong> The server parses the request to identify the user (ID/Name).</li>
+<li><strong>Persistence:</strong> The server <strong>saves</strong> the action (the "like") to a database.</li>
+<li><strong>Logic:</strong> The server identifies the owner of the post.</li>
+<li><strong>Notification:</strong> The server triggers an action to send a notification to the post owner's phone.</li>
+</ol>
 <pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
 sequenceDiagram
     participant User
@@ -1370,8 +1386,29 @@ flowchart TB
 <ol>
 <li><strong>Initial Fetch:</strong> Browser requests the frontend domain (e.g., <code>frontend-demo</code>).</li>
 <li><strong>DNS &amp; Firewall:</strong> Same flow as backend (Resolves IP -&gt; Passes Firewall 80/443).</li>
-<li><strong>Nginx:</strong> Listens for frontend domain, redirects to frontend application port (e.g., <code>localhost:3000</code>).</li>
-<li><strong>Server Response:</strong> The Next.js server sends back:<ul>
+<li>
+<p><strong>Nginx:</strong> Listens for frontend domain, redirects to frontend application port (e.g., <code>localhost:3000</code>).</p>
+<ul>
+<li><em>Example Code Logic:</em>
+    <div class="language-nginx highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">server_name</span><span class="w"> </span><span class="s">frontend-demo.senus.doxyz</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://localhost:3000</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li><strong>Commands to explore configuration:</strong><ul>
+<li><code>cd /etc/nginx/conf.d/</code> - Navigate to the nginx configuration directory where all server configurations are stored.</li>
+<li><code>batcat frontend.conf</code> - View the frontend nginx configuration file with syntax highlighting (displays the actual config).</li>
+<li><code>pm2 list</code> - List all running PM2 processes to see both frontend and backend servers.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> Backend runs at port 3001, Frontend runs at port 3000</p>
+</blockquote>
+</li>
+<li>
+<p><strong>Server Response:</strong> The Next.js server sends back:</p>
+<ul>
 <li>The main HTML file.</li>
 <li>CSS files (Styles).</li>
 <li>JavaScript files (Logic).</li>
@@ -1384,6 +1421,9 @@ flowchart TB
 </ul>
 </li>
 </ol>
+<blockquote>
+<p>Here Browser is Runtime !!!</p>
+</blockquote>
 <pre class="mermaid"><code>%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#2d2d2d", "primaryTextColor": "#e6edf3", "primaryBorderColor": "#444444", "lineColor": "#9aa0a6", "secondaryColor": "#3a3a3a", "tertiaryColor": "#2d2d2d"}}}%%
 flowchart LR
     Browser[Browser] --&gt;|Request| DNS[DNS &amp; Firewall]
@@ -1621,7 +1661,7 @@ flowchart TD
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 13, 2026 22:49:35 UTC">February 13, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 20, 2026 22:41:22 UTC">February 20, 2026</span>
   </span>
 
     
