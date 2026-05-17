@@ -17,4 +17,4 @@ keywords:
 
 It contains experiments with new technologies, revisits to older tools, trend-driven explorations, and spontaneous technical deep dives. Not every technology here becomes part of the core stack, but each one expands perspective.
 
-- [Bun](bun/index.md)
+- [FastAPI](fastapi/index.md)

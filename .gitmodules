@@ -13,3 +13,6 @@
 [submodule "docs/backend-art"]
 	path = docs/backend-art
 	url = https://github.com/kintsugi-programmer/kintsugi-stack-backend
+[submodule "docs/exploration/fastapi"]
+	path = docs/exploration/fastapi
+	url = https://github.com/kintsugi-programmer/kintsugi-stack-fastapi
