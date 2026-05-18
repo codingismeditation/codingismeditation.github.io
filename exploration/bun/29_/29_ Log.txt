@@ -1,0 +1,99 @@
+➜  29_ git:(main) ✗ bun init
+
+✓ Select a project template: Blank
+
+ + .gitignore
+ + index.ts
+ + tsconfig.json (for editor autocomplete)
+ + README.md
+
+To get started, run:
+
+    bun run index.ts
+
+bun install v1.3.7 (ba426210)
+
++ @types/bun@1.3.8
++ typescript@5.9.3
+
+5 packages installed [16.00ms]
+
+➜  29_ git:(main) ✗ bun install
+bun install v1.3.7 (ba426210)
+
+Checked 5 installs across 6 packages (no changes) [5.00ms]
+➜  29_ git:(main) ✗ bun add zod
+bun add v1.3.7 (ba426210)
+
+installed zod@4.3.6
+
+1 package installed [275.00ms]
+➜  29_ git:(main) ✗ bun add zod@3.0.0
+bun add v1.3.7 (ba426210)
+
+installed zod@3.0.0
+
+1 package installed [703.00ms]
+➜  29_ git:(main) ✗ bun add zod@3.0.0
+bun add v1.3.7 (ba426210)
+
+installed zod@3.0.0
+
+[3.00ms] done
+➜  29_ git:(main) ✗ bun add -D prettier 
+bun add v1.3.7 (ba426210)
+
+installed prettier@3.8.1 with binaries:
+ - prettier
+
+1 package installed [1.57s]
+➜  29_ git:(main) ✗ bun add -g cowsay
+bun add v1.3.7 (ba426210)
+
+installed cowsay@1.6.0 with binaries:
+ - cowsay
+ - cowthink
+
+33 packages installed [3.17s]
+➜  29_ git:(main) ✗ bun remove zod
+bun remove v1.3.7 (ba426210)
+
+- zod
+1 package removed [5.00ms]
+➜  29_ git:(main) ✗ bun remove prettier
+bun remove v1.3.7 (ba426210)
+
+- prettier
+1 package removed [3.00ms]
+➜  29_ git:(main) ✗ bun remove -g cowsay
+bun remove v1.3.7 (ba426210)
+
+- cowsay
+1 package removed [2.00ms]
+➜  29_ git:(main) ✗ bun update
+bun update v1.3.7 (ba426210)
+
+Checked 5 installs across 6 packages (no changes) [80.00ms]
+➜  29_ git:(main) ✗ bun update typescript
+bun update v1.3.7 (ba426210)
+
+installed typescript@5.9.3 with binaries:
+ - tsc
+ - tsserver
+
+[3.00ms] done
+➜  29_ git:(main) ✗ bun outdated
+bun outdated v1.3.7 (ba426210)
+➜  29_ git:(main) ✗ bun publish
+bun publish v1.3.7 (ba426210)
+error: missing `version` string in package.json
+➜  29_ git:(main) ✗ bun link
+bun link v1.3.7 (ba426210)
+Success! Registered "29_"
+
+To use 29_ in a project, run:
+  bun link 29_
+
+Or add it in dependencies in your package.json file:
+  "29_": "link:29_"
+➜  29_ git:(main) ✗ 
