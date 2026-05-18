@@ -1,18 +1,3 @@
-[submodule "docs/interview/networking"]
-	path = docs/interview/networking
-	url = https://github.com/kintsugi-programmer/kintsugi-stack-networking
-[submodule "docs/interview/dbms"]
-	path = docs/interview/dbms
-	url = https://github.com/kintsugi-programmer/kintsugi-stack-dbms
-[submodule "docs/interview/sql-ds"]
-	path = docs/interview/sql-ds
-	url = https://github.com/kintsugi-programmer/kintsugi-stack-interview-sql-ds
-[submodule "docs/exploration/bun"]
-	path = docs/exploration/bun
-	url = https://github.com/kintsugi-programmer/kintsugi-stack-bun
-[submodule "docs/backend-art"]
-	path = docs/backend-art
-	url = https://github.com/kintsugi-programmer/kintsugi-stack-backend
 [submodule "docs/exploration/fastapi"]
 	path = docs/exploration/fastapi
 	url = https://github.com/kintsugi-programmer/kintsugi-stack-fastapi

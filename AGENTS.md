@@ -19,12 +19,7 @@ Most documentation lives in **git submodules** (currently deinitialized on disk;
 Each submodule is an independent repo under `kintsugi-programmer/`:
 
 | Submodule path | Repo |
-|---|---|
-| `docs/backend-art/` | `kintsugi-stack-backend` |
-| `docs/interview/networking/` | `kintsugi-stack-networking` |
-| `docs/interview/dbms/` | `kintsugi-stack-dbms` |
-| `docs/interview/sql-ds/` | `kintsugi-stack-interview-sql-ds` |
-| `docs/exploration/bun/` | `kintsugi-stack-bun` |
+|---|---|---|
 | `docs/exploration/fastapi/` | `kintsugi-stack-fastapi` (code project, not a doc tree) |
 
 After adding/updating a submodule, update the `nav:` section in `mkdocs.yml`.
