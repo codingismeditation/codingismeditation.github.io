@@ -1,2 +1,0 @@
-name: kintsugi-programmer
-target: coding_is_meditation
