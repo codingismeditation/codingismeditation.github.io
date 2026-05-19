@@ -1196,7 +1196,7 @@
 <blockquote>
 <p>Full-Stack Media Sharing App: FastAPI, FastAPI Users, JWT, SQLAlchemy, ImageKit &amp; Streamlit</p>
 </blockquote>
-<p><img alt="alt text" src="ss/unnamed.webp" /></p>
+<p><img alt="alt text" src="images/unnamed.webp" /></p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 1em;">
 <iframe src="https://www.youtube.com/embed/CUszilscEPU?si=TmXOSb1AEdIKJwF1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-origin-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
 </div>
@@ -1217,7 +1217,7 @@
 <li><strong>Path (or Endpoint)</strong>: The specific route, page, or resource being accessed from the domain (e.g., <code>/courses/python</code> or <code>/api/post</code>). APIs use custom endpoints to control access to particular resources.</li>
 <li><strong>Query Parameter</strong>: Extra information used to filter a page or retrieve specific data. It always comes after a question mark <code>?</code> and multiple parameters are separated by ampersands <code>&amp;</code> (e.g., <code>?video=123&amp;page=2</code>).</li>
 </ul>
-<p><img alt="alt text" src="ss/image.webp" /></p>
+<p><img alt="alt text" src="images/image.webp" /></p>
 <h3 id="the-request-and-response-structure">The Request and Response Structure</h3>
 <p>The communication flow between a front-end (client) and back-end (API) is handled via <strong>Requests</strong> and <strong>Responses</strong>.</p>
 <p><strong>Request Components (Client to API)</strong>:</p>
@@ -1247,11 +1247,11 @@
 <li><strong>Body</strong>: Additional data returned to the front-end (e.g., the requested post data). Format is often defined by the headers.</li>
 <li><strong>Headers</strong>: Security information, authentication details, or data types (e.g., <code>application/json</code>).</li>
 </ul>
-<p><img alt="alt text" src="ss/image-1.webp" /></p>
-<p><img alt="alt text" src="ss/image-2.webp" /></p>
+<p><img alt="alt text" src="images/image-1.webp" /></p>
+<p><img alt="alt text" src="images/image-2.webp" /></p>
 <p>Simple APIs Example</p>
-<p><img alt="alt text" src="ss/image-3.webp" /></p>
-<p><img alt="alt text" src="ss/image-4.webp" /></p>
+<p><img alt="alt text" src="images/image-3.webp" /></p>
+<p><img alt="alt text" src="images/image-4.webp" /></p>
 <h3 id="jwt-authentication-primer">JWT Authentication Primer</h3>
 <p><strong>JWT (JSON Web Tokens)</strong> are used for authenticated APIs to identify users and verify authorizations securely. </p>
 <ol>
@@ -1260,7 +1260,7 @@
 <li>The client stores this token and sends it along in the headers of all future requests.</li>
 <li>The API verifies the token on every request to ensure the user has permission to perform the action.</li>
 </ol>
-<p><img alt="alt text" src="ss/image-5.webp" /></p>
+<p><img alt="alt text" src="images/image-5.webp" /></p>
 <h2 id="environment-and-setup">Environment and Setup</h2>
 <h3 id="project-initialization">Project Initialization</h3>
 <p>It is highly recommended to use <strong>PyCharm</strong> for heavy Python projects due to its support. </p>
@@ -1323,7 +1323,7 @@ This creates isolated dependencies in your folder, generating a <code>main.py</c
 <p>Run the server via the terminal:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>uv<span class="w"> </span>run<span class="w"> </span>main.py<span class="w">  </span><span class="c1"># runs the app inside project env</span>
 </span></code></pre></div></p>
-<p><img alt="alt text" src="ss/image-6.webp" /></p>
+<p><img alt="alt text" src="images/image-6.webp" /></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>http://localhost:8000/  # shows local endpoint URL to open
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>{&quot;detail&quot;:&quot;Not Found&quot;}  # shows sample API JSON response
@@ -1334,8 +1334,8 @@ This creates isolated dependencies in your folder, generating a <code>main.py</c
 <li><strong>Swagger UI</strong>: Navigate to <code>/docs</code> to see endpoints, configuration, and a "Try it out" button for sending test requests.</li>
 <li><strong>ReDoc</strong>: Navigate to <code>/redoc</code> for an alternative, modern documentation view.</li>
 </ul>
-<p><img alt="alt text" src="ss/image-7.webp" />
-<img alt="alt text" src="ss/image-8.webp" /></p>
+<p><img alt="alt text" src="images/image-7.webp" />
+<img alt="alt text" src="images/image-8.webp" /></p>
 <p><div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>   <span class="c1"># imports FastAPI classes used below</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">application</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>  <span class="c1"># creates the FastAPI application instance</span>
@@ -1362,8 +1362,8 @@ This creates isolated dependencies in your folder, generating a <code>main.py</c
 </span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>  <span class="c1"># checks a condition before next step</span>
 </span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>    <span class="n">main</span><span class="p">()</span>  <span class="c1"># shows this line as part of the example output</span>
 </span></code></pre></div></p>
-<p><img alt="alt text" src="ss/image-9.webp" />
-<img alt="alt text" src="ss/image-10.webp" /></p>
+<p><img alt="alt text" src="images/image-9.webp" />
+<img alt="alt text" src="images/image-10.webp" /></p>
 <h2 id="routing-and-parameters">Routing and Parameters</h2>
 <h3 id="path-parameters">Path Parameters</h3>
 <p>Path parameters are dynamic values placed in the URL (enclosed in curly braces <code>{}</code>) to filter specific resources. Providing Python type hints (e.g., <code>id: int</code>) enables <code>FastAPI's automatic data validation; it will reject invalid data types</code>.</p>
@@ -1412,7 +1412,7 @@ This creates isolated dependencies in your folder, generating a <code>main.py</c
 </span><span id="__span-14-33"><a id="__codelineno-14-33" name="__codelineno-14-33" href="#__codelineno-14-33"></a>        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;post not found&quot;</span><span class="p">)</span>  <span class="c1"># returns an HTTP error for invalid request</span>
 </span><span id="__span-14-34"><a id="__codelineno-14-34" name="__codelineno-14-34" href="#__codelineno-14-34"></a>    <span class="k">return</span> <span class="n">text_posts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>  <span class="c1"># returns data to the API caller</span>
 </span></code></pre></div>
-<p><img alt="alt text" src="ss/image-11.webp" /></p>
+<p><img alt="alt text" src="images/image-11.webp" /></p>
 <h3 id="query-parameters">Query Parameters</h3>
 <p>Query parameters are optional or mandatory variables passed directly into the endpoint function. Assigning a default value (like <code>None</code>) makes them optional.</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nd">@application</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/posts&quot;</span><span class="p">)</span>  <span class="c1"># registers a GET route</span>
@@ -1421,7 +1421,7 @@ This creates isolated dependencies in your folder, generating a <code>main.py</c
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>            <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">text_posts</span><span class="o">.</span><span class="n">values</span><span class="p">())[:</span><span class="n">limit</span><span class="p">]</span>  <span class="c1"># returns data to the API caller</span>
 </span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>    <span class="k">return</span> <span class="n">text_posts</span>  <span class="c1"># returns data to the API caller</span>
 </span></code></pre></div>
-<p><img alt="alt text" src="ss/image-12.webp" /></p>
+<p><img alt="alt text" src="images/image-12.webp" /></p>
 <blockquote>
 <p>FastAPI automatically validates all data going into and coming out of the function</p>
 </blockquote>
@@ -1510,9 +1510,9 @@ This creates isolated dependencies in your folder, generating a <code>main.py</c
 </span><span id="__span-19-48"><a id="__codelineno-19-48" name="__codelineno-19-48" href="#__codelineno-19-48"></a>    <span class="n">text_posts</span><span class="p">[</span><span class="n">new_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_post</span>  <span class="c1"># assigns value for later use</span>
 </span><span id="__span-19-49"><a id="__codelineno-19-49" name="__codelineno-19-49" href="#__codelineno-19-49"></a>    <span class="k">return</span> <span class="n">new_post</span>  <span class="c1"># returns data to the API caller</span>
 </span></code></pre></div></p>
-<p><img alt="alt text" src="ss/image-13.webp" /></p>
+<p><img alt="alt text" src="images/image-13.webp" /></p>
 <p>try create post
-<img alt="alt text" src="ss/image-14.webp" /></p>
+<img alt="alt text" src="images/image-14.webp" /></p>
 <p>access that post</p>
 <h2 id="database-setup-sqlalchemy">Database Setup (SQLAlchemy)</h2>
 <p>To store data persistently (preventing data loss on server refresh), an <strong>ORM (Object Relational Mapping)</strong> is used. SQLAlchemy allows writing Python-like code to define, retrieve, create, and update data instead of writing manual SQL queries.</p>
@@ -1983,28 +1983,28 @@ This creates isolated dependencies in your folder, generating a <code>main.py</c
 </span><span id="__span-31-104"><a id="__codelineno-31-104" name="__codelineno-31-104" href="#__codelineno-31-104"></a><span class="c1">#     return new_post</span>
 </span></code></pre></div></p>
 <p>uploading sample document
-<img alt="alt text" src="ss/image-15.webp" />
-<img alt="alt text" src="ss/image-16.webp" /></p>
+<img alt="alt text" src="images/image-15.webp" />
+<img alt="alt text" src="images/image-16.webp" /></p>
 <p>even if we exit application, db get saved, once we restart application, db gets restored !!!</p>
 <p>after reopning the application, db restored, and get api worked !!!
-<img alt="alt text" src="ss/image-17.webp" /></p>
+<img alt="alt text" src="images/image-17.webp" /></p>
 <hr />
 <p>next part</p>
 <p>You can use External Storage
-<img alt="alt text" src="ss/image-18.webp" />
-<img alt="alt text" src="ss/image-19.webp" /></p>
+<img alt="alt text" src="images/image-18.webp" />
+<img alt="alt text" src="images/image-19.webp" /></p>
 <p>But Rn, using Imagekit's DAM </p>
 <ul>
 <li>Use this doc: https://imagekit.io/docs/integration/python</li>
 </ul>
-<p><img alt="alt text" src="ss/image-20.webp" />
-<img alt="alt text" src="ss/image-21.webp" />
-<img alt="alt text" src="ss/image-22.webp" /></p>
+<p><img alt="alt text" src="images/image-20.webp" />
+<img alt="alt text" src="images/image-21.webp" />
+<img alt="alt text" src="images/image-22.webp" /></p>
 <p>schema not error</p>
 <p>Now Post Stored in DB and Image linked stored in DAM
-<img alt="alt text" src="ss/image-23.webp" />
-<img alt="alt text" src="ss/image-24.webp" />
-<img alt="alt text" src="ss/image-25.webp" /></p>
+<img alt="alt text" src="images/image-23.webp" />
+<img alt="alt text" src="images/image-24.webp" />
+<img alt="alt text" src="images/image-25.webp" /></p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>pip<span class="w"> </span>install<span class="w"> </span>imagekitio
 </span></code></pre></div>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="c1"># images.py</span>
@@ -2203,10 +2203,10 @@ This creates isolated dependencies in your folder, generating a <code>main.py</c
 </span><span id="__span-35-17"><a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
 </span><span id="__span-35-18"><a id="__codelineno-35-18" name="__codelineno-35-18" href="#__codelineno-35-18"></a>        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
 </span></code></pre></div></p>
-<p><img alt="alt text" src="ss/image-27.webp" />
-<img alt="alt text" src="ss/image-28.webp" /></p>
+<p><img alt="alt text" src="images/image-27.webp" />
+<img alt="alt text" src="images/image-28.webp" /></p>
 <p>Deleted Success</p>
-<p><img alt="alt text" src="ss/image-29.webp" /></p>
+<p><img alt="alt text" src="images/image-29.webp" /></p>
 <p>Not won't shown in GET</p>
 <h2 id="user-authentication-fastapi-users">User Authentication (FastAPI Users)</h2>
 <p>To secure the application with JWT, the <code>fastapi-users</code> library automates standard processes (registration, login, verifying tokens).</p>
@@ -2297,24 +2297,24 @@ This creates isolated dependencies in your folder, generating a <code>main.py</c
 <p>Additionally, apply authorization logic within the function (e.g., verifying <code>post.user_id == user.id</code> before allowing deletions) to enforce user-specific permissions.</p>
 <h3 id="codes-authentication">Code(s) — Authentication</h3>
 <p>New Routes came out because of FastAPI Users
-<img alt="alt text" src="ss/image-30.webp" /></p>
+<img alt="alt text" src="images/image-30.webp" /></p>
 <p>Register New USer
-<img alt="alt text" src="ss/image-31.webp" />
-<img alt="alt text" src="ss/image-32.webp" />
+<img alt="alt text" src="images/image-31.webp" />
+<img alt="alt text" src="images/image-32.webp" />
 ed791fc4-88c8-439b-9add-7ec66d18678e
 kintsugiprogrammer@gmail.com</p>
 <h1 id="als12345">ALS12345</h1>
-<p><img alt="alt text" src="ss/image-33.webp" /></p>
+<p><img alt="alt text" src="images/image-33.webp" /></p>
 <p>Login
-<img alt="alt text" src="ss/image-34.webp" /></p>
+<img alt="alt text" src="images/image-34.webp" /></p>
 <p>Logged in and got token, get used in any request
-<img alt="alt text" src="ss/image-35.webp" /></p>
+<img alt="alt text" src="images/image-35.webp" /></p>
 <p>See Current User, and super long token associated in my request </p>
 <p>For protecting routes, i can add dependency that for forces router to get the current active user</p>
 <p>after it</p>
-<p><img alt="alt text" src="ss/image-36.webp" /></p>
+<p><img alt="alt text" src="images/image-36.webp" /></p>
 <p>We can see other users posts, no ownership</p>
-<p><img alt="alt text" src="ss/image-37.webp" /></p>
+<p><img alt="alt text" src="images/image-37.webp" /></p>
 <p>Even if other user try to delete others, it will not be authorised</p>
 <p><div class="language-py highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="c1"># users.py</span>
 </span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
@@ -2683,7 +2683,7 @@ kintsugiprogrammer@gmail.com</p>
 <li><strong>Text/Overlays</strong>: Add captions via URL string overlays, modifying sizes using attributes like <code>font-size_100</code>.</li>
 <li><strong>Videos</strong>: Output frames as thumbnails via appending <code>ik-thumbnail.jpg</code> (or requesting specific timeframes like 5 seconds in). Videos can also be cropped into vertical frames with blurred backgrounds, and drastically optimized (e.g., 90% quality compression makes files 3x smaller without major quality loss).</li>
 </ul>
-<p><img alt="alt text" src="ss/image-26.webp" /></p>
+<p><img alt="alt text" src="images/image-26.webp" /></p>
 <p>https://ik.imagekit.io/mwg1upyo1/products/image-6_mJSJ4dfaR.png to</p>
 <ul>
 <li>https://ik.imagekit.io/mwg1upyo1/products/image-6_mJSJ4dfaR.png?tr=w-300,h-300</li>
@@ -2876,10 +2876,10 @@ kintsugiprogrammer@gmail.com</p>
 </span><span id="__span-44-182"><a id="__codelineno-44-182" name="__codelineno-44-182" href="#__codelineno-44-182"></a>    <span class="k">else</span><span class="p">:</span>
 </span><span id="__span-44-183"><a id="__codelineno-44-183" name="__codelineno-44-183" href="#__codelineno-44-183"></a>        <span class="n">upload_page</span><span class="p">()</span>
 </span></code></pre></div>
-<p><img alt="alt text" src="ss/image-38.webp" /></p>
-<p><img alt="alt text" src="ss/image-39.webp" /></p>
-<p><img alt="alt text" src="ss/image-40.webp" /></p>
-<p><img alt="alt text" src="ss/image-41.webp" /></p>
+<p><img alt="alt text" src="images/image-38.webp" /></p>
+<p><img alt="alt text" src="images/image-39.webp" /></p>
+<p><img alt="alt text" src="images/image-40.webp" /></p>
+<p><img alt="alt text" src="images/image-41.webp" /></p>
 
 
 
@@ -2902,7 +2902,7 @@ kintsugiprogrammer@gmail.com</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 18, 2026 13:57:18 UTC">May 18, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 19, 2026 15:21:52 UTC">May 19, 2026</span>
   </span>
 
     
