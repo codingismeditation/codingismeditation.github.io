@@ -21,6 +21,7 @@ keywords:
 ## Explorations
 
 * [FastAPI](exploration/fastapi/index.md)
+* [Bun](exploration/bun/index.md)
 
 ## Others
 

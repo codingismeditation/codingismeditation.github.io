@@ -8,6 +8,7 @@ nav:
   - Explorations:
     - Overview: exploration/index.md
     - FastAPI: exploration/fastapi/index.md
+    - Bun: exploration/bun/index.md
   # - Backend:
   #     - Roadmap: backend/roadmap.md
   #     - Databases: backend/databases.md

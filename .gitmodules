@@ -1,3 +1,6 @@
 [submodule "docs/exploration/fastapi"]
 	path = docs/exploration/fastapi
 	url = https://github.com/kintsugi-programmer/kintsugi-stack-fastapi
+[submodule "docs/exploration/bun"]
+	path = docs/exploration/bun
+	url = https://github.com/kintsugi-programmer/kintsugi-stack-bun.git
