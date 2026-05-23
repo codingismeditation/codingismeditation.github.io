@@ -4,3 +4,6 @@
 [submodule "docs/exploration/bun"]
 	path = docs/exploration/bun
 	url = https://github.com/kintsugi-programmer/kintsugi-stack-bun.git
+[submodule "docs/exploration/tech-current-affairs"]
+	path = docs/exploration/tech-current-affairs
+	url = https://github.com/kintsugi-programmer/tech-current-affairs
