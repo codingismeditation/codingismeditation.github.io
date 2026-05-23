@@ -25,7 +25,7 @@ keywords:
 
 ## Tech Current Affairs
 
-* [Tech Current Affairs](tech-current-affairs/index.md)
+* [The Dawn of the Agentic Era: Google I/O 2026](tech-current-affairs/19-05-2026-google-io-2026.md)
 
 ## Others
 
