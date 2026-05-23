@@ -889,7 +889,9 @@
 - Start with a prompt (e.g., "build a login page in Python")
 - AI generates boilerplate
 - Edit prompt, regenerate, repeat until it works
-- No planning phase — the LLM guesses the implementation each time</p>
+- No planning phase — the LLM guesses the implementation each time
+- Inconsistent results — a hundred tries can give a hundred different outcomes
+- Can take longer than writing the code yourself</p>
 <p>This skips the <strong>Software Development Lifecycle (SDLC)</strong>. Traditional SDLC goes: Plan → Design → Implement → Test → Deploy → Maintain. Vibe coding jumps straight to implementation, which means every run can produce different results.</p>
 <h2 id="what-is-spec-driven-development">What is Spec-Driven Development?</h2>
 <p>Spec-driven development (spec coding) adds SDLC structure to AI-generated software. Instead of prompting an implementation, you prompt:</p>
@@ -897,7 +899,7 @@
 <li><strong>Behavior</strong> — what the system should do</li>
 <li><strong>Constraints</strong> — rules and boundaries</li>
 </ul>
-<p>These become a <strong>requirements specification</strong> — a contract that guides all downstream work: code, tests, docs, verification.</p>
+<p>AI models are all about proper instructions. Giving the LLM a clear spec upfront is much better than making it guess what solution fits your request. These become a <strong>requirements specification</strong> — a contract that guides all downstream work: code, tests, docs, verification. Nothing is implemented until the spec is approved.</p>
 <h3 id="the-flow">The Flow</h3>
 <ol>
 <li><strong>Prompt</strong> → requirements spec (behavior + constraints)</li>
@@ -906,6 +908,7 @@
 <li><strong>AI agent implements</strong> code from the design</li>
 <li><strong>Generate tests</strong> from the same spec</li>
 </ol>
+<p>The spec becomes the <strong>primary artifact</strong> — it drives everything downstream.</p>
 <h2 id="how-it-differs">How It Differs</h2>
 <table>
 <thead>
@@ -917,6 +920,11 @@
 </thead>
 <tbody>
 <tr>
+<td>Vibe coding</td>
+<td>Prompt</td>
+<td>Quick prototyping</td>
+</tr>
+<tr>
 <td>Traditional dev</td>
 <td>Code</td>
 <td>Intuition-driven</td>
@@ -927,35 +935,39 @@
 <td>Behavior-first</td>
 </tr>
 <tr>
+<td>Behavior-driven dev (BDD)</td>
+<td>Scenarios</td>
+<td>Communication-first</td>
+</tr>
+<tr>
 <td>Spec-driven dev (SDD)</td>
 <td>Specification</td>
 <td>Contract-first</td>
 </tr>
 </tbody>
 </table>
-<p>SDD is like TDD on steroids — the spec becomes the primary artifact driving implementation, tests, and verification.</p>
+<p>SDD is like TDD and BDD on steroids — the spec becomes the primary artifact driving implementation, tests, and verification.</p>
 <h2 id="example-user-authentication">Example: User Authentication</h2>
 <h3 id="vibe-coding">Vibe Coding</h3>
 <ul>
 <li>Prompt: "build a /login endpoint"</li>
 <li>AI guesses the structure — libraries, error handling, validation</li>
-<li>Back-and-forth edits until it works</li>
+<li>30 different ways to implement it — back-and-forth edits until it works</li>
 </ul>
 <h3 id="spec-driven">Spec-Driven</h3>
-<ol>
-<li>Define the feature: <strong>User Authentication</strong></li>
-<li>Specify behavior: "POST /login endpoint accepting <code>user</code> and <code>pass</code> variables"</li>
-<li>Specify failure conditions: "return error if username is missing"</li>
-<li>Generate test cases: "valid credentials → 200 response"</li>
-<li>AI implements from the spec</li>
-</ol>
+<p>Define the feature and build it out in spec first:
+1. <strong>Behavior</strong>: "POST /login endpoint accepting <code>user</code> and <code>pass</code> variables"
+2. <strong>Failure conditions</strong>: "return error if username is missing"
+3. <strong>Test cases</strong>: "valid credentials → 200 response"
+4. AI implements from the spec — no guessing needed</p>
 <p>The key difference: less ambiguity. The LLM knows <em>why</em> it's making decisions, and every implementation matches a shared contract.</p>
 <h2 id="why-it-matters">Why It Matters</h2>
 <ul>
-<li>Removes ambiguity from AI coding</li>
+<li>Removes ambiguity from AI coding — the LLM doesn't have to guess</li>
 <li>Produces consistent, repeatable results</li>
-<li>Documents intent (not just code)</li>
-<li>Works across implementation, testing, and verification</li>
+<li>Documents intent (not just code) — you capture <em>why</em> things are built</li>
+<li>Works across implementation, testing, and verification from a single source of truth</li>
+<li>Fits naturally into the SDLC instead of skipping it</li>
 </ul>
 
 
@@ -979,7 +991,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 23, 2026 20:31:22 UTC">May 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 23, 2026 20:34:58 UTC">May 23, 2026</span>
   </span>
 
     
