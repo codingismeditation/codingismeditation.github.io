@@ -19,4 +19,3 @@ It contains experiments with new technologies, revisits to older tools, trend-dr
 
 - [FastAPI](fastapi/index.md)
 - [Bun](bun/index.md)
-- [Tech Current Affairs](tech-current-affairs/index.md)

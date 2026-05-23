@@ -22,7 +22,10 @@ keywords:
 
 * [FastAPI](exploration/fastapi/index.md)
 * [Bun](exploration/bun/index.md)
-* [Tech Current Affairs](exploration/tech-current-affairs/index.md)
+
+## Tech Current Affairs
+
+* [Tech Current Affairs](tech-current-affairs/index.md)
 
 ## Others
 
