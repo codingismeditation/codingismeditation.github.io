@@ -11,8 +11,8 @@ nav:
     - Bun: exploration/bun/index.md
   - Tech Current Affairs: 
     - Overview: tech-current-affairs/index.md
-    - Google IO 2026 : tech-current-affairs/19-05-2026-google-io-2026.md
     - Spec-Driven Development: tech-current-affairs/24-05-2026-spec-driven-development.md
+    - Google IO 2026 : tech-current-affairs/19-05-2026-google-io-2026.md
   # - Backend:
   #     - Roadmap: backend/roadmap.md
   #     - Databases: backend/databases.md
