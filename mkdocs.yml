@@ -9,6 +9,9 @@ nav:
     - Overview: exploration/index.md
     - FastAPI: exploration/fastapi/index.md
     - Bun: exploration/bun/index.md
+  - System Design:
+    - Overview: system-design/index.md
+    - How Senior Engineers Think System Design: system-design/how-senior-engineers-think-system-design.md
   - Tech Current Affairs: 
     - Overview: tech-current-affairs/index.md
     - Spec-Driven Development: tech-current-affairs/24-05-2026-spec-driven-development.md

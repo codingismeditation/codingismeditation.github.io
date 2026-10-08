@@ -17,23 +17,24 @@ mkdocs gh-deploy --force                # --force keeps gh-pages branch clean
 
 User config is required before any commit:
 ```bash
-git config user.name "kintsugi-programmer"
-git config user.email "siddhant.bali.work@gmail.com"
+git config user.name "Siddhant Bali"
+git config user.email "119037976+kintsugi-programmer@users.noreply.github.com"
 ```
 
 ## Content architecture
 
-Three active submodules under `kintsugi-programmer/`:
+Four active submodules under `kintsugi-programmer/`:
 
 | Path | Repo | Section type |
 |---|---|---|
 | `docs/exploration/fastapi/` | `kintsugi-stack-fastapi` | Single-page section in Explorations |
 | `docs/exploration/bun/` | `kintsugi-stack-bun` | Single-page section in Explorations |
+| `docs/system-design/` | `kintsugi-stack-system-design` | Top-level section with sub-pages |
 | `docs/tech-current-affairs/` | `tech-current-affairs` | Top-level section with sub-pages |
 
 Two distinct content patterns:
 - **Explorations**: One `index.md` per submodule, referenced directly in nav
-- **Tech Current Affairs**: `index.md` lists articles; each article is a separate markdown file (`<date>-<slug>.md`); nav has sub-entries
+- **Tech Current Affairs / System Design**: `index.md` lists articles; each article is a separate markdown file (`<date>-<slug>.md`); nav has sub-entries
 
 After adding/updating a submodule, update:
 1. `mkdocs.yml` nav section
@@ -63,8 +64,9 @@ Submodules often end up in detached HEAD; always use `git push origin HEAD:main`
 
 ## Nav structure
 
-Nav in `mkdocs.yml` has two top-level groups:
+Nav in `mkdocs.yml` has three top-level groups:
 - **Explorations** — section with Overview/ FastAPI/ Bun sub-pages
+- **System Design** — section with Overview and article sub-pages
 - **Tech Current Affairs** — section with Overview and article sub-pages
 
 Other nav items: Home, About, Contributing.

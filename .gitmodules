@@ -7,3 +7,6 @@
 [submodule "docs/tech-current-affairs"]
 	path = docs/tech-current-affairs
 	url = https://github.com/kintsugi-programmer/tech-current-affairs
+[submodule "docs/system-design"]
+	path = docs/system-design
+	url = https://github.com/kintsugi-programmer/kintsugi-stack-system-design

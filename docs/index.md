@@ -23,6 +23,10 @@ keywords:
 * [FastAPI](exploration/fastapi/index.md)
 * [Bun](exploration/bun/index.md)
 
+## System Design
+
+* [How Senior Engineers Think System Design](system-design/how-senior-engineers-think-system-design.md)
+
 ## Tech Current Affairs
 
 * [Spec-Driven Development: AI Assisted Coding with Clarity](tech-current-affairs/24-05-2026-spec-driven-development.md)
