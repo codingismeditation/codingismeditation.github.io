@@ -1,0 +1,1730 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Deep, practical docs on backend, systems, and engineering mindset">
+      
+      
+      
+        <link rel="canonical" href="https://codingismeditation.github.io/system-design/how-senior-engineers-think-system-design.html">
+      
+      
+        <link rel="prev" href="index.html">
+      
+      
+        <link rel="next" href="../tech-current-affairs/index.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>How Senior Engineers Think System Design - Coding Is Meditation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="How Senior Engineers Think System Design - Coding Is Meditation" />
+<meta property="og:description" content="Deep, practical docs on backend, systems, and engineering mindset" />
+<meta property="og:image" content="https://codingismeditation.github.io/assets/images/social/system-design/how-senior-engineers-think-system-design.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://codingismeditation.github.io/system-design/how-senior-engineers-think-system-design.html" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="How Senior Engineers Think System Design - Coding Is Meditation" />
+<meta property="twitter:description" content="Deep, practical docs on backend, systems, and engineering mindset" />
+<meta property="twitter:image" content="https://codingismeditation.github.io/assets/images/social/system-design/how-senior-engineers-think-system-design.png" />
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="yellow">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-senior-engineers-think-system-design" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="Coding Is Meditation" class="md-header__button md-logo" aria-label="Coding Is Meditation" data-md-component="logo">
+      
+  <img src="../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Coding Is Meditation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              How Senior Engineers Think System Design
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="yellow"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="yellow"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kintsugi-programmer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kintsugi-programmer
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../contributing.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Contributing
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../exploration/index.html" class="md-tabs__link">
+          
+  
+  
+  Explorations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+  
+  System Design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../tech-current-affairs/index.html" class="md-tabs__link">
+          
+  
+  
+  Tech Current Affairs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Coding Is Meditation" class="md-nav__button md-logo" aria-label="Coding Is Meditation" data-md-component="logo">
+      
+  <img src="../assets/images/logo.png" alt="logo">
+
+    </a>
+    Coding Is Meditation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kintsugi-programmer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kintsugi-programmer
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../exploration/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explorations
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    System Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Senior Engineers Think System Design
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="how-senior-engineers-think-system-design.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Senior Engineers Think System Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-system-design-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What System Design Is
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-starting-point-one-server-one-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Starting Point: One Server, One Database
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaling-vertical-vs-horizontal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scaling: Vertical vs Horizontal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-balancers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Load Balancers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sessions-and-stateless-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sessions and Stateless Servers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-connections-and-capacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Connections and Capacity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-replicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read Replicas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caching
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#queues-and-workers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Queues and Workers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sharding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sharding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-full-system-and-the-real-skill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Full System and the Real Skill
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../tech-current-affairs/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tech Current Affairs
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../index.html" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    System Design
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="how-senior-engineers-think-system-design">How senior engineers think system design</h1>
+<p><img alt="alt text" src="images/image-1.webp" /></p>
+<h2 id="what-system-design-is">What System Design Is</h2>
+<blockquote>
+<p>This documentation will give you an evolutionary from scratch approach to understand system design, where, with the help of AI, we can make multiple apps with a frontend, backend, database, etc., and even deploy them online faster than ever. How to scale it? That problem is solved here. </p>
+</blockquote>
+<p><strong>Building an app is no longer the hard part.</strong> Front end, backend, database, deployed, online. AI makes it faster than ever. The uncomfortable question: if anyone can build the app now, what makes you a good engineer?</p>
+<ul>
+<li><strong>Building the thing was never the hard part.</strong> The hard part is what happens when the app gets popular.</li>
+<li>One server isn't enough.</li>
+<li>The database can't keep up.</li>
+<li>It's slow and you don't know why.</li>
+<li><strong>That is system design.</strong></li>
+<li><strong>Most tutorials teach it wrong.</strong> Load balancers, replicas, sharding, caching thrown at you all at once on day one, for an app that has 50 users.</li>
+<li><strong>This lesson does the opposite.</strong></li>
+<li>Start with one server and one database, which is already enough for way more users than you think.</li>
+<li>Break it on purpose, over and over.</li>
+<li>Each time it breaks, fix exactly one thing.</li>
+<li>By the end, you have built the whole system and you know why every piece is there and what it costs to add it.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    A[App gets popular] --&gt; B[One server isn't enough]
+    A --&gt; C[Database can't keep up]
+    A --&gt; D[Slow, and you don't know why]
+    B --&gt; E[System design]
+    C --&gt; E
+    D --&gt; E</code></pre>
+<pre class="mermaid"><code>flowchart LR
+    A[Start: one server + one database] --&gt; B[Break it on purpose]
+    B --&gt; C[Fix exactly one thing]
+    C --&gt; D{Still broken?}
+    D --&gt;|Yes| B
+    D --&gt;|No| E[You know why every piece is there — and what it costs]</code></pre>
+<h2 id="the-starting-point-one-server-one-database">The Starting Point: One Server, One Database</h2>
+<blockquote>
+<p>Basic normal setup is server connected to database. Generic, not faulty, can cater to &lt;10,000 total users and &lt;200 concurrent users. But fails at very high traffic, where user requests pile up in a very long queue, so long that it leads to request timeouts. Here, there is no bug in the code. The code is perfect. It is just that the setup is small. There, system design comes. </p>
+</blockquote>
+<p><strong>The setup:</strong> one server running your code, one database holding your data. If you have built anything and put it online, this is what you have.</p>
+<ul>
+<li><strong>This is enough for thousands of users. Not dozens. Thousands.</strong></li>
+<li><strong>Most applications that exist right now look exactly like this and will never need to look like anything else.</strong></li>
+<li><strong>That is not a failure.</strong> It is not something you have to grow out of.</li>
+</ul>
+<p><strong>The breaking scenario: a concert ticket app</strong></p>
+<ul>
+<li>Built for real, like Ticketmaster, StubHub, or SeatGeek.</li>
+<li>Deployed, tested, everything works perfectly.</li>
+<li>A big show goes on sale. 10:00 in the morning if lucky, about 5:00 p.m. on a Friday if not.</li>
+<li>Thousands, if not tens or hundreds of thousands, of people open the site at the exact same moment to grab a ticket.</li>
+<li><strong>The app falls over.</strong> Slow to crawl, requests hanging, some never finish at all.</li>
+<li><strong>Nothing is wrong with the code.</strong> No bad queries, no bugs.</li>
+<li><strong>The problem is simpler:</strong> a single server can only do so many things at once.</li>
+<li>Thousands of requests arrive together.</li>
+<li>They pile up in a queue, waiting their turn.</li>
+<li>The queue gets so long that requests time out before they are ever reached.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    U[Users] --&gt; S[One server]
+    S --&gt; D[(One database)]
+    S -.-&gt;|Too many requests at once| Q[Requests pile up in a queue]
+    Q -.-&gt;|Queue too long| T[Requests time out]</code></pre>
+<pre class="mermaid"><code>flowchart LR
+    U[Users] --&gt; S[One server running your code]
+    S --&gt; D[One database holding your data]</code></pre>
+<h2 id="scaling-vertical-vs-horizontal">Scaling: Vertical vs Horizontal</h2>
+<blockquote>
+<p>Scaling up means expanding a setup. </p>
+<p>Vertical scaling buying big PC with big RAM and big processing memory and replace with old server. Same server box, just larger. Easy, expensive, tedious, single point of failure . </p>
+<p>Other way: horizontal scaling, attaching the same ordinary servers and splitting the task between them where each server has an identical copy of the app. As traffic increases, increase the servers. No single point of failure. </p>
+</blockquote>
+<p><strong>Two options for handling thousands of people at once.</strong> You will pick between these two for real one day.</p>
+<p><strong>Vertical scaling</strong></p>
+<ul>
+<li><strong>Get a bigger server.</strong> More processing power, more memory. Same server box, just stronger and larger.</li>
+<li><strong>The right first move almost every time.</strong></li>
+<li>Change nothing about your code.</li>
+<li>Pay for a bigger machine, done for the afternoon.</li>
+<li>If a bigger server fixes the problem, buy the bigger server and get back to work.</li>
+<li><strong>The number:</strong> a $20/month server handles hundreds of requests a second for a typical app. That is millions of requests a day on one cheap box.</li>
+<li><strong>It runs out.</strong> There is a biggest machine you can rent, and it gets very expensive long before you reach it.</li>
+<li><strong>A bigger box buys time, but not forever.</strong></li>
+</ul>
+<p><strong>Horizontal scaling</strong></p>
+<ul>
+<li><strong>Stop making one box do all the work.</strong> Run several ordinary servers and split the people between them. More machines sharing the load.</li>
+<li><strong>The servers are identical copies of your app.</strong> Not different parts of the app. Not one for payments, one for messaging. The same code running three times. Each copy can handle any request on its own.</li>
+<li><strong>You ship once.</strong> You tell the platform to run three instances of it. On Vercel, it quietly already does this for you.</li>
+<li><strong>This is the approach that actually keeps going.</strong> Too much traffic next year? Just add more copies. There is no ceiling in the same way, because you are not depending on one machine being big enough.</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+    subgraph Vertical["Vertical Scaling"]
+        V1[One small server] --&gt; V2[One bigger server]
+        V2 --&gt; V3[Biggest machine you can rent]
+        V3 --&gt; V4[Runs out — very expensive]
+    end
+    subgraph Horizontal["Horizontal Scaling"]
+        H1[Server 1] --- H2[Server 2]
+        H2 --- H3[Server 3]
+        H3 --&gt; H4[Add more copies — no ceiling]
+    end</code></pre>
+<pre class="mermaid"><code>flowchart LR
+    subgraph Identical["Three identical copies — not different parts"]
+        S1["Server 1 — same code"]
+        S2["Server 2 — same code"]
+        S3["Server 3 — same code"]
+    end
+    S1 --&gt;|Each can handle any request on its own| DB[(Database)]
+    S2 --&gt; DB
+    S3 --&gt; DB</code></pre>
+<h2 id="load-balancers">Load Balancers</h2>
+<blockquote>
+<p>LB handles allocation of multiple requests to each server if one server is busy, then it's sent to the different one. We can have multiple load balancers to not have a single point of failure. </p>
+<p>Nginx classic one Vercel Railway automatically have LBs. Now, interchangeability of each server is the next issue to solve. </p>
+</blockquote>
+<p><strong>The new question:</strong> with more than one server, which server does a request go to? Something has to stand in front of your servers and hand each incoming request to one of them, spreading people out evenly so no single server gets overwhelmed while others sit idle.</p>
+<ul>
+<li><strong>That thing is called a load balancer.</strong></li>
+<li>A request comes in, the load balancer picks a server, the server does the work.</li>
+<li>If one server is busy, send the next request to a different one.</li>
+<li>Add a fourth server next month, the load balancer starts using it.</li>
+<li>Users never know how many servers there are or which one they got.</li>
+<li><strong>Nginx is a classic one.</strong> On Vercel or Railway, you already have a load balancer. You just never had to set it up or think about it.</li>
+</ul>
+<p><strong>The costs</strong></p>
+<ul>
+<li><strong>Single point of failure.</strong> Everything flows through the load balancer. If it goes down, it doesn't matter that you have three healthy servers behind it, nobody can reach them. Real systems give the load balancer itself a backup. More stuff to run.</li>
+<li><strong>Servers must be interchangeable.</strong> For the load balancer to send any request to any server, all servers have to be able to handle any request. Right now they are not. That is where sessions bite.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    U[User request] --&gt; LB[Load balancer]
+    LB --&gt; S1[Server 1]
+    LB --&gt; S2[Server 2]
+    LB --&gt; S3[Server 3]
+    S1 -.-&gt;|Busy?| LB
+    S2 -.-&gt;|Busy?| LB
+    S3 -.-&gt;|Busy?| LB</code></pre>
+<pre class="mermaid"><code>flowchart TD
+    subgraph SPOF["Single point of failure"]
+        U[Users] --&gt; LB[Load balancer]
+        LB --&gt;|Goes down| X[Three healthy servers behind it — nobody can reach them]
+    end
+    subgraph Backup["Real systems"]
+        U2[Users] --&gt; LB1[Load balancer 1]
+        U2 --&gt; LB2[Load balancer 2 — backup]
+        LB1 --&gt; S[Servers]
+        LB2 --&gt; S
+    end</code></pre>
+<h2 id="sessions-and-stateless-servers">Sessions and Stateless Servers</h2>
+<blockquote>
+<p>Interchangeability of servers means: if a user logs in to server 1 and, due to a big load, the user goes to server 2, server 2 should be able to also handle the request instead of giving a "not authorised" bad request. </p>
+<p>If each server is handling the user session ID, then this won't be possible. </p>
+<p>Stateless servers are those servers which are not allowed to remember anything about you between requests in their own memory. They have to fetch it from separate shared storage "Redis" (or from db etc ways in case of JWT). They are interchangeable servers. </p>
+<p>Redis is a in-memory separate shared storage for containing user session IDs. Super Fast to Read from. Once a user's session is put in one write operation, the rest of the operations are just read operations where the server reads from Redis in a very, very fast time. But this leads to one more single point of failure and extra costing . </p>
+<p>Next issue comes from the demerits of having one database talking with all servers. </p>
+</blockquote>
+<p><strong>The problem</strong></p>
+<ul>
+<li>A user logs in on server A. They browse. They pick a ticket and hit buy. That request goes to server B. Server B immediately says: you're not logged in.</li>
+<li>Nothing is broken. This happens the moment you run more than one server and do not handle sessions properly.</li>
+</ul>
+<p><strong>What being logged in means</strong></p>
+<ul>
+<li>The server checks your password, then needs to remember it is you on every request after that, so you are not retyping your password on every click.</li>
+<li><strong>The server makes a note:</strong> "This person is logged in as Bob."</li>
+<li><strong>It hands you a session ID:</strong> a random string that points at that note.</li>
+<li>Your browser sends the session ID with every request. The server looks at its note and knows it is you.</li>
+<li><strong>The question that matters: where does the server keep the note?</strong></li>
+<li><strong>By default, the note lives in the server's own memory.</strong></li>
+<li>You log in, the load balancer sends that request to server one. Server one makes the note "Bob is logged in" in its memory.</li>
+<li>A moment later you click something. The load balancer sends this request to server two. Server two has never heard of you, because the note is on server one.</li>
+<li>Server two looks in its own memory, finds nothing, and asks you to log in again.</li>
+<li><strong>That is the random logout.</strong> You are not being kicked out. You are being sent to a different server that doesn't have your note.</li>
+<li><strong>With three servers, roughly two out of every three clicks land on a server that doesn't know you.</strong></li>
+<li><strong>This is what "not interchangeable" meant.</strong> Your login was stuck on a specific server.</li>
+</ul>
+<p><strong>The fix: stateless servers</strong></p>
+<ul>
+<li><strong>The rule:</strong> servers are not allowed to remember anything about you between requests. No server keeps a note in its own memory.</li>
+<li><strong>The note goes somewhere all of them can reach.</strong> A separate place off to the side that every server can read from and write to.</li>
+<li>Now it doesn't matter which server you land on. You log in, the note gets written to the shared place. On the next click, whatever server the load balancer picks reads the same shared place, finds your note, and knows it is you.</li>
+<li><strong>A server that keeps nothing about you in its own memory is called stateless.</strong></li>
+<li><strong>Every server is now interchangeable</strong>, exactly like the load balancer needed. Any server can handle any request, because none of them keep secrets the others cannot see.</li>
+<li><strong>The shared place is very often Redis.</strong> An in-memory storage that is extremely fast to read from. That matters because you hit it on every request. Hold on to that name, it comes back later for a completely different job.</li>
+</ul>
+<p><strong>The cost</strong></p>
+<ul>
+<li><strong>Every request now does one extra thing.</strong> It reaches out to the shared store to find your note before it can do anything else. A little time added to every single request.</li>
+<li><strong>One more piece of infrastructure that has to be up.</strong> If the shared store goes down, nobody can be logged in at all.</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+    subgraph Problem["The problem"]
+        U[User logs in] --&gt; SA[Server A makes note in its own memory]
+        U2[User clicks buy] --&gt; LB[Load balancer]
+        LB --&gt; SB[Server B]
+        SB --&gt;|Looks in its own memory — note is on Server A| OUT["Says: you're not logged in"]
+    end
+    subgraph Fix["The fix: stateless servers"]
+        U3[User logs in] --&gt; LB2[Load balancer]
+        LB2 --&gt; ANY[Any server]
+        ANY --&gt; R[(Redis — shared store)]
+        U4[Next click] --&gt; LB3[Load balancer]
+        LB3 --&gt; ANY2[Any other server]
+        ANY2 --&gt; R2[(Redis — same shared note)]
+        R2 --&gt; OK["Knows it is you"]
+    end</code></pre>
+<pre class="mermaid"><code>flowchart LR
+    B[Browser] --&gt;|Sends session ID with every request| S[Server]
+    S --&gt;|Looks at its note| N["Knows it is you"]
+    subgraph Note["Where the note lives"]
+        M1["By default: the server's own memory"]
+        M2["The fix: a shared place all servers can reach — Redis"]
+    end</code></pre>
+<h2 id="database-connections-and-capacity">Database Connections and Capacity</h2>
+<blockquote>
+<p>Solid healthy system, no bug. Still slow because they all talk to one database. each database has less than 100-200 connections, where 10 to 20 connections are connected to each server. When servers stack up, they may exceed the database connection limit. And the database has a limited processing speed and memory. </p>
+<p>And in the case of serverless architecture, many times when no Instance is available. Each request leads to making a fresh copy of the instance, Surprisingly worsen in seconds spike, lead to not slowness, but direct connection errors as symptoms. </p>
+<p>Solution to connection limits : connection pool, a small set of connections open at all times and everything shared between the servers. Instead of server opening and closing own connections, request borrows one connection from the set, use it and hand it straight back to the next request to use. Database only sees a fixed number of connections, no matter how many servers and requests you have. PGbouncer is common for Postgres. Now, major managed databases ship with Pooler inbuilt. </p>
+<p>Solution to genuine capacity exceeded : - Refine database queries. - Use indexes. Instead of long row search - Have a balance of read and write queries.</p>
+<p>Final fix is to scale it up. </p>
+</blockquote>
+<p><strong>The front of the system is now solid:</strong> load balancer, several stateless servers, everyone gets served no matter how many people show up. All of them talk to one database.</p>
+<ul>
+<li><strong>The app is slow again.</strong> Every server is healthy. None at capacity. No bad queries. Nothing seems broken.</li>
+<li><strong>The thing all servers have in common:</strong> they are talking to the same one database. We scaled the servers, but never scaled the thing behind them.</li>
+<li><strong>Two separate problems hide here.</strong></li>
+</ul>
+<p><strong>Problem 1: connection limits</strong></p>
+<ul>
+<li><strong>A database will only hold so many open connections at the same time.</strong> Each open line from a server to the database costs it memory and attention. There is a hard limit on how many it will accept at once, and it is lower than you would guess. Not millions. Often just a few hundred on smaller hosted plans, sometimes even a few dozen.</li>
+<li><strong>Count what is trying to connect.</strong> Three servers, each opening several connections so it can handle several requests at once. That adds up fast.</li>
+<li><strong>Serverless makes it worse in a way that surprises people.</strong> When a request comes in and there is no free instance ready, the platform spins up a fresh copy of your function. Each fresh copy opens its own new connection. A big spike means hundreds of copies appearing at once, each grabbing connections. They fill every slot in seconds.</li>
+<li><strong>The tell:</strong> the symptom is not slowness, it is errors. The ticket app was completely fine, a popular show went on sale, traffic spiked, and suddenly database connection errors right at the moment things were going well.</li>
+</ul>
+<p><strong>The fix: a connection pool</strong></p>
+<ul>
+<li><strong>The idea:</strong> instead of every server opening and closing its own connections whenever it likes, keep a small fixed set of connections open at all times and everything shares them.</li>
+<li>A request borrows one from the set, uses it, and hands it straight back for the next request to use.</li>
+<li><strong>The database only ever sees that small fixed number of connections</strong>, no matter how many servers or requests you have. You stopped overwhelming it with the sheer number of open lines.</li>
+<li><strong>PgBouncer is a common one for Postgres.</strong> Most managed databases now ship a pooler you can just switch on.</li>
+<li><strong>This fixes the errors, but not the other problem.</strong></li>
+</ul>
+<p><strong>Problem 2: genuine capacity</strong></p>
+<ul>
+<li>The connections are under control and the database is still maxed out. It is genuinely doing more work than one machine can do.</li>
+<li><strong>First, a quick check: are your common queries actually using indexes?</strong></li>
+<li>If the app looks users up by email on every login and there is no index on the email column, the database is scanning every row to find one person every single time.</li>
+<li>That one missing index looks exactly like a capacity problem, which it is not.</li>
+<li>Add the index and the load can just disappear. Check that one first, it is free.</li>
+<li><strong>Say the indexes are there. The database is simply out of room.</strong></li>
+<li><strong>Look at what it is spending all of its efforts on.</strong></li>
+<li>Any social app: you open it and scroll. You read post after post after post. Once in a while you write something, a post, a like, a comment. For every one thing you write, you read hundreds of things.</li>
+<li>TikTok: you are reading videos, scrolling through different content served to you.</li>
+<li><strong>Reads massively outnumber writes.</strong> The database is spending nearly all of its efforts answering the reads.</li>
+<li><strong>If you could somehow take the reading load off it, you would fix nearly all of the problem.</strong></li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    subgraph Before["Before: one database drowning"]
+        S1[Server 1] --&gt; DB[(One database)]
+        S2[Server 2] --&gt; DB
+        S3[Server 3] --&gt; DB
+        DB --&gt;|Maxed out| ERR[Errors]
+    end
+    subgraph After["After: connection pool"]
+        S4[Server 1] --&gt; P[Connection pool — small fixed set]
+        S5[Server 2] --&gt; P
+        S6[Server 3] --&gt; P
+        P --&gt; DB2[(Database sees only a few connections)]
+    end</code></pre>
+<pre class="mermaid"><code>flowchart TD
+    subgraph Serverless["Serverless spike"]
+        R[Request comes in] --&gt;|No free instance ready| F[Platform spins up a fresh copy of your function]
+        F --&gt;|Each fresh copy opens its own new connection| C1[Copy 1 — new connection]
+        F --&gt; C2[Copy 2 — new connection]
+        F --&gt; C3[Copy 3 — new connection]
+        C1 --&gt;|Hundreds of copies at once| DB[(Database — every slot filled in seconds)]
+        C2 --&gt; DB
+        C3 --&gt; DB
+    end</code></pre>
+<h2 id="read-replicas">Read Replicas</h2>
+<blockquote>
+<p>In reality, there is always a write-to-read ratio of 1:200 to 1:400, where, for every 1 write, there are around 200 to 400 reads. Then the database spends 99% of its time on reads and 1% on writes. </p>
+<p>Fix for read processing 99% of DB : read replicas. Read-only copies of master DB. Each write will be handled by the master DB. And each read replica will handle the read queries. 99% load to 33% 33% 33%(3 Read replicas) and master db has 1% write only. At each update in master DB , read replicas get automatically updated. </p>
+<p>This adds up to two costs: 1. Money 2. Replication lag(the window where copy is behind primary/master, made the application a little wrong, some users will see outdated data/lag)</p>
+<p>Now, replication lag is normal for other people viewing other posts. But you're saying your own posts lag feels broken. To solve that, you see your data from read query from the master/primary DB. </p>
+<p>The real lesson: you have to find a balance between features and trade-offs(selective problems). </p>
+</blockquote>
+<p><strong>The fix: make copies of the database.</strong></p>
+<ul>
+<li><strong>One database stays the primary.</strong> The only one you are allowed to write to. Everything you add or change goes there.</li>
+<li><strong>The copies are read only.</strong> You cannot write to them, but you can read from them all day.</li>
+<li><strong>Whenever something changes on the primary, it sends that change out to the copies</strong> so they stay up to date.</li>
+<li><strong>These copies are called read replicas.</strong></li>
+<li><strong>Now the work is spread out.</strong> Writes go to the primary. Reads, the huge majority of your traffic, get shared across the replicas. Each machine is doing a fraction of what one machine was drowning under.</li>
+</ul>
+<p><strong>The cost: replication lag</strong></p>
+<ul>
+<li><strong>This cost is different from the others.</strong> It doesn't just cost money or a moving part. It quietly makes your app a little wrong.</li>
+<li>When you write something to the primary, it takes a moment, usually tiny but not zero, for that change to reach the copies.</li>
+<li><strong>The example:</strong> you post something. That write goes to the primary. Immediately your app loads your feed and that read goes to a replica. The replica has not yet received your new post. You look at your own feed right after posting and your post isn't there. You refresh, and then it is there.</li>
+<li><strong>Nothing was broken.</strong> The copy was just a half second behind.</li>
+<li><strong>That gap has a name: replication lag.</strong> It is the price of read replicas. Your data is now slightly out of date on copies, for a moment, sometimes.</li>
+<li><strong>Usually completely fine.</strong> Somebody seeing a post half a second late doesn't matter.</li>
+<li><strong>Sometimes it does matter.</strong> You seeing your own post missing feels broken.</li>
+<li><strong>For those specific cases, apps deliberately read from the primary instead of a replica.</strong></li>
+<li><strong>The real lesson:</strong> you just made your app faster and slightly wrong on purpose. You chose which parts are allowed to be slightly wrong and which parts are not.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    W[Write] --&gt; P[(Primary database — the only one you write to)]
+    P --&gt;|Sends changes out| R1[(Read replica 1)]
+    P --&gt;|Sends changes out| R2[(Read replica 2)]
+    P --&gt;|Sends changes out| R3[(Read replica 3)]
+    RD[Reads — the huge majority of traffic] --&gt; R1
+    RD --&gt; R2
+    RD --&gt; R3
+    P -.-&gt;|Replication lag — a moment behind| R1</code></pre>
+<pre class="mermaid"><code>flowchart LR
+    U[You post something] --&gt; P[(Primary database)]
+    P --&gt;|Sends change out| R[(Read replica — a half second behind)]
+    U2[App loads your feed immediately] --&gt; R
+    R --&gt;|Replica has not yet received your new post| M["Your post isn't there"]
+    M --&gt;|You refresh| T["Now it is there — nothing was broken"]</code></pre>
+<h2 id="caching">Caching</h2>
+<blockquote>
+<p>Suppose a trending feed which is read by millions of users. 1000000 same read operation WASTE = 1 read operation. Example: for follower count , in every second, counting millions of followers of an influencer page is wasteful . </p>
+<p>Solution : Caching, Compute it once and keep the answer somewhere fast. The next person who asks gets the saved answer. The database is never touched. If a query is found in the cache, then it reads only the cache, If not existing in cache, then read from the database, return to the user, and also copy to the cache. Drastically faster 250 ms to 1 ms, as caching takes an 80%+ hits . Redis handles caching too. Caching trade-off between correctness and speed .</p>
+<p>Even though caching leads to data lag from DB, still, you can have a way of refresh(cache invalidation) every 5-second / 30-second / 5-minute /etc. Have a balance that: more the refreshing time, less the DB load. Less the refreshing time, more the DB load. (Hard task among engineers, subjective). For example, you can have caching in social media applications, but never in banking(because there incorrectness is scary). </p>
+</blockquote>
+<p><strong>Some reads are still expensive.</strong> There is one particular kind of question asked over and over, thousands of times, that gets almost the same answer every time. Computing the same answer thousands of times is just wasteful.</p>
+<p><strong>The example: follower count</strong></p>
+<ul>
+<li>To get it, the database has to count every follower record for that person.</li>
+<li>Someone with 2 million followers means the database counting through 2 million rows to produce one number.</li>
+<li>That number is on their profile. Every single person who opens that profile makes the database count all 2 million again. Thousands of times an hour, the same expensive count, for a number that barely moves.</li>
+<li><strong>The database does hard work over and over to get the answer we already had a second ago.</strong></li>
+</ul>
+<p><strong>The fix: a cache</strong></p>
+<ul>
+<li><strong>Compute it once and keep the answer somewhere fast.</strong> The next person who asks gets the saved answer. The database is never touched.</li>
+<li><strong>That saved answer, kept somewhere fast and close, is a cache.</strong></li>
+<li><strong>The flow:</strong></li>
+<li>A request comes in asking for the follower count.</li>
+<li>First check the cache. Is the answer already sitting there?</li>
+<li>If yes, hand it straight back. Never go near the database.</li>
+<li>If no, ask the database, get the number, and put it in the cache on the way back. The next person gets it for free.</li>
+<li><strong>A cache is fast in a way a database cannot be</strong> because it keeps its data in memory rather than reading from disk. The answer comes back in a fraction of the time.</li>
+<li><strong>This is very often Redis.</strong> The same Redis from the sessions section. Same piece of tech doing a second job. You didn't add a whole new system to your stack. The thing you already ran for sessions can hold your cache too.</li>
+</ul>
+<p><strong>The cost: staleness</strong></p>
+<ul>
+<li><strong>Caching has the sharpest cost in this whole video.</strong> The moment you save a copy of an answer, that copy can go out of date.</li>
+<li><strong>The example:</strong> someone gets a new follower. The real count in the database is now one higher, but the cache is still holding the old number. Everyone opening that profile sees the old count until the cache is updated or thrown away.</li>
+<li><strong>Your follower count is now sometimes a little wrong.</strong> Deciding when to throw away that saved answer, so it doesn't stay wrong for too long, is genuinely one of the harder problems in the whole field.</li>
+<li><strong>The old joke among engineers:</strong> the two hardest things in computing are naming things and knowing when to clear your cache.</li>
+</ul>
+<p><strong>The real skill</strong></p>
+<ul>
+<li><strong>Caching trades correctness for speed on purpose.</strong> You have to decide which pieces of your app are allowed to be a little wrong for a little while, and which are not.</li>
+<li><strong>A follower count that is 30 seconds out of date:</strong> nobody will ever notice, nobody is harmed. Cache it hard.</li>
+<li><strong>The balance in somebody's bank account:</strong> can never be even slightly out of date. You do not cache that, ever.</li>
+<li><strong>That decision is not a coding decision.</strong> AI will happily write that caching code for you, and write it well. What it will not do is make the best call, because that call is not about code. It is about your product, your users, and what they will and will not accept.</li>
+<li><strong>It needs someone who understands the whole system and the people using it.</strong> That is the part of the job that isn't going anywhere. You can outsource the typing, but not the decision-making.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    Q[Request: follower count] --&gt; C{Cache has the answer?}
+    C --&gt;|Yes — hand it back, never touch the database| A1[Saved answer]
+    C --&gt;|No| DB[(Database)]
+    DB --&gt;|Get the number| ST[Store in cache on the way back]
+    ST --&gt; A2[Next person gets it for free]</code></pre>
+<pre class="mermaid"><code>flowchart LR
+    U[Someone gets a new follower] --&gt; DB[(Database — real count is now one higher)]
+    C[(Cache — still holding the old number)] --&gt;|Everyone opening that profile sees the old count| O[Old count shown]
+    DB --&gt;|Until the cache is updated or thrown away| C</code></pre>
+<h2 id="queues-and-workers">Queues and Workers</h2>
+<blockquote>
+<p>To make the website blazing fast and convenient for the user, three jobs run. 
+1. Server's Job answers the user fast and drops the slow word onto the queue. 
+2. Queue's Job bulks the slow jobs (email verification, video processing, analytics, notification, receipts, etc., that you don't want the user to wait on)
+3. Workers's Job  quietly chew through that work in the background. </p>
+<p>Tool "BullMQ", runs on Redis handle three jobs(Sessions, caching and queue ). </p>
+<p>Merits : application becomes super fast after sign-up, instant usage, no spinner loading </p>
+<p>Demerits : work happens later. Multiple things to run. Keep the queue and worker alive, and jobs can fail where multiple trys are required where human intervention is required. </p>
+</blockquote>
+<p><strong>One more kind of slow.</strong> It is a strange one, because it has nothing to do with reading the data at all.</p>
+<p><strong>The problem: the signup flow</strong></p>
+<ul>
+<li>A user fills out the form, clicks sign up, and expects the account to be created right away.</li>
+<li>Creating the account might not be the only thing the server has to do. It might also need to send a verification email, track the signup in analytics, or set up some initial data for the new account.</li>
+<li><strong>If you do all of that before sending the response, the user just sits there staring at a loading spinner</strong>, waiting for everything to finish.</li>
+<li><strong>Sending the verification email is not something your server does itself.</strong> It hands the email to an outside service and waits for that service to say "sent."</li>
+<li><strong>Your signup is now only as fast as that email service.</strong> If it is having a slow day, your signup is slow today. If it is down, your signup fails too. The account couldn't be created because the verification email couldn't be sent.</li>
+<li><strong>You have tied whether someone can even join your app to whether some separate email company happens to be up right now.</strong> That is a bad thing to tie together.</li>
+<li><strong>You have already seen this, you just didn't know it.</strong> When you sign up for something and the verification email takes a few seconds to land, or you upload a video and it says "processing" and lets you carry on. The delay is not the app being slow. It is the app being built correctly.</li>
+</ul>
+<p><strong>The fix: split the work</strong></p>
+<ul>
+<li><strong>Creating the account is the only part the user actually needs to happen before you answer.</strong> The verification email doesn't have to happen in that same moment. It just has to happen soon.</li>
+<li><strong>The instant the account is created, answer the user.</strong> "Done. You're signed up."</li>
+<li><strong>For the email, write down a note:</strong> "Send a verification email to this person." Drop it onto a list.</li>
+<li><strong>That list is called a queue.</strong> It is just a line of jobs waiting to be done in order.</li>
+<li><strong>A separate process picks up the note and sends the email</strong> a moment later, while the user is already happily looking at their logged-in homepage.</li>
+<li><strong>That separate process is called a worker.</strong></li>
+<li>The server's job: answer the user fast, drop the slow work onto the queue.</li>
+<li>The worker's job: quietly chew through that work in the background.</li>
+<li><strong>It isn't just verification emails.</strong> Password resets, notifications, receipts, any slow job you do not want a user waiting on. All of it goes on the same queue and the worker handles it in the background.</li>
+<li><strong>For a lot of apps, this is a tool called BullMQ.</strong> It runs on Redis, the same Redis you already have for sessions and your cache. Three jobs now in a single piece of technology.</li>
+</ul>
+<p><strong>The win and the costs</strong></p>
+<ul>
+<li><strong>The signup becomes instant.</strong> It no longer cares whether the email service is even up. If it is down, the note just waits in the queue until it comes back up. The account was already created either way.</li>
+<li><strong>Cost 1: the work now happens later.</strong> That is exactly why the verification email takes a few seconds to show up. For a verification email, nobody cares. You just need to know that "done now" means "we have promised to do this," not "this is finished."</li>
+<li><strong>Cost 2: two more things to run.</strong> You have to keep both the queue and the worker alive.</li>
+<li><strong>Cost 3: jobs can fail.</strong> The worker tries to send the email and the email service is down. You need to plan for that: try again in a minute, and if it keeps failing, put it somewhere so a human can look at it later. A job you dropped on a queue and never checked on is a job you are quietly not doing.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    U[User signs up] --&gt; S[Server creates account instantly]
+    S --&gt;|Answer right away| DONE["Done. You're signed up."]
+    S --&gt;|Write a note| Q[(Queue — line of jobs in order)]
+    Q --&gt; W[Worker — separate process]
+    W --&gt;|Sends email a moment later| ES[Email service]
+    ES --&gt;|Down? Note waits in queue| Q</code></pre>
+<pre class="mermaid"><code>flowchart TD
+    subgraph Before["Before: everything before the response"]
+        U[User clicks sign up] --&gt; S[Server]
+        S --&gt; E[Send verification email — hands to outside service, waits]
+        S --&gt; A[Track signup in analytics]
+        S --&gt; I[Set up initial data]
+        E --&gt;|Email service slow or down| W[User stares at a loading spinner]
+        A --&gt; W
+        I --&gt; W
+    end
+    subgraph After["After: split the work"]
+        U2[User clicks sign up] --&gt; S2[Server creates account instantly]
+        S2 --&gt;|Answer right away| D["Done. You're signed up."]
+        S2 --&gt;|Write a note| Q[(Queue)]
+        Q --&gt; WK[Worker sends email a moment later]
+    end</code></pre>
+<h2 id="sharding">Sharding</h2>
+<blockquote>
+<p>most apps don't need anything more than this what we have discussed throughout this documentation. Now a new exceptional challenge comes. Everything we have discussed earlier was about handling more people. Now we are handling how much data we have. </p>
+<p>Caching and read replicas can save you to good extent only. But what happens if data goes into TBs? Where a single machine cannot store the whole database, and you can't even have backups. 
+Solution is to split the database into multiple databases, where each one holds only a part of it. But still, we don't know how app is going to communicate with each database. And you cannot drop anywhere because now, to search a user, you have to pass multiple databases, which is slower. You need a rule. </p>
+<p>Solution : Sharding, a database architecture pattern that splits a large dataset into smaller, independent chunks called shards and distributes them across multiple servers.
+The rule is to take the user ID and divide it by the number of databases you have. It will give an even distribution. Each database holds the same fractions. </p>
+<p>shard = user_id % number_of_databases</p>
+<p>If ID is UUID, then use a hash function to convert any value to a number, the same number every time. </p>
+<p>If a request comes from user id 5 : 5%3 = 2 =&gt; go to database 3 ( shard 0(db1), shard 1(db2), shard 2(db3))</p>
+<p>The rule is consistent. Each shard has a fraction of data. And you have essentially split your lookup time, your reading time, and your write time by the total number of shards. </p>
+<p>Major cost is cross-shard queries. If it's about one person's query, no problem. But if it's about a group, then you have to pass through each and every database. Counting, sorting, and searching become very hard. </p>
+<p>The art of sharding is about avoiding cross-shard queries. </p>
+<p>Once a database is sharded, it is not reversible. </p>
+<p>Super hard for live application with billions of users . Notion did it.  https://www.notion.com/blog/sharding-postgres-at-notion</p>
+</blockquote>
+<p><strong>Everything fixed so far was about handling more people. This last one isn't about people. It is about how much data you have.</strong></p>
+<ul>
+<li><strong>Remember the read replicas?</strong> Each one is a full copy of your database. That quietly assumes your whole database fits on one machine in the first place.</li>
+<li><strong>What if it does not?</strong> The data just keeps growing until it is too big for any single machine to hold. A copy cannot save you now, because there is no machine big enough to copy it onto.</li>
+<li><strong>The fix: stop keeping all your data in one place.</strong> Split it across several databases. Each one holds only a part of it.</li>
+</ul>
+<p><strong>The problem: which database?</strong></p>
+<ul>
+<li>If data is spread across three databases, how does the app know which one to put a new user in? Later, how does it know which one to find them in again?</li>
+<li><strong>You cannot just drop them anywhere.</strong> Save a user randomly and you would have to search all three databases every time to find them. That is slower than the one database you started with.</li>
+<li><strong>You need a rule.</strong> Pick one column, something that every record has. For users, the obvious choice is the user ID. Use that ID to decide which database they go on.</li>
+</ul>
+<p><strong>The rule</strong></p>
+<ul>
+<li><strong>Take the user ID and divide it by the number of databases you have. The remainder tells you where they go.</strong></li>
+<li>With three databases, divide by three:</li>
+<li>Remainder 0 → database 1</li>
+<li>Remainder 1 → database 2</li>
+<li>Remainder 2 → database 3</li>
+<li><strong>Users are spread evenly across all three.</strong> Each database holds roughly a third of them. No single machine has to hold everyone anymore.</li>
+<li><strong>If your IDs have letters in them, like a UUID:</strong> first run them through a hash function, which turns any value into a number, the same number every time. Then the exact same divide-by-remainder rule applies.</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>shard = user_id % number_of_databases
+</span></code></pre></div>
+<ul>
+<li><strong>Each of these databases is called a shard.</strong> Splitting your database across shards by a rule is called sharding.</li>
+</ul>
+<p><strong>Why it works</strong></p>
+<ul>
+<li><strong>Watch a request come in for user number 5.</strong> The app runs the same exact rule. 5 / 3, remainder 2, which is database 3. It goes straight there. It doesn't search. It doesn't check the other two. It just knows.</li>
+<li><strong>The rule is consistent.</strong> The same user always lands on the same shard. Writing data and finding it again both use the same rule. One shard every time.</li>
+<li><strong>You have essentially split your lookup time, your reading time, and your writing time by three.</strong></li>
+</ul>
+<p><strong>The cost: cross-shard queries</strong></p>
+<ul>
+<li><strong>As long as a question is about one user, it is fine.</strong> One shard, you get it fast.</li>
+<li><strong>Some questions are not about one user.</strong> Say you want to count how many users you have in total. There is no single shard that knows the answer, because no shard has all the users. You have to ask all three, get their separate counts, and add them up yourself.</li>
+<li><strong>A question that used to be one simple query is now three queries and some additional assembly.</strong></li>
+<li><strong>It gets worse the more shards you have.</strong> 10 shards means asking 10 databases and combining 10 answers.</li>
+<li><strong>Anything that has to look across all your data</strong> (counting, sorting everything by date, searching everyone) now has to touch every shard.</li>
+<li><strong>These are called cross-shard queries.</strong> Avoiding them is the whole art of sharding.</li>
+<li><strong>That is why choosing the rule, which column you split on, is such a big decision.</strong> Pick well and almost every query stays on one shard. Pick badly and all your common queries will have to hit every machine. You have built something slower than what you initially started with.</li>
+<li><strong>Going back is its own painful migration.</strong> Once your data is split like this and all your code is written around it.</li>
+<li><strong>This is the most powerful tool in the whole video, and still the one you reach for last by a long way.</strong> Teams put it off for years, and they are right to. You do it only when the data simply will not fit any other way.</li>
+<li><strong>Doing it for real on a live app with millions of people already using it is a different level of hard.</strong> The migration alone, moving all that data onto shards without taking the app down, is a serious story. <strong>Notion did this.</strong> They went from one database to sharded at over 200 billion rows while the whole product stayed alive.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    U[User ID] --&gt; H["Hash function — if ID has letters, like a UUID"]
+    H --&gt; M["user_id % number_of_databases"]
+    M --&gt;|Remainder 0| SH1[(Shard 1 — database 1)]
+    M --&gt;|Remainder 1| SH2[(Shard 2 — database 2)]
+    M --&gt;|Remainder 2| SH3[(Shard 3 — database 3)]
+    SH1 -.-&gt;|Cross-shard query: ask all, combine| X[Count total users]
+    SH2 -.-&gt; X
+    SH3 -.-&gt; X</code></pre>
+<pre class="mermaid"><code>flowchart LR
+    subgraph Single["One user — one shard, you get it fast"]
+        U1[User 5] --&gt;|5 / 3, remainder 2| SH2[(Shard 2 — database 3)]
+    end
+    subgraph Cross["Cross-shard query — count total users"]
+        Q[Count all users] --&gt;|No single shard knows| SH1[(Shard 1)]
+        Q --&gt; SH2b[(Shard 2)]
+        Q --&gt; SH3[(Shard 3)]
+        SH1 --&gt;|Separate counts| C[Add them up yourself]
+        SH2b --&gt; C
+        SH3 --&gt; C
+    end</code></pre>
+<h2 id="the-full-system-and-the-real-skill">The Full System and the Real Skill</h2>
+<blockquote>
+<p>Assume each progression is yearly, I guess. 
+Final: 
+<img alt="alt text" src="images/image-2.webp" /></p>
+<p>Coding is dead : You can outsource the typing of code stuff like Redis calls, key naming, technology, syntax from AI. </p>
+<p>Engineering is in Goldern Period: But it is your decision-making What May be stable, and for how long, and what may never be , what do users expect and what users accept , that is the thing that AI cannot give, and this makes you irreplaceable. </p>
+<p>System design is not about just the boxes, but about what to do, in what order, and at what cost. </p>
+</blockquote>
+<p><strong>What we built, in order:</strong></p>
+<ul>
+<li>Started with one server and one database.</li>
+<li>More people showed up than one server could handle. Added servers and a load balancer in front of them.(But also, +1 hop and health checks required)</li>
+<li>The servers could not remember who was logged in. Moved sessions to a shared store.(Also, now One more thing to run.)</li>
+<li>They were all hitting one database. Pooled the connections and split reads across the replicas.(But now there is a replication lag.)</li>
+<li>The same expensive answers were being computed over and over again. Cached them.(Answers can go stale.)</li>
+<li>Slow work was making users wait. Moved it to a queue(Work happens later.) for a worker(retries and add jobs) to handle in the background.</li>
+</ul>
+<p><strong>That is a real system.</strong> It is genuinely how a huge number of apps are built.</p>
+<ul>
+<li><strong>AI can build every one of these boxes for you.</strong> Knowing which ones you actually need, and what they cost, is the part that it cannot. That is the job now.</li>
+<li><strong>For job interviews:</strong> anyone can name these things. The one who gets hired says why they would pick one over the other, and what it costs.</li>
+<li><strong>That is system design.</strong> Not the boxes, but the order and the trades we make.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    U[Users] --&gt; LB[Load balancer]
+    LB --&gt; S1[Stateless server 1]
+    LB --&gt; S2[Stateless server 2]
+    LB --&gt; S3[Stateless server 3]
+    S1 --&gt; R[(Redis — sessions + cache)]
+    S2 --&gt; R
+    S3 --&gt; R
+    S1 --&gt; P[(Primary database)]
+    S2 --&gt; P
+    S3 --&gt; P
+    P --&gt; RR1[(Read replica 1)]
+    P --&gt; RR2[(Read replica 2)]
+    S1 --&gt; C[(Cache)]
+    S2 --&gt; C
+    S3 --&gt; C
+    S1 --&gt; Q[(Queue)]
+    S2 --&gt; Q
+    S3 --&gt; Q
+    Q --&gt; W[Worker]
+    W --&gt; ES[Email service]</code></pre>
+<pre class="mermaid"><code>flowchart TD
+    A["1. One server + one database"] --&gt; B["2. Add servers + load balancer"]
+    B --&gt; C["3. Move sessions to a shared store"]
+    C --&gt; D["4. Pool connections + split reads across replicas"]
+    D --&gt; E["5. Cache expensive answers"]
+    E --&gt; F["6. Move slow work to a queue for a worker"]
+    F --&gt; G["7. Shard when data will not fit any other way"]</code></pre>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 8, 2026 15:56:42 UTC">October 8, 2026</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 3, 2026 22:07:03 UTC">October 3, 2026</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+  
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="index.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../tech-current-affairs/index.html" class="md-footer__link md-footer__link--next" aria-label="Next: Overview">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Overview
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy;2026 Siddhant Bali. All rights reserved.
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://codingismeditation.github.io/" target="_blank" rel="noopener" title="Home" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M277.8 8.6c-12.3-11.4-31.3-11.4-43.5 0l-224 208c-9.6 9-12.8 22.9-8 35.1S18.8 272 32 272h16v176c0 35.3 28.7 64 64 64h288c35.3 0 64-28.7 64-64V272h16c13.2 0 25-8.1 29.8-20.3s1.6-26.2-8-35.1zM240 320h32c26.5 0 48 21.5 48 48v96H192v-96c0-26.5 21.5-48 48-48"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.youtube.com/@CodingIsMeditation" target="_blank" rel="noopener" title="CodingIsMeditation YouTube Channel" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://x.com/siddhantbuilds" target="_blank" rel="noopener" title="Author&#39;s Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/codingismeditation" target="_blank" rel="noopener" title="Author&#39;s GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/siddhantbuilds/" target="_blank" rel="noopener" title="Author&#39;s LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:siddhant.bali.work@gmail.com" target="_blank" rel="noopener" title="Author&#39;s Email" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+
+  <div class="md-footer-meta ">
+    <div class="md-footer-meta__inner">
+
+      <!-- Custom line ABOVE copyright -->
+      <div class="md-footer-copyright" style="margin-bottom: 6px;">
+        <blockquote>
+        <p>The <a href="https://codingismeditation.github.io/">codingismeditation.github.io</a>, authored by <a href="https://github.com/kintsugi-programmer">Kintsugi-Programmer</a>, is less a comprehensive resource and more an Artifact of Continuous Research and Deep Inquiry into Computer Science and Software Engineering. It serves as a transparent ledger of the author&#39;s relentless pursuit of mastery, from the foundational algorithms to modern full-stack implementation.</p>
+        <blockquote>
+        <p>Made with 💚 <a href="https://github.com/kintsugi-programmer">Kintsugi-Programmer</a></p>
+        </blockquote>
+        </blockquote>
+      </div>
+
+    </div>
+  </div>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.instant.preview", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.prune", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "search.share", "header.autohide", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

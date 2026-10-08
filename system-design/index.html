@@ -6,31 +6,35 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Deep, practical docs on backend, systems, and engineering mindset">
+        <meta name="description" content="A practical progression through system design — start with one server and one database, break it on purpose, and rebuild it one piece at a time. Load balancers, stateless servers, connection pooling, read replicas, caching, queues, and sharding.">
       
       
       
-        <link rel="canonical" href="https://codingismeditation.github.io/exploration/bun/26_/index.html">
+        <link rel="canonical" href="https://codingismeditation.github.io/system-design/index.html">
       
       
+        <link rel="prev" href="../exploration/bun/index.html">
+      
+      
+        <link rel="next" href="how-senior-engineers-think-system-design.html">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.ico">
+      <link rel="icon" href="../assets/images/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>26_ - Coding Is Meditation</title>
+        <title>System Design - Coding Is Meditation</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,7 +55,7 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -59,17 +63,17 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="26_ - Coding Is Meditation" />
-<meta property="og:description" content="Deep, practical docs on backend, systems, and engineering mindset" />
-<meta property="og:image" content="https://codingismeditation.github.io/assets/images/social/exploration/bun/26_/index.png" />
+<meta property="og:title" content="System Design - Coding Is Meditation" />
+<meta property="og:description" content="A practical progression through system design — start with one server and one database, break it on purpose, and rebuild it one piece at a time. Load balancers, stateless servers, connection pooling, read replicas, caching, queues, and sharding." />
+<meta property="og:image" content="https://codingismeditation.github.io/assets/images/social/system-design/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://codingismeditation.github.io/exploration/bun/26_/index.html" />
+<meta property="og:url" content="https://codingismeditation.github.io/system-design/index.html" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="26_ - Coding Is Meditation" />
-<meta property="twitter:description" content="Deep, practical docs on backend, systems, and engineering mindset" />
-<meta property="twitter:image" content="https://codingismeditation.github.io/assets/images/social/exploration/bun/26_/index.png" />
+<meta property="twitter:title" content="System Design - Coding Is Meditation" />
+<meta property="twitter:description" content="A practical progression through system design — start with one server and one database, break it on purpose, and rebuild it one piece at a time. Load balancers, stateless servers, connection pooling, read replicas, caching, queues, and sharding." />
+<meta property="twitter:image" content="https://codingismeditation.github.io/assets/images/social/system-design/index.png" />
 </head>
   
   
@@ -89,7 +93,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#26_" class="md-skip">
+        <a href="#system-design" class="md-skip">
           Skip to content
         </a>
       
@@ -105,9 +109,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../index.html" title="Coding Is Meditation" class="md-header__button md-logo" aria-label="Coding Is Meditation" data-md-component="logo">
+    <a href="../index.html" title="Coding Is Meditation" class="md-header__button md-logo" aria-label="Coding Is Meditation" data-md-component="logo">
       
-  <img src="../../../assets/images/logo.png" alt="logo">
+  <img src="../assets/images/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -124,7 +128,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              26_
+              System Design
             
           </span>
         </div>
@@ -236,7 +240,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../index.html" class="md-tabs__link">
+      <a href="../index.html" class="md-tabs__link">
         
   
   
@@ -255,7 +259,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../about.html" class="md-tabs__link">
+      <a href="../about.html" class="md-tabs__link">
         
   
   
@@ -274,7 +278,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../contributing.html" class="md-tabs__link">
+      <a href="../contributing.html" class="md-tabs__link">
         
   
   
@@ -295,7 +299,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../index.html" class="md-tabs__link">
+        <a href="../exploration/index.html" class="md-tabs__link">
           
   
   
@@ -311,11 +315,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../system-design/index.html" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
           
   
   
@@ -335,7 +341,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../tech-current-affairs/index.html" class="md-tabs__link">
+        <a href="../tech-current-affairs/index.html" class="md-tabs__link">
           
   
   
@@ -377,9 +383,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../index.html" title="Coding Is Meditation" class="md-nav__button md-logo" aria-label="Coding Is Meditation" data-md-component="logo">
+    <a href="../index.html" title="Coding Is Meditation" class="md-nav__button md-logo" aria-label="Coding Is Meditation" data-md-component="logo">
       
-  <img src="../../../assets/images/logo.png" alt="logo">
+  <img src="../assets/images/logo.png" alt="logo">
 
     </a>
     Coding Is Meditation
@@ -406,7 +412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../index.html" class="md-nav__link">
+      <a href="../index.html" class="md-nav__link">
         
   
   
@@ -433,7 +439,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about.html" class="md-nav__link">
+      <a href="../about.html" class="md-nav__link">
         
   
   
@@ -460,7 +466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../contributing.html" class="md-nav__link">
+      <a href="../contributing.html" class="md-nav__link">
         
   
   
@@ -507,7 +513,7 @@
   
   
   
-    <a href="../../index.html" class="md-nav__link">
+    <a href="../exploration/index.html" class="md-nav__link">
       
   
   
@@ -537,12 +543,17 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
@@ -550,18 +561,16 @@
     
     
       
-        
-        
-      
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
-  
-  
-  
-    <a href="../../../system-design/index.html" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
   
   
   <span class="md-ellipsis">
@@ -575,12 +584,88 @@
   
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    System Design
   
 
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-senior-engineers-think-system-design.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Senior Engineers Think System Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -613,7 +698,7 @@
   
   
   
-    <a href="../../../tech-current-affairs/index.html" class="md-nav__link">
+    <a href="../tech-current-affairs/index.html" class="md-nav__link">
       
   
   
@@ -657,6 +742,46 @@
   
 
 
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../index.html" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    System Design
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
               
               <article class="md-content__inner md-typeset">
                 
@@ -667,14 +792,11 @@
   
 
 
-<h1 id="26_">26_</h1>
-<p>To install dependencies:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bun<span class="w"> </span>install
-</span></code></pre></div>
-<p>To run:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>bun<span class="w"> </span>run<span class="w"> </span>index.ts
-</span></code></pre></div>
-<p>This project was created using <code>bun init</code> in bun v1.3.7. <a href="https://bun.com">Bun</a> is a fast all-in-one JavaScript runtime.</p>
+<h1 id="system-design">System Design</h1>
+<p>An evolutionary, from-scratch approach to system design. Start with one server and one database, break it on purpose, fix exactly one thing, and repeat — until you have built the whole system and know why every piece is there and what it costs to add it.</p>
+<ul>
+<li><a href="how-senior-engineers-think-system-design.html">How Senior Engineers Think System Design</a></li>
+</ul>
 
 
 
@@ -697,7 +819,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 1, 2026 12:55:59 UTC">February 1, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 8, 2026 15:56:42 UTC">October 8, 2026</span>
   </span>
 
     
@@ -707,7 +829,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 24, 2026 16:25:43 UTC">January 24, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 8, 2026 15:56:42 UTC">October 8, 2026</span>
   </span>
 
     
@@ -738,6 +860,44 @@
   
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../exploration/bun/index.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Bun">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Bun
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="how-senior-engineers-think-system-design.html" class="md-footer__link md-footer__link--next" aria-label="Next: How Senior Engineers Think System Design">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                How Senior Engineers Think System Design
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
@@ -836,10 +996,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.instant.preview", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.prune", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "search.share", "header.autohide", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.instant.preview", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.prune", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "search.share", "header.autohide", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
